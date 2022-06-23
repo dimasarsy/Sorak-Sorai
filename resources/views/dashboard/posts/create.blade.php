@@ -40,13 +40,12 @@
                 <div class="mb-3">
                     <label for="categories" class="block text-sm font-medium text-gray-700 mb-2">categories</label>
                     <select id="categories" name="categories_id" autocomplete="categories-name" class="form-select form-select-sm ">
-                        @foreach($categories as $categories)
-                            @if( old('categories_id') == $categories->id)
-                                <option selected value="{{ $categories->id }}">{{ $categories->name }}</option>
-                            @else
-                                <option value="{{ $categories->id }}">{{ $categories->name }}</option>
-                            @endif
-                        @endforeach
+                        @can('admin')
+                        <option value="1">Koleksi Sorak-Sorai</option>
+                        @endcan
+                        @can('vendor')
+                        <option value="2">Mitra Kami</option>
+                        @endcan
                     </select>
                 </div>
 
