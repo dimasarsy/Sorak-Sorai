@@ -10120,6 +10120,38 @@ POPUP ADVERTISING
     margin-left: auto;
     margin-right: auto;
 }
+.modal-image-null img {
+    width: 340px;
+    height: auto;
+
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal-image-null h5 {
+    font-family: 'Clip';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+
+    position: relative;
+
+    color: #FFFFFF;
+    text-shadow: 0px 0px 16.7308px #FFFFFF;
+
+    text-shadow: 0px 0px 16.7308px #FFFFFF;
+    margin-top: 5%;
+    
+}
 
 .advert .modal-btn {
     font-family: 'Poppins';
@@ -10223,9 +10255,8 @@ POPUP VERIFICATION
     overflow: hidden;
     position: fixed;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(rgba(0, 0, 0, 0.8));
     backdrop-filter: blur(5px);
-
 
     top: 50%;
     left: 50%;
@@ -10239,7 +10270,7 @@ POPUP VERIFICATION
     height: 368px;
 
     background: linear-gradient(107.56deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.305) 23.45%, rgba(159, 159, 159, 0.155) 100%);
-    backdrop-filter: blur(24.0878px);
+    backdrop-filter: blur(40px);
     /* Note: backdrop-filter has minimal browser support */
 
     border-radius: 12px;

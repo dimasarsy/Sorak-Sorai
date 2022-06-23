@@ -2,6 +2,7 @@
 
 @section('container')
 
+@if($schedules->count() )
 <div id="myModalAdvert" class="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="background-modal">
@@ -25,7 +26,27 @@
     </div>
   </div>
 </div>
+@else
+<div id="myModalAdvert" class="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="background-modal">
 
+      <div class="advert">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <button type="button" id="closeBtn" class="btn-close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="modal-image-null">
+          <img src="img/no-ticket.png">
+          <h5 class="d-flex justify-content-center">Coming Soon</h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+@endif
 
 <!-- --------------------------------------------------------------
   # HERO
