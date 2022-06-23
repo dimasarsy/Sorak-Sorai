@@ -11,7 +11,7 @@ class UserController extends Controller
     public function postsByUser(User $author)
     {
         return view('posts.posts-by-user', [
-            "posts" => $author->posts->load('author', 'category'),
+            "posts" => $author->posts->load('author', 'categories'),
             "user"  => $author,
             "title" => "Marketplace",
         ]);

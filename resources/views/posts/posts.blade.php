@@ -6,9 +6,9 @@
     <br><br><br><br>
     <div>
         <!-- HEADER SHOP -->
-        @if($category)
-        <div class="section-about-category mt-3 d-flex justify-content-center">
-            <h2 data-aos="fade-left">{{ $category->name }}</h2>
+        @if($categories)
+        <div class="section-about-categories mt-3 d-flex justify-content-center">
+            <h2 data-aos="fade-left">{{ $categories->name }}</h2>
         </div>
         @else
         <div class="section-about mt-3 d-flex justify-content-center">
@@ -27,8 +27,8 @@
             </div>
             <div class="search">
                 <form action="/posts">
-                    @if(request('category'))
-                    <input type="hidden" name="category" class="search-data" value="{{ request('category') }}">
+                    @if(request('categories'))
+                    <input type="hidden" name="categories" class="search-data" value="{{ request('categories') }}">
                     @endif
                     <input type="text" name="search" id="search" class="search-data" value="{{ request('search') }}">
                     <button type="submit" class="fas fa-search"></button>
@@ -64,8 +64,8 @@
 <!-- PRODUCT SHOP  -->
 @if($posts->count() )
     <!-- ------------------------KOLEKSI SORAK-SORAI---------------------------------------------- -->
-    @if($category)
-        @if(request('category') == 'koleksi-sorak-sorai')
+    @if($categories)
+        @if(request('categories') == 'koleksi-sorak-sorai')
 
             <section id="shop" class="shop">
                 <div class="koleksi">
@@ -93,7 +93,7 @@
                         <h3></h3>
                     </div>
                     <div class="col-4 col-sm-4 col-md-4 col-xl-6 d-flex justify-content-end">
-                        <a href="/posts?category=koleksi-sorak-sorai">lihat semua</a>
+                        <a href="/posts?categories=koleksi-sorak-sorai">lihat semua</a>
                     </div>
                 </div>
             </div>
@@ -112,8 +112,8 @@
 
     <!-- ------------------------MITRA KITA---------------------------------------------------- -->
 
-    @if($category)
-        @if(request('category') == 'mitra-kami')
+    @if($categories)
+        @if(request('categories') == 'mitra-kami')
             @foreach($pengajuans as $pengajuan)
 
             <div class="section-shop-tiga">
@@ -167,7 +167,7 @@
                         <h3></h3>
                     </div>
                     <div class="col-5 col-sm-5 col-md-4 col-xl-6 d-flex justify-content-end">
-                        <a href="/posts?category=mitra-kami">lihat semua </a>
+                        <a href="/posts?categories=mitra-kami">lihat semua </a>
                     </div>
 
                 </div>

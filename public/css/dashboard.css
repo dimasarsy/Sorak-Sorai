@@ -11771,7 +11771,7 @@ body.sidebar-toggled footer.sticky-footer {
   color: #000;
 
 }
-.card .card-body .card-category a{
+.card .card-body .card-categories a{
 
   font-family: 'Lato';
   font-style: normal;
@@ -11787,7 +11787,7 @@ body.sidebar-toggled footer.sticky-footer {
   color: #000;
 
 }
-.card .card-body .card-category a:hover{
+.card .card-body .card-categories a:hover{
   color: #FF50E3;
 }
 

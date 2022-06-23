@@ -38,13 +38,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                    <select id="category" name="category_id" autocomplete="category-name" class="form-select form-select-sm ">
-                        @foreach($categories as $category)
-                            @if( old('category_id') == $category->id)
-                                <option selected value="{{ $category->id }}">{{ $category->name }}</option>
+                    <label for="categories" class="block text-sm font-medium text-gray-700 mb-2">categories</label>
+                    <select id="categories" name="categories_id" autocomplete="categories-name" class="form-select form-select-sm ">
+                        @foreach($categories as $categories)
+                            @if( old('categories_id') == $categories->id)
+                                <option selected value="{{ $categories->id }}">{{ $categories->name }}</option>
                             @else
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                             @endif
                         @endforeach
                     </select>

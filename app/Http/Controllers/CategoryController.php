@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\categories;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class categoriesController extends Controller
 {
     public function index()
     {
         return view('categories.categories', [
-            'categories'    => Category::orderBy('name')->get()
+            'categories'    => categories::orderBy('name')->get()
         ]);
     }
     

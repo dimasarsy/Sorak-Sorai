@@ -25,7 +25,7 @@ class PostFactory extends Factory
                 ->map(fn ($parag) => "<p>$parag</p>")
                 ->implode(''),
             "user_id"  => mt_rand(1, 5), // from total users that generated in DatabaseSeeder.php
-            "category_id"   => mt_rand(1, 2) // from total categories that generated in DatabaseSeeder.php
+            "categories_id"   => mt_rand(1, 2) // from total categories that generated in DatabaseSeeder.php
         ];
     }
 }

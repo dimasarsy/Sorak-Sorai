@@ -6,9 +6,9 @@
     <br><br><br><br>
     <div>
         <!-- HEADER SHOP -->
-        @if($category)
+        @if($categories)
         <div class="section-about mt-5 d-flex justify-content-center">
-            <h2 data-aos="fade-left">{{ $category->name }}</h2>
+            <h2 data-aos="fade-left">{{ $categories->name }}</h2>
         </div>
         @else
         <div class="section-about mt-5 d-flex justify-content-center">
@@ -27,8 +27,8 @@
             </div>
             <div class="search">
                 <form action="/posts">
-                    @if(request('category'))
-                    <input type="hidden" name="category"  class="search-data" placeholder="Search..." value="{{ request('category') }}">
+                    @if(request('categories'))
+                    <input type="hidden" name="categories"  class="search-data" placeholder="Search..." value="{{ request('categories') }}">
                     @endif
                     <input type="text" name="search" id="search" class="search-data" placeholder="Search..." value="{{ request('search') }}">
                     <button type="submit" class="fas fa-search"></button>
@@ -75,7 +75,7 @@
 <!-- PRODUCT SHOP  -->
 @if($posts->count() )
 
-    @if($category)
+    @if($categories)
     
     @else
     <div class="section-shop">
@@ -88,7 +88,7 @@
         <div class="row row-cols-5">
             
             @foreach($posts->slice(5, 5) as $post)
-                @if($post->category->id === 1)
+                @if($post->categories->id === 1)
                 <x-post-card :post="$post" />
                 @endif
             @endforeach
@@ -96,7 +96,7 @@
         </div>
     </section>
 <!-- ------------------------MITRA KITA---------------------------------------------------- -->
-    @if($category)
+    @if($categories)
         @foreach($users as $user)
             @if($user->is_vendor === 1)
             <div class="section-shop-dua">
@@ -125,14 +125,14 @@
     @else
     <div class="section-shop-dua">
         <h2>Mitra Kami</h2>
-        <a href="/posts?category=mitra-kami">lihat semua </a>
+        <a href="/posts?categories=mitra-kami">lihat semua </a>
     </div>
     
     <section id="shop" class="shop">
         <div class="row row-cols-5">
 
             @foreach($posts->slice(0, 5) as $post)
-                @if($post->category->id === 2)
+                @if($post->categories->id === 2)
                     <x-post-card :post="$post" />
                 @endif
             @endforeach

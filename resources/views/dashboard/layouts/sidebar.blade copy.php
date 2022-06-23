@@ -101,7 +101,7 @@
           <li class="nav-item">
             <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }} " aria-current="page" href="/dashboard/categories">
               <span data-feather="grid"></span>
-              Category
+              categories
             </a>
           </li>
         </ul> -->

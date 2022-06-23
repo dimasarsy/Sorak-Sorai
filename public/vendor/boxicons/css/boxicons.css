@@ -990,10 +990,10 @@
   .bx-cast:before {
     content: "\e99b";
   }
-  .bx-category:before {
+  .bx-categories:before {
     content: "\e99c";
   }
-  .bx-category-alt:before {
+  .bx-categories-alt:before {
     content: "\e99d";
   }
   .bx-cctv:before {
@@ -3198,10 +3198,10 @@
   .bxs-car-wash:before {
     content: "\ec7b";
   }
-  .bxs-category:before {
+  .bxs-categories:before {
     content: "\ec7c";
   }
-  .bxs-category-alt:before {
+  .bxs-categories-alt:before {
     content: "\ec7d";
   }
   .bxs-cctv:before {

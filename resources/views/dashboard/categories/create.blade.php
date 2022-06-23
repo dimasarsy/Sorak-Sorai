@@ -4,7 +4,7 @@
 
 @can('admin')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><i class="fas fa-fw fa-shopping-bag"></i> Create New Category</h1>
+    <h1 class="h2"><i class="fas fa-fw fa-shopping-bag"></i> Create New categories</h1>
 </div>
 <div class="card shadow mb-4">
     <div class="col-lg-10">
@@ -12,7 +12,7 @@
             <form action="/dashboard/categories" method="POST" novalidate enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Category Name</label>
+                    <label for="name" class="form-label">categories Name</label>
                     <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name') }}" autofocus>
                     @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
@@ -23,7 +23,7 @@
                     <small class="text-gray-500 font-medium block my-2">Auto generate after you filled field name and click tab.</small>
                 </div>
             
-                <button type="submit" class="btn btn-primary mb-5">Create Category</button>
+                <button type="submit" class="btn btn-primary mb-5">Create categories</button>
             </form>
         </div>
     </div>

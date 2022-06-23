@@ -1203,7 +1203,7 @@ nav .logo.space {
 /* -------------------------------------------------------------- */
 
 
-.section-about-category h2 {
+.section-about-categories h2 {
 
     font-family: Clip;
     font-style: normal;
@@ -1240,14 +1240,14 @@ nav .logo.space {
 
 
 @media screen and (max-width: 992px) {
-    .section-about-category h2 {
+    .section-about-categories h2 {
         font-size: 48px;
     }
 }
 
 @media screen and (max-width:768px) {
 
-    .section-about-category h2 {
+    .section-about-categories h2 {
         font-size: 40px;
         margin-left: auto;
         margin-right: auto;
@@ -1264,7 +1264,7 @@ nav .logo.space {
     
 }
 @media screen and (max-width:576px){
-    .section-about-category h2 {
+    .section-about-categories h2 {
         font-size: 40px;
         margin-left: auto;
         margin-right: auto;
@@ -1282,7 +1282,7 @@ nav .logo.space {
 }
 
 @media screen and (max-width: 384px) {
-    .section-about-category h2 {
+    .section-about-categories h2 {
         font-size: 32px;
     }
     .section-about h2 {
@@ -7237,7 +7237,7 @@ form button:hover {
         font-size: 38px;
     }
 
-    .card .card-body .card-category a {
+    .card .card-body .card-categories a {
         font-weight: 600;
         font-size: 18px;
     }
@@ -7451,7 +7451,7 @@ span.qantity {
 
 }
 
-.card .card-body .card-category a {
+.card .card-body .card-categories a {
 
     font-family: 'Lato';
     font-style: normal;
@@ -7468,7 +7468,7 @@ span.qantity {
 
 }
 
-.card .card-body .card-category a:hover {
+.card .card-body .card-categories a:hover {
     color: #FF50E3;
 }
 

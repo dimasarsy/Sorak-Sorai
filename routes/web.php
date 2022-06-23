@@ -18,7 +18,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\marketsController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\categoriesController;
 use App\Http\Controllers\MyTicketController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AboutFestController;
@@ -61,7 +61,7 @@ Route::get('/posts', [PostController::class, "index"]);
 Route::get('/posts/{post:slug}', [PostController::class, "show"])->middleware('auth');
 
 // categories
-Route::get('/categories', [CategoryController::class, "index"]);
+Route::get('/categories', [categoriesController::class, "index"]);
 
 // users
 Route::get('/vendor/{author:username}', [UserController::class, "postsByUser"]);

@@ -5,7 +5,7 @@
 @if($posts->count())
 <section id="shop" class="shop mt-5">
     <div class="container">
-        <div class="section-about-category mt-5 d-flex justify-content-start">
+        <div class="section-about-categories mt-5 d-flex justify-content-start">
             <h2 data-aos="fade-left">{{ $user->name }}</h2>
         </div>
 
@@ -20,7 +20,7 @@
 @else
 <section id="nullable" class="nullable">
     <div class="container mt-5" data-aos="fade-up">
-        <div class="section-about-category mt-5 d-flex justify-content-center mb-5">
+        <div class="section-about-categories mt-5 d-flex justify-content-center mb-5">
             <h2 data-aos="fade-left">{{ $user->name }}</h2>
         </div><br>
         <div class="row justify-content-center text-center mt-5">

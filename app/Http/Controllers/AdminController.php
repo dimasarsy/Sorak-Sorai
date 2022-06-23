@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\categories;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('dashboard.categories.index', [
-            'categories' => Category::query()->latest()->get()
+            'categories' => categories::query()->latest()->get()
         ]);
     }
 
@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function create()
     {
         return view('dashboard.categories.create', [
-            'categories' => Category::query()->latest()->get()
+            'categories' => categories::query()->latest()->get()
         ]);
     }
 
@@ -50,9 +50,9 @@ class AdminController extends Controller
 
         $validatedData['user_id'] = auth()->user()->id;
 
-        Category::create($validatedData);
+        categories::create($validatedData);
 
-        return redirect()->to('/dashboard/categories')->with('success', 'Category has been Create.');
+        return redirect()->to('/dashboard/categories')->with('success', 'categories has been Create.');
     }
 
     /**
@@ -74,11 +74,11 @@ class AdminController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(categories $categories)
     {
         return view('dashboard.categories.edit', [
-            'category'      => $category,
-            'categories'    => Category::all()
+            'categories'      => $categories,
+            'categories'    => categories::all()
         ]);
     }
 
@@ -89,21 +89,21 @@ class AdminController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, categories $categories)
     {
         $rules = [
             'name' => 'required|max:100',
         ];
 
-        if ($request->slug !== $category->slug) {
+        if ($request->slug !== $categories->slug) {
             $rules['slug'] = 'required|unique:categories';
         }
 
         $validatedData = $request->validate($rules);
 
-        Category::where('id', $category->id) -> update($validatedData);
+        categories::where('id', $categories->id) -> update($validatedData);
 
-        return redirect()->to('/dashboard/categories')->with('success', 'Category has been updated.');
+        return redirect()->to('/dashboard/categories')->with('success', 'categories has been updated.');
 
     }
 
@@ -113,18 +113,18 @@ class AdminController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(categories $categories)
     {
-        $category->delete();
-        return redirect()->to('/dashboard/categories')->with('deleted', 'Category has been deleted.');
+        $categories->delete();
+        return redirect()->to('/dashboard/categories')->with('deleted', 'categories has been deleted.');
     }
 
     public function slug()
     {
         $slug = Str::of(request('name'))->slug()->value;
         while (true) {
-            $category = Category::query()->where('slug', '=', $slug)->get();
-            if ($category->isNotEmpty()) {
+            $categories = categories::query()->where('slug', '=', $slug)->get();
+            if ($categories->isNotEmpty()) {
                 $slug .= '-' . Str::lower(Str::random(5));
                 continue;
             } else {

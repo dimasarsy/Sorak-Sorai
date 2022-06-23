@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('body');
             $table->foreignId("user_id");
-            $table->foreignId("category_id");
+            $table->foreignId("categories_id");
             $table->string('image');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();

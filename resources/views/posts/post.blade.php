@@ -43,11 +43,11 @@
             <div class="card-body">
               <h5 class="card-title mt-2">{{ $post->title }}</h5>
 
-              @if($post->category->id === 1)
-              <h6 class="card-category mb-3"><a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></h6>
+              @if($post->categories->id === 1)
+              <h6 class="card-categories mb-3"><a href="/posts?categories={{ $post->categories->slug }}">{{ $post->categories->name }}</a></h6>
               @else
-              <h6 class="card-category mb-3 d-flex">
-                <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }} &nbsp; > &nbsp;</a>
+              <h6 class="card-categories mb-3 d-flex">
+                <a href="/posts?categories={{ $post->categories->slug }}">{{ $post->categories->name }} &nbsp; > &nbsp;</a>
                 <a href="/vendor/{{ $post->author->username }}">{{ $post->author->username }}</a>
               </h6>
               @endif

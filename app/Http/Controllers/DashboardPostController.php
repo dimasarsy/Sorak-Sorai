@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\categories;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,10 +18,10 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(["author", "category"])
+        $posts = Post::with(["author", "categories"])
         ->latest()
         ->where('posts.user_id',auth()->user()->id)
-        ->filter(request(["search", 'category', 'author']))
+        ->filter(request(["search", 'categories', 'author']))
         ->get();
 
         // $posts = auth()->user()->posts()->latest()->get(); // Error of intelephense
@@ -38,7 +38,7 @@ class DashboardPostController extends Controller
     public function create()
     {
         return view('dashboard.posts.create', [
-            'categories'    => Category::all()
+            'categories'    => categories::all()
         ]);
     }
 
@@ -54,7 +54,7 @@ class DashboardPostController extends Controller
             'title' => 'required|max:50',
             'slug'   => 'required|unique:posts',
             'shopeelink'   => 'required|max:255',
-            'category_id'   => 'required|numeric',
+            'categories_id'   => 'required|numeric',
             'description'   => 'required',
             'image' => 'required|image|file|max:1024',
             'image2' => 'image|file|max:1024',
@@ -95,7 +95,7 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.edit', [
             'post'          => $post,
-            'categories'    => Category::all()
+            'categories'    => categories::all()
         ]);
     }
 
@@ -111,7 +111,7 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'shopeelink'   => 'required|max:255',
-            'category_id'   => 'required|numeric',
+            'categories_id'   => 'required|numeric',
             'description'   => 'required',
             'image' => 'required|image|file|max:1024',
             'image2' => 'image|file|max:1024',

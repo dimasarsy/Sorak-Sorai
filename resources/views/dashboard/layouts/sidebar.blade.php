@@ -71,7 +71,7 @@
                         <a class="collapse-item {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">My Product</a>
                         
                         @can('admin')
-                        <a class="collapse-item {{ Request::is('dashboard/categories*') ? 'active' : '' }} " aria-current="page" href="/dashboard/categories">Seller Category</a>
+                        <a class="collapse-item {{ Request::is('dashboard/categories*') ? 'active' : '' }} " aria-current="page" href="/dashboard/categories">Seller categories</a>
                         @endcan
                     </div>
                 </div>

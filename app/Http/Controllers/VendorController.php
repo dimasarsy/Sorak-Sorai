@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Category;
+use App\Models\categories;
 use App\Models\Datavendor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,19 +13,19 @@ class VendorController extends Controller
 {
     public function index()
     {
-        $category = null;
-        if (request('category')) {
-            $category = Category::firstWhere('slug', request('category'));
+        $categories = null;
+        if (request('categories')) {
+            $categories = categories::firstWhere('slug', request('categories'));
         }
-        $posts = Post::with(["author", "category"])
+        $posts = Post::with(["author", "categories"])
             ->latest()
-            ->filter(request(["search", 'category', 'author']))
+            ->filter(request(["search", 'categories', 'author']))
             ->paginate(9)->withQueryString();
         return view('vendor-list', [
             'users' => User::query()->latest()->get(),
             "title" => "Marketplace",
             'datavendors' => Datavendor::query()->latest()->get(),
-            "category"  => $category,
+            "categories"  => $categories,
             "posts" => $posts
         ]);
     }

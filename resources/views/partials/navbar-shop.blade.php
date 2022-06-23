@@ -26,8 +26,8 @@
               </div>
               <div class="search">
                   <form action="/posts">
-                      @if(request('category'))
-                      <input type="hidden" name="category"  class="search-data" placeholder="Search..." value="{{ request('category') }}">
+                      @if(request('categories'))
+                      <input type="hidden" name="categories"  class="search-data" placeholder="Search..." value="{{ request('categories') }}">
                       @endif
                       <input type="text" name="search" id="search" class="search-data" placeholder="Search..." value="{{ request('search') }}">
                       <button type="submit" class="fas fa-search"></button>

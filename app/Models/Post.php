@@ -9,9 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title", "slug", "category_id", "user_id", "shopeelink", "image", "image2", "image3" , "description", "body"];
+    protected $fillable = ["title", "slug", "categories_id", "user_id", "shopeelink", "image", "image2", "image3" , "description", "body"];
     // protected $guarded = ["id"];
-    // protected $with = ['author', 'category'] // eager loading
+    // protected $with = ['author', 'categories'] // eager loading
 
     public function scopeFilter($query, array $filters)
     {
@@ -23,20 +23,20 @@ class Post extends Model
         );
 
         $query->when(
-            $filters['category'] ?? false,
-            fn ($query, $category) =>
+            $filters['categories'] ?? false,
+            fn ($query, $categories) =>
             $query->whereHas(
-                'category',
-                function ($query) use ($category) {
-                    $query->where('slug', $category);
+                'categories',
+                function ($query) use ($categories) {
+                    $query->where('slug', $categories);
                 }
             )
         );
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(categories::class);
     }
 
     public function author()
