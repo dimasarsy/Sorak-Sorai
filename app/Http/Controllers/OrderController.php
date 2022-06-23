@@ -222,7 +222,9 @@ class OrderController extends Controller
 
     public function order_admin()
     {
+        $schedule = DB::table("schedules")->get();
         $order = DB::table('orders')->get();
+
         $order_count = DB::table('orders')->count();
         // dd($order[0]->order_id);
 
@@ -281,6 +283,7 @@ class OrderController extends Controller
             "title" => "Order",
             "active" => "order",
             'order' => $order,
+            'schedule' => $schedule,
             'order_count' => $order_count,
             'responses' => $responses
         ]);
