@@ -24,6 +24,152 @@ a {
 }
 
 /*--------------------------------------------------------------
+# Alert
+--------------------------------------------------------------*/
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.35rem;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.alert-heading {
+    color: inherit;
+}
+
+.alert-link {
+    font-weight: 700;
+}
+
+.alert-dismissible {
+    padding-right: 4rem;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+}
+
+.alert-primary {
+    color: #293c74;
+    background-color: #dce3f9;
+    border-color: #cdd8f6;
+}
+
+.alert-primary hr {
+    border-top-color: #b7c7f2;
+}
+
+.alert-primary .alert-link {
+    color: #1c294e;
+}
+
+.alert-secondary {
+    color: #45464e;
+    background-color: #e7e7ea;
+    border-color: #dddde2;
+}
+
+.alert-secondary hr {
+    border-top-color: #cfcfd6;
+}
+
+.alert-secondary .alert-link {
+    color: #2d2e33;
+}
+
+.alert-success {
+    color: #0f6848;
+    background-color: #d2f4e8;
+    border-color: #bff0de;
+}
+
+.alert-success hr {
+    border-top-color: #aaebd3;
+}
+
+.alert-success .alert-link {
+    color: #093b29;
+}
+
+.alert-info {
+    color: #1c606a;
+    background-color: #d7f1f5;
+    border-color: #c7ebf1;
+}
+
+.alert-info hr {
+    border-top-color: #b3e4ec;
+}
+
+.alert-info .alert-link {
+    color: #113b42;
+}
+
+.alert-warning {
+    color: #806520;
+    background-color: #fdf3d8;
+    border-color: #fceec9;
+}
+
+.alert-warning hr {
+    border-top-color: #fbe6b1;
+}
+
+.alert-warning .alert-link {
+    color: #574516;
+}
+
+.alert-danger {
+    color: #78261f;
+    background-color: #fadbd8;
+    border-color: #f8ccc8;
+}
+
+.alert-danger hr {
+    border-top-color: #f5b7b1;
+}
+
+.alert-danger .alert-link {
+    color: #4f1915;
+}
+
+.alert-light {
+    color: #818183;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+
+.alert-light hr {
+    border-top-color: #ececf6;
+}
+
+.alert-light .alert-link {
+    color: #686869;
+}
+
+.alert-dark {
+    color: #2f3037;
+    background-color: #dedee1;
+    border-color: #d1d1d5;
+}
+
+.alert-dark hr {
+    border-top-color: #c4c4c9;
+}
+
+.alert-dark .alert-link {
+    color: #18181c;
+}
+
+/*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
 #header {
@@ -1148,7 +1294,7 @@ nav .logo.space {
     .section-title h2 {
         font-size: 34px;
     }
-    
+
 }
 
 /* --------------------------------------------------------------
@@ -1230,9 +1376,11 @@ nav .logo.space {
         font-weight: 500;
         font-size: 58px;
     }
+
     .section-about p {
         font-size: 18px;
     }
+
     .about .fest-img img {
         width: 550px;
     }
@@ -1252,30 +1400,37 @@ nav .logo.space {
         margin-left: auto;
         margin-right: auto;
     }
+
     .section-about h2 {
         font-size: 48px;
     }
+
     .section-about p {
         font-size: 14px;
     }
+
     .about .fest-img img {
         width: 450px;
     }
-    
+
 }
-@media screen and (max-width:576px){
+
+@media screen and (max-width:576px) {
     .section-about-categories h2 {
         font-size: 40px;
         margin-left: auto;
         margin-right: auto;
     }
+
     .section-about h2 {
         font-weight: 400;
         font-size: 40px;
     }
+
     .section-about p {
         font-size: 14px;
     }
+
     .about .fest-img img {
         width: 400px;
     }
@@ -1285,13 +1440,16 @@ nav .logo.space {
     .section-about-categories h2 {
         font-size: 32px;
     }
+
     .section-about h2 {
         font-weight: 400;
         font-size: 32px;
     }
+
     .section-about p {
         font-size: 12px;
     }
+
     about .fest-img img {
         width: 350px;
     }
@@ -3233,12 +3391,14 @@ nav .logo.space {
         font-weight: 500;
         font-size: 28px;
     }
+
     .activity .event-item {
         color: #fff;
         margin: 0 20px;
         margin-top: 10%;
 
     }
+
     .desc-activity h5 {
         margin-top: 5%;
         font-size: 16px;
@@ -3251,6 +3411,7 @@ nav .logo.space {
         height: 203px;
         margin-top: 10%;
     }
+
     .section-title h3 {
         font-weight: 500;
         font-size: 24px;
@@ -3274,10 +3435,12 @@ nav .logo.space {
         font-size: 18px;
         line-height: 30px;
     }
+
     .desc-activity h5 {
         margin-top: 5%;
         font-size: 12px;
     }
+
     .activity-img img {
         width: 200;
         height: 162px;
@@ -3325,7 +3488,8 @@ nav .logo.space {
 }
 
 @media screen and (max-width: 384px) {
-    .activity .swiper-button-prev, 
+
+    .activity .swiper-button-prev,
     .activity .swiper-button-next {
         opacity: 0.3;
     }
@@ -3443,6 +3607,7 @@ nav .logo.space {
     animation-iteration-count: none;
 
 }
+
 @media screen and (min-width:1400px) and (max-width: 2600px) {
     .section-penampil h2 {
         font-weight: 500;
@@ -3450,18 +3615,20 @@ nav .logo.space {
     }
 }
 
-@media screen and (max-width:576px){
+@media screen and (max-width:576px) {
     .section-penampil h2 {
         font-weight: 400;
         font-size: 45px;
     }
 }
-@media screen and (max-width:450px){
+
+@media screen and (max-width:450px) {
     .section-penampil h2 {
         font-weight: 400;
         font-size: 38px;
     }
 }
+
 @media screen and (max-width: 992px) {
     .section-penampil .fest-img-shop img {
         margin-top: -35%;
@@ -3828,8 +3995,9 @@ nav .logo.space {
     .section-shop-tiga h3:before {
         margin-left: 4%;
     }
-    
+
 }
+
 @media screen and (max-width: 768px) {
 
     .section-shop h2,
@@ -3851,6 +4019,7 @@ nav .logo.space {
         margin-left: -10%;
     }
 }
+
 @media screen and (max-width: 576px) {
 
     .section-shop-tiga h3:before {
@@ -3888,15 +4057,18 @@ nav .logo.space {
         box-shadow: 0px 0px 5px #D85C89;
     }
 }
+
 @media screen and (max-width: 380px) {
 
     .section-shop h2,
     .section-shop-dua h2 {
         font-size: 17px;
     }
+
     .section-shop-tiga h3:before {
         margin-left: -20%;
     }
+
     .section-shop a,
     .section-shop-dua a {
         font-size: 12px;
@@ -3982,6 +4154,7 @@ STATUS PENGAJUAN
     text-align: center;
 
     color: #FFFFFF;
+    margin-top: -8%;
 
 }
 
@@ -5411,6 +5584,7 @@ ALL SCHEDULE
     .schedule-join {
         margin-top: 5%;
     }
+
     .schedule-join .bingkai {
         width: 515px;
         height: 176px;
@@ -5457,6 +5631,7 @@ ALL SCHEDULE
     .schedule-join {
         margin-top: 8%;
     }
+
     .schedule-join .bingkai {
         width: 215.07px;
         height: 256.96px;
@@ -5929,6 +6104,7 @@ ALL SCHEDULE
     .schedule-riwayat {
         margin-top: 5%;
     }
+
     .schedule-riwayat .bingkai {
         width: 515px;
         height: 176px;
@@ -5978,6 +6154,7 @@ ALL SCHEDULE
     .schedule-riwayat {
         margin-top: 8%;
     }
+
     .schedule-riwayat .bingkai {
         width: 215.07px;
         height: 256.96px;
@@ -6736,7 +6913,7 @@ ALL SCHEDULE
     .product-grid .title a {
         font-size: 14px;
     }
-    
+
     .product-grid .price {
         font-size: 14px;
     }
@@ -6746,7 +6923,7 @@ ALL SCHEDULE
     .product-grid .title a {
         font-size: 13px;
     }
-    
+
     .product-grid .price {
         font-size: 13px;
     }
@@ -6774,10 +6951,11 @@ ALL SCHEDULE
         width: 132px;
         height: 181px;
     }
+
     .product-grid .title a {
         font-size: 12px;
     }
-    
+
     .product-grid .price {
         font-size: 12px;
     }
@@ -7202,6 +7380,7 @@ form button:hover {
     top: 15px;
     border-radius: 7.625px;
 }
+
 .productpage .swiper-pagination-shop {
     position: relative;
 }
@@ -7216,6 +7395,7 @@ form button:hover {
 .productpage .swiper-pagination-shop .swiper-pagination-bullet-active {
     background-color: #FF50E3;
 }
+
 @media screen and (min-width:1870px) and (max-width: 2600px) {
     .outer {
         width: 70%;
@@ -7326,6 +7506,7 @@ form button:hover {
     }
 
 }
+
 /* 
 @media screen and (max-width:445px) {
     .carousel .carousel-inner {
@@ -7514,15 +7695,16 @@ span.qantity {
     .card {
         margin-top: -5%;
     }
+
     .carousel .carousel-indicators {
         bottom: -80px;
     }
-    
+
     .carousel .carousel-indicators li {
         width: 50px;
         height: 50px;
     }
-    
+
     .carousel .carousel-indicators li img {
         width: 42px;
         height: 42px;
@@ -7549,29 +7731,32 @@ span.qantity {
     .card .card-body .card-text {
         font-size: 14px;
     }
+
     .carousel .carousel-indicators {
         bottom: -80px;
     }
-    
+
     .carousel .carousel-indicators li {
         width: 45px;
         height: 45px;
     }
-    
+
     .carousel .carousel-indicators li img {
         width: 37px;
         height: 37px;
         vertical-align: middle;
         border-radius: 50%;
-    }    .carousel .carousel-indicators {
+    }
+
+    .carousel .carousel-indicators {
         bottom: -80px;
     }
-    
+
     .carousel .carousel-indicators li {
         width: 50px;
         height: 50px;
     }
-    
+
     .carousel .carousel-indicators li img {
         width: 42px;
         height: 42px;
@@ -7838,12 +8023,12 @@ body {
     text-shadow: 0px 0px 3px #FFFFFF;
 }
 
-.myLeftCtn .alert {
+/* .myLeftCtn .alert {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 
 .myLeftCtn .myInput {
     width: 380px;
@@ -8125,12 +8310,12 @@ select.form-control:focus::-ms-value {
     color: #FFFFFF;
 }
 
-.myLeftCtn-vendor .alert {
+/* .myLeftCtn-vendor .alert {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 
 .myLeftCtn-vendor .myInput:focus {
     outline: none;
