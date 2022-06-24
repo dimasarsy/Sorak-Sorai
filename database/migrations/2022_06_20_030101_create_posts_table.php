@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,16 +20,13 @@ return new class extends Migration
             $table->text('description');
             $table->text('body');
             $table->foreignId("user_id");
-            $table->foreignId("categories_id");
+            $table->foreignId('categories_id');
             $table->string('image');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
             $table->string('shopeelink');
             $table->timestamp("published_at")->nullable();
             $table->timestamps();
-
-
-
         });
     }
 
@@ -42,4 +39,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('posts');
     }
-};
+}

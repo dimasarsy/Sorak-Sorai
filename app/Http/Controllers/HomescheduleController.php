@@ -31,13 +31,14 @@ class HomescheduleController extends Controller
             return view('schedule.Home.home', [
                 "title" => "Schedule",
                 "active" => "home",
-                "schedules" => $schedule->simplePaginate(4),
+                // "schedules" => $schedule->simplePaginate(4),
+                "schedules" => $schedule,
                 "filters" => Filter::all(),
             ]);
         }
 
-        $schedule = Schedule::where('status', "available")->where('date', '>=', date('Y-m-d'));;
-        $muthawifSchedule = Schedule::where('user_id', Auth::user()->id)->where('status', "available")->where('date', '>=', date('Y-m-d'));;
+        $schedule = Schedule::where('status', "available")->where('date', '>=', date('Y-m-d'));
+        $muthawifSchedule = Schedule::where('user_id', Auth::user()->id)->where('status', "available")->where('date', '>=', date('Y-m-d'));
 
         if (request('search')) {
             if (request('filter') == 1) {
@@ -60,8 +61,7 @@ class HomescheduleController extends Controller
         return view('schedule.Home.home', [
             "title" => "Schedule",
             "active" => "home",
-            "schedules" => $schedule->simplePaginate(4),
-            "muthawifSchedules" => $muthawifSchedule->simplePaginate(4),
+            "schedules" => $schedule->simplePaginate(10),
             "filters" => Filter::all(),
         ]);
     }

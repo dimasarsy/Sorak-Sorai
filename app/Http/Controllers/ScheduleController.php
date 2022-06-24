@@ -101,6 +101,7 @@ class ScheduleController extends Controller
     {
         $validatedData = $request->validate([
             "name" => "required|unique:schedules|min:5",
+            "vip" => "required",
             "price" => "required|integer|min:1000",
             "description" => "required|max:510",
             "image" => "required",
@@ -119,6 +120,7 @@ class ScheduleController extends Controller
 
         $schedule = new Schedule;
         $schedule->name = $validatedData['name'];
+        $schedule->vip = $validatedData['vip'];
         $schedule->price = $validatedData['price'];
         $schedule->description = $validatedData['description'];
         $schedule->image = $validatedData['image'];

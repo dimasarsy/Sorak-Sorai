@@ -14,11 +14,6 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            // $table->id();
-            // $table->foreignId('schedule_id');
-            // $table->foreignId('user_id');
-            // $table->timestamps();
-
             $table->id();
             $table->string('status');
             $table->foreignId('user_id');

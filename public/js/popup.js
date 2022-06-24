@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	// show automatically after 1s
-	setTimeout(showModal,0);
+	setTimeout(showModal,1000);
 	$("#closeBtn").click(function(){
 		$("#myModalAdvert").hide()
 	})

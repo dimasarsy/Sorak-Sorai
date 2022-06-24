@@ -21,7 +21,7 @@ class OrderController extends Controller
         $orders = DB::table('orders')
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
         ->where('schedules.status','available')
-        ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description')
+        ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description','schedules.vip')
         ->get();
 
         $orders_user = DB::table('orders')
@@ -100,7 +100,7 @@ class OrderController extends Controller
         $orders = DB::table('orders')
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
         ->where('schedules.status','not available')
-        ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description', 'schedules.status')
+        ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description', 'schedules.status', 'schedules.vip')
         ->get();
 
         $orders_user = DB::table('orders')

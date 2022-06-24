@@ -17,15 +17,26 @@
         </div>
 
         <div class="row mt-5 ">
-            <p class="card-title">{{ $schedule->name }}</p>
+            <p class="card-title">
+                {{ $schedule->name }}
+                @if($schedule->vip == 1)
+                <button type="button" class="btn-transparent" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <span><sup><i class="fas fa-crown"></i></sup></span>
+                </button>
+                @endif
+            </p>
             <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ $schedule->date }}</p>
 
             <div class="col-12">
                 <div class="row">
 
-                    <div class=" col-md-4 col-lg-6 bingkai">
+                    <div class="bingkai vip col-md-4 col-lg-6 ">
                         <img src="{{ asset('storage/' . $schedule->image) }}" alt="Schedule Image" class="img-fluid rounded-start">
+                        @if($schedule->vip == 1)
+                        <div class="ribbon"><span>VIP</span></div>
+                        @endif
                     </div>
+
 
                     <div class="col-md-8 col-lg-9">
                         <div class="card-body">
@@ -62,7 +73,26 @@
         </div>
 
     </div>
+
 </section>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        
+        <div class="verif">
+            
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            <h5>Setelah Menikmati Konser? Sambut Kehangatan Bareng Idola Kalian di Samudra Antariksa</h5>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+
+    </div>
+</div>
+
 
 @include('layouts.script-midtrans')
 

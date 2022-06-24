@@ -4863,6 +4863,10 @@ ALL SCHEDULE
 .schedule-detail {
     padding: 60px 0;
 }
+.schedule-detail .btn-transparent {
+    background: none;
+    border: none;
+}
 
 .schedule-detail .card-title {
     font-family: 'Clip';
@@ -4877,6 +4881,11 @@ ALL SCHEDULE
     color: #FFFFFF;
 
     text-shadow: 0px 0px 2px #FFFFFF;
+}
+.schedule-detail .card-title span {
+    color:  #ffd700;
+    font-size: 20px;
+    text-shadow: 0px 0px 15px #ddff00;
 }
 
 .schedule-detail .card-date {
@@ -10428,3 +10437,95 @@ POPUP VERIFICATION
     }
 
 }
+
+#schedule .ribbon{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    overflow: hidden;
+  }
+  
+  #schedule .ribbon::before,
+  #schedule .ribbon::after{
+    position: absolute;
+    content: "";
+    z-index: -1;
+    display: block;
+    border: 7px solid #BF7E04;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  
+  #schedule .ribbon::before{
+    top: 0px;
+    right: 15px;
+  }
+  
+  #schedule .ribbon::after{
+    bottom: 15px;
+    left: 0px;
+  }
+  
+  #schedule .ribbon span{
+    position: absolute;
+    top:30px;
+    right: 0;
+    transform: rotate(-45deg);
+    width: 200px;
+    background: #ffd700;
+    padding: 10px 0;
+    color: #000;
+    font-family: 'Lato';
+    font-weight: 800;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  }
+
+.vip .ribbon{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    overflow: hidden;
+  }
+  
+  .vip .ribbon::before,
+  .vip .ribbon::after{
+    position: absolute;
+    content: "";
+    z-index: -1;
+    display: block;
+    border: 7px solid #BF7E04;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  
+  .vip .ribbon::before{
+    top: 0px;
+    right: 15px;
+  }
+  
+  .vip .ribbon::after{
+    bottom: 15px;
+    left: 0px;
+  }
+  
+  .vip .ribbon span{
+    position: absolute;
+    top:30px;
+    right: 0;
+    transform: rotate(-45deg);
+    width: 200px;
+    background: #ffd700;
+    padding: 10px 0;
+    color: #000;
+    font-family: 'Lato';
+    font-weight: 800;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  }

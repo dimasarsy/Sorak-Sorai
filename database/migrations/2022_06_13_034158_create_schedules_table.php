@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('emailNotifyStatus')->default('not notified');
             $table->foreignId('user_id');
             $table->string('author');
+            $table->boolean('vip')->default('0');
             $table->timestamps();
         });
     }
@@ -42,4 +43,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('schedules');
     }
-};
+}
