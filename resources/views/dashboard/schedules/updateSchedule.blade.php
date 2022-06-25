@@ -19,7 +19,18 @@
                     <label for="name" class="form-label">Schedule Name</label>
                     <input id="name" name="name" type="text" autocomplete="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $schedule->name) }}" autofocus>
                     @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>   
+                </div>
+
+                <label for="vip" class="block text-sm font-medium text-gray-700 mb-2">VIP</label>
+                <select id="inlineFormCustomSelect" name="vip" autocomplete="vip" class="form-select form-select-md ">
+                    @if(old('vip', $schedule->vip) == 1))    
+                        <option selected value="{{ old('vip', $schedule->vip) }}">YES</option>
+                        <option value="0">NO</option>
+                    @elseif(old('vip', $schedule->vip) == 0))
+                        <option selected value="{{ old('vip', $schedule->vip) }}">NO</option>
+                        <option value="1">YES</option>
+                    @endif
+                </select><br>
 
                 <label for="price" class="form-label">Price</label>
                 <div class="input-group mb-3">

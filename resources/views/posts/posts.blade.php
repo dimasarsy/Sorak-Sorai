@@ -61,127 +61,130 @@
     </div>
 
 
-<!-- PRODUCT SHOP  -->
-@if($posts->count() )
+    <!-- PRODUCT SHOP  -->
+    @if($posts->count() )
     <!-- ------------------------KOLEKSI SORAK-SORAI---------------------------------------------- -->
     @if($categories)
-        @if(request('categories') == 'koleksi-sorak-sorai')
+    @if(request('categories') == 'koleksi-sorak-sorai')
 
-            <section id="shop" class="shop">
-                <div class="koleksi">
-                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-lg-5">
-
-                        @foreach($koleksi as $koleksi)
-                        <x-post-card :post="$koleksi" />
-                        @endforeach
-
-                    </div>
-                </div>
-            </section>
-        @endif
-        
-
-    <!-- --------------------------------------awalnya------------------------------------------ -->
-    @else
-        <div class="section-shop">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 col-sm-5 col-md-4 col-xl-3 d-flex justify-content-start">
-                        <h2>Koleksi Sorak-Sorai</h2>
-                    </div>
-                    <div class="col-2 col-sm-3 col-md-4 col-xl-3 d-flex justify-content-start">
-                        <h3></h3>
-                    </div>
-                    <div class="col-4 col-sm-4 col-md-4 col-xl-6 d-flex justify-content-end">
-                        <a href="/posts?categories=koleksi-sorak-sorai">lihat semua</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section id="shop" class="shop">
+    <section id="shop" class="shop">
+        <div class="koleksi">
             <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-lg-5">
 
-                @foreach($posts_koleksi as $posts_koleksi)
-                <x-post-card :post="$posts_koleksi" />
+                @foreach($koleksi as $k)
+                <x-post-card :post="$k" />
                 @endforeach
 
             </div>
-        </section>
+        </div>
+    </section>
+
+    @endif
+
+
+
+
+    <!-- --------------------------------------awalnya------------------------------------------ -->
+    @else
+    <div class="section-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-5 col-md-4 col-xl-3 d-flex justify-content-start">
+                    <h2>Koleksi Sorak-Sorai</h2>
+                </div>
+                <div class="col-2 col-sm-3 col-md-4 col-xl-3 d-flex justify-content-start">
+                    <h3></h3>
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-xl-6 d-flex justify-content-end">
+                    <a href="/posts?categories=koleksi-sorak-sorai">lihat semua</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="shop" class="shop">
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-lg-5">
+
+            @foreach($posts_koleksi as $posts_koleksi)
+            <x-post-card :post="$posts_koleksi" />
+            @endforeach
+
+        </div>
+    </section>
     @endif
 
     <!-- ------------------------MITRA KITA---------------------------------------------------- -->
 
     @if($categories)
-        @if(request('categories') == 'mitra-kami')
-            @foreach($pengajuans as $pengajuan)
+    @if(request('categories') == 'mitra-kami')
+    @foreach($pengajuans as $pengajuan)
 
-            <div class="section-shop-tiga">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-5 col-sm-4 col-md-1 col-xl-1 d-flex justify-content-start">
-                            <a href="/vendor/{{ $pengajuan->username }}">
-                                <img style="width: 50px;" src="{{ asset('storage/' .$pengajuan->foto) }}" alt="{{ $pengajuan->name }}'s logo">
-                            </a>
-                        </div>
-                        <div class="col-2 col-sm-3 col-md-11 col-xl-11 d-flex justify-content-start">
-                            <h3></h3>
-                        </div>
-
-                    </div>
+    <div class="section-shop-tiga">
+        <div class="container">
+            <div class="row">
+                <div class="col-5 col-sm-4 col-md-1 col-xl-1 d-flex justify-content-start">
+                    <a href="/vendor/{{ $pengajuan->username }}">
+                        <img style="width: 50px;" src="{{ asset('storage/' .$pengajuan->foto) }}" alt="{{ $pengajuan->name }}'s logo">
+                    </a>
                 </div>
+                <div class="col-2 col-sm-3 col-md-11 col-xl-11 d-flex justify-content-start">
+                    <h3></h3>
+                </div>
+
             </div>
+        </div>
+    </div>
 
-            <section id="shop" class="shop">
-                <div class="container" data-aos="zoom-in">
-                    <div class="row row-cols">
+    <section id="shop" class="shop">
+        <div class="container" data-aos="zoom-in">
+            <div class="row row-cols">
 
-                        <div class="product-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-                            <div class="swiper-wrapper align-items-center">
-                                @foreach($posts as $post)
-                                @if($post->user_id === $pengajuan->user_id)
-                                <div class="swiper-slide">
-                                    <x-post-card :post="$post" />
-                                </div>
-                                @endif
-                                @endforeach
-                            </div>
+                <div class="product-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper align-items-center">
+                        @foreach($posts as $post)
+                        @if($post->user_id === $pengajuan->user_id)
+                        <div class="swiper-slide">
+                            <x-post-card :post="$post" />
                         </div>
+                        @endif
+                        @endforeach
                     </div>
-                </div>
-            </section>
- 
-            @endforeach
-
-        @endif       
-    <!-- -------------------------------------awalnya-----------------------------------------------  -->
-    @else
-        <div class="section-shop-dua">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-5 col-sm-4 col-md-3 col-xl-2 d-flex justify-content-start">
-                        <h2>Mitra Kami</h2>
-                    </div>
-                    <div class="col-2 col-sm-3 col-md-4 col-xl-4 d-flex justify-content-start">
-                        <h3></h3>
-                    </div>
-                    <div class="col-5 col-sm-5 col-md-4 col-xl-6 d-flex justify-content-end">
-                        <a href="/posts?categories=mitra-kami">lihat semua </a>
-                    </div>
-
                 </div>
             </div>
         </div>
+    </section>
 
-        <section id="shop" class="shop">
-            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+    @endforeach
 
-                @foreach($posts_mitra as $posts_mitra)
-                <x-post-card :post="$posts_mitra" />
-                @endforeach
+    @endif
+    <!-- -------------------------------------awalnya-----------------------------------------------  -->
+    @else
+    <div class="section-shop-dua">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-5 col-sm-4 col-md-3 col-xl-2 d-flex justify-content-start">
+                    <h2>Mitra Kami</h2>
+                </div>
+                <div class="col-2 col-sm-3 col-md-4 col-xl-4 d-flex justify-content-start">
+                    <h3></h3>
+                </div>
+                <div class="col-5 col-sm-5 col-md-4 col-xl-6 d-flex justify-content-end">
+                    <a href="/posts?categories=mitra-kami">lihat semua </a>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </div>
+
+    <section id="shop" class="shop">
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+
+            @foreach($posts_mitra as $posts_mitra)
+            <x-post-card :post="$posts_mitra" />
+            @endforeach
+        </div>
+    </section>
     @endif
 
 
@@ -205,4 +208,4 @@
     </section>
     @endif
 
-    @endsection
+@endsection

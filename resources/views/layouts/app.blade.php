@@ -23,7 +23,9 @@
     <link href="../vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
 
+    <!-- CSS only -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 

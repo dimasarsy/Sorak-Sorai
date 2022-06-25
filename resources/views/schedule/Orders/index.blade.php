@@ -65,6 +65,9 @@
     </div>
     </div>
 </section>
+<div class="d-flex justify-content-center">
+    {{ $orders->links() }}
+</div>
 @else
 <section id="schedule" class="schedule mt-5">
     <div class="container" data-aos="fade-up">

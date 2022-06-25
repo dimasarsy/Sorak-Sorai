@@ -31,8 +31,7 @@ class HomescheduleController extends Controller
             return view('schedule.Home.home', [
                 "title" => "Schedule",
                 "active" => "home",
-                // "schedules" => $schedule->simplePaginate(4),
-                "schedules" => $schedule,
+                "schedules" => $schedule->paginate(5),
                 "filters" => Filter::all(),
             ]);
         }
@@ -61,7 +60,7 @@ class HomescheduleController extends Controller
         return view('schedule.Home.home', [
             "title" => "Schedule",
             "active" => "home",
-            "schedules" => $schedule->simplePaginate(10),
+            "schedules" => $schedule->paginate(5),
             "filters" => Filter::all(),
         ]);
     }

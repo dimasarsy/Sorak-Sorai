@@ -41,6 +41,10 @@
   </div>
 </section>
 
+<div class="d-flex justify-content-center">
+    {{ $lineups->links() }}
+</div>
+
 @else
 <section id="festival" class="about mt-5">
   <div class="container" data-aos="fade-up">

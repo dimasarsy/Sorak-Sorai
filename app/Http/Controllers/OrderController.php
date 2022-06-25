@@ -22,7 +22,7 @@ class OrderController extends Controller
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
         ->where('schedules.status','available')
         ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description','schedules.vip')
-        ->get();
+        ->paginate(5);
 
         $orders_user = DB::table('orders')
         ->where('uname', auth()->user()->username)
@@ -101,7 +101,7 @@ class OrderController extends Controller
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
         ->where('schedules.status','not available')
         ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description', 'schedules.status', 'schedules.vip')
-        ->get();
+        ->paginate(5);
 
         $orders_user = DB::table('orders')
         ->where('uname', auth()->user()->username)

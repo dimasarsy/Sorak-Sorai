@@ -16,7 +16,7 @@ class LineupFestController extends Controller
     {
         return view('lineup', [
             'title' => "Lineup",
-            'lineups' => Lineup::query()->latest()->get()
+            'lineups' => Lineup::query()->latest()->paginate(12)
         ]);
     }
 

@@ -182,6 +182,7 @@ class ScheduleController extends Controller
         if ($request->name == $schedule->name) {
             $validatedData = $request->validate([
                 "name" => "required|min:5",
+                "vip" => "required",
                 "price" => "required|integer|min:1",
                 "description" => "required|min:20",
                 "image" => "image|file",
@@ -210,6 +211,7 @@ class ScheduleController extends Controller
         } else {
             $validatedData = $request->validate([
                 "name" => "required|unique:schedules|min:5",
+                "vip" => "required",
                 "price" => "required|integer|min:1",
                 "description" => "required|min:20",
                 "image" => "image|file",

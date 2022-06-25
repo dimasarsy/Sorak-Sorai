@@ -19,7 +19,6 @@
 
                 <label for="vip" class="block text-sm font-medium text-gray-700 mb-2">VIP</label>
                 <select id="inlineFormCustomSelect" name="vip" autocomplete="vip" class="form-select form-select-md ">
-                    
                     <hr>
                     <option value="0">NO</option>
                     <option value="1">YES</option>
