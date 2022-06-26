@@ -7,20 +7,21 @@
     <!-- Menu Bar -->
     <nav>
 
-
-
       <div class="menu-icon">
         <span class="fas fa-bars"></span>
       </div>
 
       <div class="logo">
-        <h1><a href="/"><img src="../img/soraksorai.png" alt=""></a></h1>
+        <h1><a href="/" class="{{ Request::is('/*') ? 'active' : '' }}"><i class="fa fa-home" aria-hidden="true"></i><img src="../img/soraksorai.png" alt=""></a></h1>
       </div>
 
       <div class="nav-items">
         <ul>
           <div class="cancel-icon-menu">
             <span class="fas fa-times"></span>
+          </div>
+          <div class="logo-sidebar">
+            <a href="/" class="{{ Request::is('/*') ? 'active' : '' }}"><i class="fa fa-home" aria-hidden="true"></i></a>
           </div>
           <a href="/about" class="text-decoration-none {{ Request::is('about*') ? 'active' : '' }}"> Cerita Kami </a>
           <a href="/lineup" class="text-decoration-none {{ Request::is('lineup*') ? 'active' : '' }}"> Penampil </a>

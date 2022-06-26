@@ -85,4 +85,6 @@
 
 </section>
 
+<script src="../js/form.js"></script>
+
 @endsection

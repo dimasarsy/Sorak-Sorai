@@ -11,7 +11,7 @@ $(document).ready(function(){
 			$("#myModalAdvert").show()
 			sessionStorage.setItem('alreadyShow','alredy shown');
 		}else{
-			console.log(is_modal_show);
+			
 		}
 	}
 })

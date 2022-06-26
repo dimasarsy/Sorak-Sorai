@@ -94,12 +94,12 @@ class PengajuanController extends Controller
         if ($validatedData) {
             return redirect('/pengajuan')
                 ->with([
-                    'success' => 'Vendor Request has been added successfully'
+                    'success' => 'Pendaftaran berhasil, Mohon tunggu'
                 ]);
         } else {
             return redirect('/pengajuan')
                 ->with([
-                    'error' => 'Some problem has occurred, please try again'
+                    'error' => 'Terdapat masalah, Silahkan coba lagi'
                 ]);
         }
     }
@@ -150,7 +150,7 @@ class PengajuanController extends Controller
                 ->back()
                 ->withInput()
                 ->with([
-                    'error' => 'Some problem has occured, please try again'
+                    'error' => 'Terdapat masalah, Silahkan coba lagi'
                 ]);
         }
         
