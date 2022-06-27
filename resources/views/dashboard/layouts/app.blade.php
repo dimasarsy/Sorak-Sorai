@@ -16,6 +16,8 @@
 
   <!-- Trix Editor -->
   <link rel="stylesheet" type="text/css" href="/css/trix.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
   <script type="text/javascript" src="/js/trix.js"></script>
 
   <style>
@@ -71,7 +73,13 @@
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.js"></script>
 
+  <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#dataTable').DataTable();
+    });
+  </script>
 </body>
 
 </html>
-

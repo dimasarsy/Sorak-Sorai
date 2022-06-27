@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('phoneNumber')->nullable();
 
             $table->integer('category_id')->nullable();
-            $table->integer('role_id')->nullable();
-
+            $table->foreignId('role_id')->default(2);
+            
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

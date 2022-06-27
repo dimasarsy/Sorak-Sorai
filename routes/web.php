@@ -76,6 +76,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard-vendor', [DashboardController::class, 'dash_vendor'])->middleware('auth');
 
 // dashboard posts
 Route::get('/dashboard/posts/slug', [DashboardPostController::class, 'slug'])->middleware('auth');

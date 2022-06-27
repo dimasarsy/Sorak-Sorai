@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="product-content">
-            <h3 class="title"><a href="/posts/{{ $post->slug }}">{{  \Illuminate\Support\Str::substr($post->title, 0, 13)  }} ..</a></h3>
+            <h3 class="title"><a href="/posts/{{ $post->slug }}">{{  \Illuminate\Support\Str::substr($post->title, 0, 12)  }} ..</a></h3>
             <!-- <a class="vendor" href="/vendor/{{ $post->author->username }}">{{ $post->author->name }}</a> -->
             <div class="price mt-2">Rp {{ number_format($post->description, 2, ',', '.') }}</div>
             @auth

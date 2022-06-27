@@ -46,7 +46,7 @@
                     <div class="card-btn-success"><span>Selesai<br><i class="fas fa-check-circle"></i></span></div>
                 </div>
             </div>
-
+            
             @endif
             @endforeach
         </div>
@@ -71,7 +71,7 @@
         </div>
     </div>
 </section>
-
 @endif
+
 {{-- @include('layout.script-midtrans') --}}
 @endsection

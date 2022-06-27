@@ -11,7 +11,7 @@
             <div class="container">
 
                 <div class="table-responsive">
-                    <table id="table_id" class="table display mt-5 table-stripped ">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>

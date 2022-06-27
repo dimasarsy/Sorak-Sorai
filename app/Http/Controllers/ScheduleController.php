@@ -62,7 +62,6 @@ class ScheduleController extends Controller
             "title" => "Schedule Detail",
             "active" => "schedule",
             "schedule" => $schedule,
-
             'snap_token' => $snapToken
         ]);
     }
@@ -302,22 +301,28 @@ class ScheduleController extends Controller
     public function showScheduleHistory()
     {
 
-        $schedule = Schedule::all();
+        $schedule = DB::table('schedules')
+        ->join('users', 'schedules.user_id', '=', 'users.id')
+        ->select('schedules.*', 'users.role_id')
+        ->where('users.role_id','1')
+        ->get();
+
+        // $schedule = Schedule::all();
         // ->Where('date', '<', date('Y-m-d'));
         // ->where('starttime', '>', date("h:i a"));
         // ->where('availableScheduleDate', '>', Carbon::now()->toDateTimeString());
 
-        if (request('search')) {
-            if (request('filter') == 1) {
-                $schedule->where('name', 'like', '%' . request('search') . '%');
-            } elseif ((request('filter') == 2)) {
-                $schedule->where('price', request('search'));
-            }
-        }
+        // if (request('search')) {
+        //     if (request('filter') == 1) {
+        //         $schedule->where('name', 'like', '%' . request('search') . '%');
+        //     } elseif ((request('filter') == 2)) {
+        //         $schedule->where('price', request('search'));
+        //     }
+        // }
 
-        if (request('searchDate')) {
-            $schedule->where('date', request('searchDate'));
-        }
+        // if (request('searchDate')) {
+        //     $schedule->where('date', request('searchDate'));
+        // }
 
         return view('dashboard.schedules.scheduleHistory', [
             "title" => "Schedule History",

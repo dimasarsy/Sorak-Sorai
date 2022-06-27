@@ -17,9 +17,18 @@ class OrderController extends Controller
     public function myticket()
     {
         $order = DB::table('orders')->get();
+
+        // $schedule = DB::table('schedules')
+        // ->join('users', 'schedules.user_id', '=', 'users.id')
+        // ->select('schedules.*', 'users.role_id')
+        // ->where('users.role_id','1')
+        // ->get();
         
         $orders = DB::table('orders')
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
+        ->join('users', 'schedules.user_id', '=', 'users.id')
+        ->select('schedules.*', 'users.role_id')
+        ->where('users.role_id','1')
         ->where('schedules.status','available')
         ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description','schedules.vip')
         ->paginate(5);
@@ -84,7 +93,7 @@ class OrderController extends Controller
         // dd($responseBody);
 
         return view("schedule.Orders.index", [
-            "title" => "Order",
+            "title" => "My Order",
             "active" => "order",
             'order' => $order,
             'orders_user' => $orders_user,
@@ -99,6 +108,9 @@ class OrderController extends Controller
         
         $orders = DB::table('orders')
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
+        ->join('users', 'schedules.user_id', '=', 'users.id')
+        ->select('schedules.*', 'users.role_id')
+        ->where('users.role_id','1')
         ->where('schedules.status','not available')
         ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description', 'schedules.status', 'schedules.vip')
         ->paginate(5);
@@ -163,7 +175,7 @@ class OrderController extends Controller
         // dd($responseBody);
 
         return view("schedule.Orders.riwayat", [
-            "title" => "Order",
+            "title" => "History Order",
             "active" => "order",
             'order' => $order,
             'order_count' => $order_count,
@@ -222,7 +234,12 @@ class OrderController extends Controller
 
     public function order_admin()
     {
-        $schedule = DB::table("schedules")->get();
+        $schedule = DB::table('schedules')
+        ->join('users', 'schedules.user_id', '=', 'users.id')
+        ->select('schedules.*', 'users.role_id')
+        ->where('users.role_id','1')
+        ->paginate(1);
+
         $order = DB::table('orders')->get();
 
         $order_count = DB::table('orders')->count();
@@ -283,7 +300,8 @@ class OrderController extends Controller
             "title" => "Order",
             "active" => "order",
             'order' => $order,
-            'schedule' => $schedule,
+            'schedules' => $schedule,
+            
             'order_count' => $order_count,
             'responses' => $responses
         ]);

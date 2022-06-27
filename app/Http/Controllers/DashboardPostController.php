@@ -22,7 +22,7 @@ class DashboardPostController extends Controller
         ->latest()
         ->where('posts.user_id',auth()->user()->id)
         ->filter(request(["search", 'categories', 'author']))
-        ->get();
+        ->paginate(8);
 
         // $posts = auth()->user()->posts()->latest()->get(); // Error of intelephense
         return view('dashboard.posts.index', [
