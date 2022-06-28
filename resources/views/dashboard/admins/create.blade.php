@@ -3,7 +3,7 @@
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2"><i class="fas fa-fw fa-user"></i> Add New Admin</h1>
-</div> 
+</div>
 <div class="card shadow mb-4">
     <div class="col-lg-10">
         <div class="card-body">
@@ -19,15 +19,26 @@
                     <input id="username" name="username" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('username') }}">
                     @error('username')<div class="invalid-feedback">{{ $message }}</small>@enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="email-address" class="form-label">Email address</label>
-                    <input id="email-address" name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                    <input id="email-address" name="email" type="email" autocomplete="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                     @error('email')<div class="invalid-feedback">{{ $message }}</small>@enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror">
                     @error('password')<div class="invalid-feedback">{{ $message }}</small>@enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="role" class="block text-sm font-medium text-gray-700 mb-2">role</label>
+                    <select id="role" name="role_id" autocomplete="role-name" class="form-select form-select-sm ">
+                        @can('admin')
+                        <option value="1">Admin</option>
+                        @endcan
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary mb-5 mt-4">Upload New Admin</button>
@@ -38,7 +49,6 @@
 
 
 <script>
-
     const name = document.getElementById('name');
     const slug = document.getElementById('slug');
 
@@ -51,15 +61,15 @@
         slug.value = data.slug;
     });
 
-    document.addEventListener('trix-file-accept', function(e){
+    document.addEventListener('trix-file-accept', function(e) {
         e.preventDefault();
     })
 
-   
+
     autocomplete(document.getElementById("is_admin"), true);
 
 
-    function previewImage(){
+    function previewImage() {
         const image = document.querySelector('#image');
         const imgPreview = document.querySelector('.img-preview');
 
@@ -68,10 +78,9 @@
         const oFReader = new FileReader();
         oFReader.readAsDataURL(image.files[0]);
 
-        oFReader.onload = function(oFREvent){
+        oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
         }
     }
-
 </script>
 @endsection

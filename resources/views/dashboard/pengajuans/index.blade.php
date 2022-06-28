@@ -5,6 +5,9 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2"><i class='fas fa-user-check'></i> Vendor Request</h1>
 </div>
+
+@include('dashboard.layouts.popup')
+
 <div class="card shadow mb-4">
     <div class="col-lg-12">
         <div class="card-body">
@@ -21,7 +24,6 @@
                                 <th scope="col">Marketplace Link</th>
 
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         @foreach ($pengajuans as $k)
@@ -30,7 +32,7 @@
                             <td>{{ $k->uname }}</td>
                             <td>{{ $k->name }}</td>
                             <td>
-                                <img class="img-responsive" style="width: 100px;" src="{{ asset('storage/' . $k->foto) }}" alt="{{ $k->name }}'s logo">
+                                <img class="img-responsive" style="height: 100px;" src="{{ asset('storage/' . $k->foto) }}" alt="{{ $k->name }}'s logo">
                             </td>
                             <td><a href="{{ $k->marketlink }}" class="btn btn-icon-split" style="width: 30px; height: 30px"><span class="icon text-white-75"><i class='fa fa-link'></i></span></a> {{ $k->marketlink }}</td>
 
@@ -47,11 +49,9 @@
                                             <option value="Review">Review</option>
                                             <option value="Tidak Lolos">Tidak Lolos</option>
                                         </select>
-                                    </div>
+                                    </div><br>
 
-
-                                </td>
-                                <td><button type="submit" class="btn btn-primary px-4">Edit</button></td>
+                                    <button type="submit" class="btn btn-primary px-3 mx-5">Edit</button></td>
                             </form>
                         </tr>
                         @endforeach

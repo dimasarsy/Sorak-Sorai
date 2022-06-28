@@ -22,14 +22,33 @@
                     <small class="text-gray-500 font-medium block my-2">Auto generate after you filled field name and click tab.</small>
                 </div>
                 <div class="mb-3">
-                    <label for="date" class="form-label">Date</label>
-                    <input id="date" name="date" type="text" class="form-control @error('date') is-invalid @enderror"  value="{{ old('date') }}" autofocus>
-                    @error('date') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <label for="date">Schedule Date</label>
+                    <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" placeholder="Date" name="date" value="{{ old('date') }}">
+                    @error('date')
+                    <div class="invalid-feedback mb-3">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label for="time" class="form-label">Time</label>
-                    <input id="time" name="time" type="text" class="form-control @error('time') is-invalid @enderror"  value="{{ old('time') }}" autofocus>
-                    @error('time') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <label for="starttime">Start Time</label>
+                    <input type="time" class="form-control @error('starttime') is-invalid @enderror" id="starttime" placeholder="starttime" name="starttime" value="{{ old('starttime') }}">
+                    @error('starttime')
+                    <div class="invalid-feedback mb-3">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="endtime">End Time</label>
+                    <input type="time" class="form-control @error('endtime') is-invalid @enderror" id="endtime" placeholder="endtime" name="endtime" value="{{ old('endtime') }}">
+                    @error('endtime')
+                    <div class="invalid-feedback mb-3">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             
                 <div class="mb-3">

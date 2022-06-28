@@ -93,7 +93,7 @@ class SponsorController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'link'   => 'required|max:255',
-            'image' => 'required|image|file|max:1024'
+            'image' => 'image|file|max:1024'
         ];
 
         if ($request->slug !== $sponsor->slug) {
@@ -105,6 +105,13 @@ class SponsorController extends Controller
         if ($request->file('image')) {
             if ($request->post('old-image')) Storage::delete($request->post('old-image'));
             $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        if (
+            $request->name == $sponsor->name && $request->link == $sponsor->link &&
+            $request->file('image') == null
+        ) {
+            return redirect('/dashboard/sponsors')->with('noUpdate', 'There is no update on Sponsor!');
         }
 
         Sponsor::where('id', $sponsor->id) -> update($validatedData);

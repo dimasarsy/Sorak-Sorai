@@ -11,14 +11,14 @@ class DashboardVendorReqController extends Controller
 {
     public function index()
     {
-        $pengajuans = DB::table('Pengajuans')
-            ->where('Pengajuans.ktp', '=', null)
-            ->where('Pengajuans.sertifikat', '=', null)
-            ->join('Users', 'Pengajuans.user_id', '=', 'Users.id')
-            ->select('Pengajuans.*', 'Users.username as uname')
-            ->get();
-        // dd($pengajuans);
-        return view('dashboard.pengajuans.index', ['pengajuans' => $pengajuans]);
+        return view('dashboard.pengajuans.index', [
+            'pengajuans' =>  Pengajuan::where('ktp', null)
+                            ->where('sertifikat', null)
+                            ->join('users', 'pengajuans.user_id', '=', 'users.id')
+                            ->select('pengajuans.*', 'users.username as uname')
+                            ->get(),
+        
+        ]);
     }
     public function update(Request $request, $id)
     {
@@ -28,8 +28,15 @@ class DashboardVendorReqController extends Controller
             'status' => $request->status,
         ]);
 
-        $pengajuans->where('Pengajuans.status', '=', 'Lolos')->join('Users', 'Pengajuans.user_id', '=', 'Users.id')->update(['role_id' => '4']);
-        $pengajuans->where('Pengajuans.status', '=', 'Review')->join('Users', 'Pengajuans.user_id', '=', 'Users.id')->update(['role_id' => '2']);
+        $pengajuans
+            ->where('status', 'Lolos')
+            ->join('users', 'pengajuans.user_id', '=', 'users.id')
+            ->update(['role_id' => '4']);
+            
+        $pengajuans
+            ->where('status', 'Review')
+            ->join('users', 'pengajuans.user_id', '=', 'users.id')
+            ->update(['role_id' => '2']);
 
 
         // dd($pengajuans);

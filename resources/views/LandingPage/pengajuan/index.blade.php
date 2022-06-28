@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
+
 <section id="hero">
     <div class="container mt-5">
 

@@ -45,17 +45,15 @@ class DashboardAdminController extends Controller
         $validatedData = $request->validate([
             "name"  => 'required|max:255',
             "username"  => 'required|max:255|unique:users|max:255',
-            'email' => 'required|email:dns|unique:users|max:255',
+            'email' => 'required|unique:users|max:255',
             'password'  => 'required|min:5|max:255',
-            'is_admin'=>'required|boolean'
         ]);
-
-        // $users = DB::table('users')->get();
 
         // hash password
         $validatedData['password'] = Hash::make($validatedData['password']);
         // create data user into database
         User::create($validatedData);
+
         // redirect to login page
         return redirect()->to('/dashboard/admins')->with("success", "New Admin has been Added");
     }

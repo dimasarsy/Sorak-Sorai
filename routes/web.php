@@ -48,43 +48,116 @@ use App\Http\Controllers\DashboardVendorReqController;
 |
 */
 
+// ================ HALAMAN HOME - CERITA - PENAMPIL =====================
 Route::get('/', [HomeController::class, "index"]);
+Route::get('/about', [HomeController::class, "about"]);
+Route::get('/lineup', [HomeController::class, "lineup"]);
 
-Route::get('/about', [AboutFestController::class, "index"]);
-Route::get('/lineup', [LineupFestController::class, "index"]);
+// Route::get('/about', [AboutFestController::class, "index"]);
+// Route::get('/lineup', [LineupFestController::class, "index"]);
 
 // popup schedule
 // Route::view('partials/get-form','partials.popup')->name('popup');
 
-// posts routes
+// ================ HALAMAN BELANJA =====================
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/posts/{post:slug}', [PostController::class, "show"])->middleware('auth');
+Route::get('/vendor/{author:username}', [PostController::class, "postsByUser"]);
 
 // categories
-Route::get('/categories', [categoriesController::class, "index"]);
+// Route::get('/categories', [categoriesController::class, "index"]);
 
-// users
-Route::get('/vendor/{author:username}', [UserController::class, "postsByUser"]);
 
-// auth
+// ================ AUTH LOGIN - REGISTER - LOGOUT =====================
+
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::delete('/logout', [LoginController::class, 'logout']);
-
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-// dashboard
+// ================ SCHEDULE - MIDTRANS TICKETING =====================
+// Route::get('/schedule', [HomescheduleController::class, "index"]);
+Route::get('/schedule', [ScheduleController::class, "index"]);
+
+Route::get('/scheduleDetail/{schedule}', [ScheduleController::class, "showScheduleDetail"])->middleware('auth');
+Route::post('/scheduleDetail/{schedule}', [ScheduleController::class, "payment_post"])->middleware('auth');
+
+// ================ DASHBOARD SCHEDULE =====================
+Route::get('/dashboard/scheduleHistory', [ScheduleController::class, "showScheduleHistory"])->middleware('auth');
+
+Route::get('/dashboard/addSchedule', [ScheduleController::class, "showAddSchedule"])->middleware('auth');
+Route::post('/dashboard/addSchedule', [ScheduleController::class, "storeSchedule"])->middleware('auth');
+
+Route::get('/dashboard/updateSchedule/{schedule}', [ScheduleController::class, "showUpdateSchedule"])->middleware('auth');
+Route::put('/dashboard/updateSchedule/{schedule}', [ScheduleController::class, "updateSchedule"])->middleware('auth');
+
+Route::delete('/dashboard/delete/{schedule}', [ScheduleController::class, "destroy"])->middleware('auth');
+
+// ================ ORDERS =====================
+Route::get('/orders', [OrderController::class, "myticket"])->middleware('auth');
+Route::get('/ordersDetail/{orders}', [OrderController::class, "showOrderDetail"]);
+Route::get('/orders/riwayat', [OrderController::class, "riwayat"])->middleware('auth');
+
+// ================ DASHBOARD ORDERS =====================
+Route::get('/dashboard/orders', [OrderController::class, "order_admin"])->middleware('auth');
+
+
+// ================ PENGAJUAN VENDOR =====================
+Route::get('/pengajuan', [PengajuanController::class, "index"])->middleware('auth');
+Route::get('/pengajuan/create', [PengajuanController::class, "create"])->middleware('auth');
+Route::post('/pengajuan/store', [PengajuanController::class, "store"])->middleware('auth');
+Route::put('/pengajuan/update/{id}', [PengajuanController::class, "update"])->middleware('auth');
+
+// ================ DASHBOARD PENGAJUAN VENDOR =====================
+Route::get('/dashboard/pengajuan-vendor', [DashboardVendorReqController::class, 'index'])->middleware('auth');
+Route::put('/dashboard/pengajuan-vendor/update/{id}', [DashboardVendorReqController::class, 'update'])->middleware('auth');
+
+// ===================================
+// =========== DASHBOARD =============
+// ===================================
+
+// ================ DASHBOARD HOME =====================
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard-vendor', [DashboardController::class, 'dash_vendor'])->middleware('auth');
 
-// dashboard posts
+// ================ DASHBOARD ADMIN - USER - VENDOR =====================
+Route::resource('/dashboard/admins', DashboardAdminController::class)->middleware('admin');
+
+Route::get('/dashboard/users/id', [DashboardUserController::class, 'id'])->middleware('admin');
+Route::resource('/dashboard/users', DashboardUserController::class)->middleware('admin');
+
+
+// Route::resource('/dashboard/vendors', DashboardVendorController::class)->middleware('admin');
+Route::get('/dashboard/vendors', [DashboardUserController::class, 'data_vendor'])->middleware('admin');
+
+// ================ DASHBOARD PRODUCT =====================
 Route::get('/dashboard/posts/slug', [DashboardPostController::class, 'slug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
-// dashboard categories
+// ================ DASHBOARD CATEGORY PRODUCT =====================
 Route::get('/dashboard/categories/slug', [AdminController::class, 'slug'])->middleware('admin');
 Route::resource('/dashboard/categories', AdminController::class)->except('show')->middleware('admin');
+
+// ================ DASHBOARD LINEUP =====================
+Route::get('/dashboard/lineups/slug', [LineupController::class, 'slug'])->middleware('admin');
+Route::resource('/dashboard/lineups', LineupController::class)->middleware('admin');
+
+// ================ DASHBOARD SPONSOR =====================
+Route::get('/dashboard/sponsors/slug', [SponsorController::class, 'slug'])->middleware('admin');
+Route::resource('/dashboard/sponsors', SponsorController::class)->middleware('admin');
+
+// ================ DASHBOARD MEDIA =====================
+Route::get('/dashboard/medias/slug', [MediaController::class, 'slug'])->middleware('admin');
+Route::resource('/dashboard/medias', MediaController::class)->middleware('admin');
+
+// ================ DASHBOARD ACTIVITY =====================
+Route::get('/dashboard/activities/slug', [ActivityController::class, 'slug'])->middleware('admin');
+Route::resource('/dashboard/activities', ActivityController::class)->middleware('admin');
+
+// ================ DASHBOARD GALLERY =====================
+Route::get('/dashboard/galleries/slug', [GalleryController::class, 'slug'])->middleware('admin');
+Route::resource('/dashboard/galleries', GalleryController::class)->middleware('admin');
 
 // dashboard types
 // Route::get('/dashboard/types/slug', [TypeController::class, 'slug'])->middleware('admin');
@@ -94,25 +167,8 @@ Route::resource('/dashboard/categories', AdminController::class)->except('show')
 // Route::get('/dashboard/tickets/slug', [TicketController::class, 'slug'])->middleware('admin');
 // Route::resource('/dashboard/tickets', TicketController::class)->except('show')->middleware('admin');
 
-//dashboard lineup
-Route::get('/dashboard/lineups/slug', [LineupController::class, 'slug'])->middleware('admin');
-Route::resource('/dashboard/lineups', LineupController::class)->middleware('admin');
 
-//dashboard sponsor
-Route::get('/dashboard/sponsors/slug', [SponsorController::class, 'slug'])->middleware('admin');
-Route::resource('/dashboard/sponsors', SponsorController::class)->middleware('admin');
 
-//dashboard media
-Route::get('/dashboard/medias/slug', [MediaController::class, 'slug'])->middleware('admin');
-Route::resource('/dashboard/medias', MediaController::class)->middleware('admin');
-
-//dashboard activity
-Route::get('/dashboard/activities/slug', [ActivityController::class, 'slug'])->middleware('admin');
-Route::resource('/dashboard/activities', ActivityController::class)->middleware('admin');
-
-//dashboard gallery
-Route::get('/dashboard/galleries/slug', [GalleryController::class, 'slug'])->middleware('admin');
-Route::resource('/dashboard/galleries', GalleryController::class)->middleware('admin');
 
 //dashboard about
 // Route::get('/dashboard/abouts/slug', [AboutController::class, 'slug'])->middleware('admin');
@@ -120,55 +176,21 @@ Route::resource('/dashboard/galleries', GalleryController::class)->middleware('a
 
 
 
-//dashboard user
-Route::get('/dashboard/users/id', [DashboardUserController::class, 'id'])->middleware('admin');
-Route::resource('/dashboard/users', DashboardUserController::class)->middleware('admin');
-
-Route::resource('/dashboard/admins', DashboardAdminController::class)->middleware('admin');
-
-Route::resource('/dashboard/vendors', DashboardVendorController::class)->middleware('admin');
 
 // Route::resource('/dashboard/vendor_req', DashboardVendorReqController::class)->middleware('admin');
 
 
-Route::patch('/dashboard/vendors/{users}', 'DashboardVendorReqController@completedUpdate')->name('completedUpdate');
+// Route::patch('/dashboard/vendors/{users}', 'DashboardVendorReqController@completedUpdate')->name('completedUpdate');
 
-Route::get('/dashboard/vendors/{id}','App\Http\Controllers\DashboardVendorController@status_update')->middleware('admin');
-
-
-//MIDTRANS TICKETING
-Route::get('/schedule', [HomescheduleController::class, "index"]);
-
-Route::get('/scheduleDetail/{schedule}', [ScheduleController::class, "showScheduleDetail"])->middleware('auth');
-Route::post('/scheduleDetail/{schedule}', [ScheduleController::class, "payment_post"])->middleware('auth');
-
-Route::get('/orders', [OrderController::class, "myticket"])->middleware('auth');
-Route::get('/ordersDetail/{orders}', [OrderController::class, "showOrderDetail"]);
-Route::get('/orders/riwayat', [OrderController::class, "riwayat"])->middleware('auth');
-
-Route::get('/dashboard/addSchedule', [ScheduleController::class, "showAddSchedule"])->middleware('auth');
-Route::post('/dashboard/addSchedule', [ScheduleController::class, "storeSchedule"])->middleware('auth');
-
-Route::get('/dashboard/updateSchedule/{schedule}', [ScheduleController::class, "showUpdateSchedule"])->middleware('auth');
-Route::put('/dashboard/updateSchedule/{schedule}', [ScheduleController::class, "updateSchedule"])->middleware('auth');
-Route::delete('/dashboard/delete/{schedule}', [ScheduleController::class, "destroy"])->middleware('auth');
-
-Route::get('/dashboard/scheduleHistory', [ScheduleController::class, "showScheduleHistory"])->middleware('auth');
-Route::get('/dashboard/orders', [OrderController::class, "order_admin"])->middleware('auth');
+// Route::get('/dashboard/vendors/{id}','App\Http\Controllers\DashboardVendorController@status_update')->middleware('admin');
 
 
-Route::get('/schedule/viewUpcomingSchedule', [ScheduleController::class, "showMuthawifUpcomingSchedule"])->middleware('auth');
+
+
+
 
 // join vendors
-Route::get('sch/slug', [JoinVendorController::class, 'slug'])->middleware('auth');
-Route::resource('/vendors', JoinVendorController::class)->except('show')->middleware('auth');
+// Route::get('sch/slug', [JoinVendorController::class, 'slug'])->middleware('auth');
+// Route::resource('/vendors', JoinVendorController::class)->except('show')->middleware('auth');
 
-//Pengajuan Vendor
-Route::get('/pengajuan', [PengajuanController::class, "index"])->middleware('auth');
-Route::get('/pengajuan/create', [PengajuanController::class, "create"])->middleware('auth');
-Route::post('/pengajuan/store', [PengajuanController::class, "store"])->middleware('auth');
-Route::put('/pengajuan/update/{id}', [PengajuanController::class, "update"])->middleware('auth');
-
-//Dashboard Admin Pengajuan
-Route::get('/dashboard/pengajuan-vendor', [DashboardVendorReqController::class, 'index'])->middleware('auth');
-Route::put('/dashboard/pengajuan-vendor/update/{id}', [DashboardVendorReqController::class, 'update'])->middleware('auth');
+// Route::get('/schedule/viewUpcomingSchedule', [ScheduleController::class, "showMuthawifUpcomingSchedule"])->middleware('auth');

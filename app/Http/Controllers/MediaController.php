@@ -93,7 +93,7 @@ class MediaController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'link'   => 'required|max:255',
-            'image' => 'required|image|file|max:1024'
+            'image' => 'image|file|max:1024'
         ];
 
         if ($request->slug !== $media->slug) {
@@ -105,6 +105,13 @@ class MediaController extends Controller
         if ($request->file('image')) {
             if ($request->post('old-image')) Storage::delete($request->post('old-image'));
             $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        if (
+            $request->name == $media->name && $request->link == $media->link &&
+            $request->file('image') == null
+        ) {
+            return redirect('/dashboard/medias')->with('noUpdate', 'There is no update on Media!');
         }
 
         Media::where('id', $media->id) -> update($validatedData);

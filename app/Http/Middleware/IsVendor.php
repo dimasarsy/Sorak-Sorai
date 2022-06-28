@@ -4,8 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class IsVendor extends Middleware
+// class IsVendor extends Middleware
+class IsVendor
 {
     /**
      * Handle an incoming request.

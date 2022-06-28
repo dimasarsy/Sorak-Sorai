@@ -34,12 +34,6 @@
                     @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 
-                <div class="mb-3">
-                    <label for="desc" class="form-label">Description</label>
-                    <input id="desc" type="hidden" name="desc" class="form-control @error('desc') is-invalid @enderror" value="{{ old('name', $gallery->desc) }}">
-                    <trix-editor input="desc"></trix-editor>
-                    @error('desc')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
                 <button type="submit" class="btn btn-primary mb-5">Update Gallery</button>
             </form>
         </div>

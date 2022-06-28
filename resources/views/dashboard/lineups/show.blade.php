@@ -27,7 +27,7 @@
                             <h5 class="date-time-show"><i class="fa fa-calendar" aria-hidden="true"></i> {{ $lineup->date }}</h5>
                         </div>
                         <div class="col-6">
-                            <h5 class="date-time-show"><i class="far fa-clock"></i> {{ $lineup->time }}</h5>
+                            <h5 class="date-time-show"><i class="far fa-clock"></i> {{ $lineup->starttime }} - {{ $lineup->endtime }}</h5>
                         </div>
                     </div>
                 

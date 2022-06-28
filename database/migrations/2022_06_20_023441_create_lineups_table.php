@@ -18,8 +18,12 @@ class CreateLineupsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('date');
-            $table->string('time');
+            $table->date('date');
+            $table->string('starttime');
+            $table->string('endtime');
+            $table->string('availableScheduleDate');
+            $table->string('dueDateSchedule');
+            $table->string('status')->nullable();
             $table->text('information');
             $table->string('image');
             $table->timestamp('published_at')->nullable;

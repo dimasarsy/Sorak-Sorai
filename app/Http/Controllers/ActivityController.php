@@ -93,7 +93,7 @@ class ActivityController extends Controller
         $rules = [
             'name' => 'required|max:100',
             'desc'   => 'required|max:500',
-            'image' => 'required|image|file|max:1024'
+            'image' => 'image|file|max:1024'
         ];
 
         if ($request->slug !== $activity->slug) {
@@ -105,6 +105,13 @@ class ActivityController extends Controller
         if ($request->file('image')) {
             if ($request->post('old-image')) Storage::delete($request->post('old-image'));
             $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        if (
+            $request->name == $activity->name && $request->desc == $activity->desc &&
+            $request->file('image') == null
+        ) {
+            return redirect('/dashboard/activities')->with('noUpdate', 'There is no update on Activity!');
         }
 
         Activity::where('id', $activity->id) -> update($validatedData);

@@ -113,7 +113,7 @@ class DashboardPostController extends Controller
             'shopeelink'   => 'required|max:255',
             'categories_id'   => 'required|numeric',
             'description'   => 'required',
-            'image' => 'required|image|file|max:1024',
+            'image' => 'image|file|max:1024',
             'image2' => 'image|file|max:1024',
             'image3' => 'image|file|max:1024',
             'body'   => 'required'
@@ -140,6 +140,15 @@ class DashboardPostController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
+
+        if (
+            $request->name == $post->name && $request->shopeelink == $post->shopeelink && 
+            $request->categories_id == $post->categories_id && $request->description == $post->description &&
+            $request->body == $post->body && $request->file('image') == null && $request->file('image2') == null && 
+            $request->file('image3') == null
+        ) {
+            return redirect('/dashboard/posts')->with('noUpdate', 'There is no update on Product!');
+        }
 
         $post->where('id', $post->id)->update($validatedData);
         return redirect()->to('/dashboard/posts')->with('success', 'Product has been updated.');

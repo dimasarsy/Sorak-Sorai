@@ -69,4 +69,13 @@ class PostController extends Controller
             "post"  => $post
         ]);
     }
+
+    public function postsByUser(User $author)
+    {
+        return view('posts.posts-by-user', [
+            "posts" => $author->posts->load('author', 'categories'),
+            "user"  => $author,
+            "title" => "Marketplace",
+        ]);
+    }
 }

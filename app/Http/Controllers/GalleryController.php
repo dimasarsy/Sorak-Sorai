@@ -45,7 +45,6 @@ class GalleryController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:200',
             'slug'   => 'required|unique:galleries',
-            'desc'   => 'required',
             'image' => 'required|image|file|max:1024'
         ]);
 
@@ -92,8 +91,7 @@ class GalleryController extends Controller
     {
         $rules = [
             'name' => 'required|max:200',
-            'desc'   => 'required',
-            'image' => 'required|image|file|max:1024'
+            'image' => 'image|file|max:1024'
         ];
 
         if ($request->slug !== $gallery->slug) {
@@ -105,6 +103,12 @@ class GalleryController extends Controller
         if ($request->file('image')) {
             if ($request->post('old-image')) Storage::delete($request->post('old-image'));
             $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        if (
+            $request->name == $gallery->name && $request->file('image') == null
+        ) {
+            return redirect('/dashboard/galleries')->with('noUpdate', 'There is no update on Gallery!');
         }
 
         Gallery::where('id', $gallery->id) -> update($validatedData);

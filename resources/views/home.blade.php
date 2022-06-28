@@ -60,7 +60,7 @@
 
           <div class="col-lg-8 text-center text-lg-start">
             <div class="text-header">
-              <h2 data-aos="fade-right">Sorak-Sorai</h2>
+              <h2 data-aos="fade-right">Sorak Sorai</h2>
               <h3 data-aos="fade-right" data-aos-delay="100">GEMERLAP FESTIVAL MAYA</h3>
               <p data-aos="fade-right" data-aos-delay="200">Yuk, cobain pengalaman festival di dunia virtual!</p>
               <div data-aos="fade-right" data-aos-delay="300">

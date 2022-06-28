@@ -6,6 +6,7 @@ use App\Models\Media;
 use App\Models\Lineup;
 use App\Models\Sponsor;
 use App\Models\Activity;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 // use Illuminate\Http\Request;
@@ -29,5 +30,23 @@ class HomeController extends Controller
             'media' => Media::query()->latest()->get()
         ]);
 
+    }
+
+    public function about()
+    {
+        return view('about', [
+            'title' => "About",
+            'activities' => Activity::query()->latest()->get(),
+            'galleries' => Gallery::query()->latest()->get()
+
+        ]);
+    }
+
+    public function lineup()
+    {
+        return view('lineup', [
+            'title' => "Lineup",
+            'lineups' => Lineup::query()->latest()->paginate(12)
+        ]);
     }
 }

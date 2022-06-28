@@ -10,7 +10,6 @@
             <form class="p-3" action="{{url('/dashboard/addSchedule')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-
                 <div class="mb-3">
                     <label for="name" class="form-label">Schedule Title</label>
                     <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>

@@ -18,12 +18,86 @@ use function PHPUnit\Framework\isEmpty;
 
 class ScheduleController extends Controller
 {
+    public function index()
+    {
+        $activeFilter = 'no';
+
+        $schedules = DB::table('schedules as schedule')
+            ->join('users', 'schedule.user_id', '=', 'users.id')
+            ->select('schedule.*', 'users.role_id')
+            ->where('users.role_id','1')
+            ->where('schedule.status', "available")
+            ->where('schedule.date', '>=', date('Y-m-d'))->paginate(3);
+
+
+        if (request('searchName')) {
+            // $schedules = Schedule::where('status', "available")->where('date', '>=', date('Y-m-d'))->where('user_id->name', 'like', '%' . request('searchName') . '%');
+            $schedules = DB::table('schedules as schedule')
+                // ->join('users as user', 'user.id', '=', 'schedule.user_id')
+                ->join('users', 'schedule.user_id', '=', 'users.id')
+                ->select('schedule.*', 'users.role_id')
+                ->where('users.role_id','1')
+                ->where('schedule.name',  'like', '%' . request('searchName') . '%')->paginate(3);
+        }
+
+        if (request('searchDate')) {
+            // $schedules = Schedule::where('status', "available")->where('date', request('searchDate'));
+            $schedules = DB::table('schedules as schedule')
+                ->join('users', 'schedule.user_id', '=', 'users.id')
+                ->select('schedule.*', 'users.role_id')
+                ->where('users.role_id','1')
+                ->where('schedule.status', "available")
+                ->where('schedule.date', request('searchDate'))->paginate(3);
+        }
+
+        if (request('submit') == 'thisWeek') {
+            // $schedules = Schedule::where('status', "available")->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+            $schedules = DB::table('schedules as schedule')
+                ->join('users', 'schedule.user_id', '=', 'users.id')
+                ->select('schedule.*', 'users.role_id')
+                ->where('users.role_id','1')
+                ->where('schedule.status', "available")
+                ->whereBetween('schedule.date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->paginate(3);
+
+            $activeFilter = 'thisWeek';
+        }
+
+        if (request('submit') == 'thisMonth') {
+            // $schedules = Schedule::where('status', "available")->whereMonth('date', date('m'))->whereYear('date', date('Y'));
+            $schedules = DB::table('schedules as schedule')
+                ->join('users', 'schedule.user_id', '=', 'users.id')
+                ->select('schedule.*', 'users.role_id')
+                ->where('users.role_id','1')
+                ->where('schedule.status', "available")
+                ->whereMonth('schedule.date', date('m'))
+                ->whereYear('schedule.date', date('Y'))->paginate(3);
+
+            $activeFilter = 'thisMonth';
+        }
+
+        if (request('submit') == 'thisYear') {
+            // $schedules = Schedule::where('status', "available")->whereYear('date', date('Y'));
+            $schedules = DB::table('schedules as schedule')
+                ->join('users', 'schedule.user_id', '=', 'users.id')
+                ->select('schedule.*', 'users.role_id')
+                ->where('users.role_id','1')
+                ->where('schedule.status', "available")
+                ->whereYear('schedule.date', date('Y'))->paginate(3);
+
+            $activeFilter = 'thisYear';
+        }
+
+        return view('schedule.Home.home', [
+            "title" => "Schedule",
+            "active" => "marketplace",
+            "activeFilter" => $activeFilter,
+            "schedules" => $schedules,
+        ]);
+    }
+
     public function showScheduleDetail(Schedule $schedule)
     {
-        //protect if user want to showKeyboardDetail (deleted keyboard) directly from url
-        // if ($keyboard->status == "nonAvailable") {
-        //     return redirect('/');
-        // }
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = 'SB-Mid-server-DiLtax_iJs2J4hqRePRl6sG1';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -158,7 +232,7 @@ class ScheduleController extends Controller
             ]
         );
 
-        return back()->with('success', 'Schedule has been deleted!');
+        return back()->with('deleted', 'Schedule has been deleted!');
     }
 
     public function showUpdateSchedule(Schedule $schedule)
@@ -237,18 +311,12 @@ class ScheduleController extends Controller
         }
 
         if ($request->file('image')) {
-            // if ($request->oldImage) {
-            //     Storage::delete('public/image/' . $request->oldImage);
-            // }
+
 
             if ($request->post('old-image')){
                 Storage::delete($request->post('old-image'));
             } 
             $validatedData['image'] = $request->file('image')->store('post-images');
-            
-            // $currFile = $request->file('image');
-            // $fileName = $currFile->getClientOriginalName();
-            // Storage::putFileAs('public/image', $currFile, $fileName);
 
         }
 
@@ -258,7 +326,7 @@ class ScheduleController extends Controller
             $request->file('image') == null && $request->date == $schedule->date &&
             $request->starttime == $schedule->starttime && $request->endtime == $schedule->endtime
         ) {
-            return redirect('/')->with('noUpdate', 'There is no update on schedule!');
+            return redirect('/dashboard/scheduleHistory')->with('noUpdate', 'There is no update on schedule!');
         }
 
         Schedule::where('id', $schedule->id)->update($validatedData);
