@@ -8,8 +8,6 @@ use App\Models\Sponsor;
 use App\Models\Activity;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller

@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 
 class DashboardUserController extends Controller
 {
@@ -48,11 +47,9 @@ class DashboardUserController extends Controller
             "username"  => 'required|max:255|unique:users|max:255',
             'email' => 'required|email:dns|unique:users|max:255',
             'password'  => 'required|min:5|max:255',
-            'role_id'   => 'required|numeric',
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
-        
         User::create($validatedData);
         return redirect()->to('/dashboard/users')->with("success", "New User has been Added");
     }

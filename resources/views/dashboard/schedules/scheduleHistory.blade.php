@@ -21,8 +21,7 @@
                                 <th class="text-center" scope="col">Schedule Name</th>
                                 <th class="text-center" scope="col">Schedule Price</th>
                                 <th class="text-center" scope="col">Schedule Date</th>
-                                <th class="text-center" scope="col">Start Time</th>
-                                <th class="text-center" scope="col">End Time</th>
+                                <th class="text-center" scope="col">Time(WIB)</th>
                                 <th class="text-center" scope="col">Status</th>
                                 <th class="text-center" scope="col">Aksi</th>
                             </tr>
@@ -30,42 +29,38 @@
                         <tbody>
                             @foreach ($schedules as $schedule)
                             <tr style="vertical-align: middle ">
-                                <td class="py-5" id="schedule">
+                                <td class="text-center py-5" id="schedule">
                                     @if($schedule->vip == 1)
-                                    <div class="position-absolute px-3 py-2 text-dark font-weight-bold" style="background:#ffd700;">VIP</div>
+                                    <div class="position-absolute px-2 py-1 text-dark font-weight-bold" style="background:#ffd700;">VIP</div>
                                     @endif
                                     <img src="{{ asset('storage/' . $schedule->image) }}" width="150px">
                                 </td>
-                                <td>{{ $schedule->name }}</td>
-                                <td>Rp {{ number_format($schedule->price, 0, ',', '.') }}</td>
-                                <td>{{ $schedule->date }}</td>
-                                <td>{{ $schedule->starttime }}</td>
-                                <td>{{ $schedule->endtime}}</td>
+                                <td class="text-center">{{ $schedule->name }}</td>
+                                <td class="text-center">Rp.{{ number_format($schedule->price, 0, ',', '.') }},-</td>
+                                <td class="text-center">{!! date('d M, Y', strtotime($schedule->date)) !!}</td>
+                                <td class="text-center">{{ $schedule->starttime }} - {{ $schedule->endtime}}</td>
 
                                 @if($schedule->status == 'available')
-                                <td class="fw-bold text-success px-5">{{ $schedule->status}}</td>
+                                <td class="text-center"><div class="badge border-2" style="background-color:green"><span class="text">{{ $schedule->status}}</span></div></td>
+                                @elseif($schedule->status == 'deleted')
+                                <td class="text-center"><div class="badge border-2" style="background-color:red"><span class="text">{{ $schedule->status}}</span></div></td>
                                 @else
-                                <td class="fw-bold text-danger px-5">{{ $schedule->status}}</td>
+                                <td class="text-center"><div class="badge border-2" style="background-color:orange"><span class="text">{{ $schedule->status}}</span></div></td>
                                 @endif
 
                                 <td class="text-center">
-                                    <!-- <a href="/dashboard/updateSchedule/{{ $schedule->id }}" class=""><span data-feather="edit"></span></a> -->
-
-                                    <!-- <form action="/dashboard/delete/{{ $schedule->id }}" method="POST" class="d-inline">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="badge bg-danger border-0" onclick="return confirm('Are you sure want to delete this schedule?')" type="submit" name="delete"><span data-feather="x-circle"></span></button>
-                                </form> -->
 
                                     @if($schedule->status == "available")
                                     <a href="/dashboard/updateSchedule/{{ $schedule->id }}" class="btn btn-info btn-circle btn-sm" data-tip="Edit"><i class="fas fa-edit"></i></a>
                                     @endif
 
+                                    @if($schedule->status != "deleted")
                                     <form action="/dashboard/delete/{{ $schedule->id }}" method="post" class="d-inline">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure to delete this user?')"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure to delete this Schedule?')"><i class="fas fa-trash"></i></button>
                                     </form>
+                                    @endif
 
                                 </td>
                                 @endforeach

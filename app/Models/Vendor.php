@@ -10,8 +10,8 @@ class Vendor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title", "slug", "categories_id", "user_id", 'type_id', 'image', "shopeelink", "description", "body"];
-    // protected $guarded = ["id"];
+    // protected $fillable = ["title", "slug", "categories_id", "user_id", 'type_id', 'image', "shopeelink", "description", "body"];
+    protected $guarded = ["id"];
     // protected $with = ['author', 'categories'] // eager loading
 
     public function scopeFilter($query, array $filters)

@@ -148,14 +148,14 @@
 
                                 <div class="row date-time">
                                     <div class="col-6 col-lg-3 col-md-5">
-                                        <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {{ $schedule->date }}</p>
+                                        <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($schedule->date)) !!}</p>
                                     </div>
                                     <div class="col-6 col-lg-6 col-md-6">
                                         <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $schedule->starttime }} - {{ $schedule->endtime }}</p>
                                     </div>
                                 </div>
 
-                                <h5 class="card-price">Rp {{ number_format($schedule->price, 2, ',', '.') }}</h5>
+                                <h5 class="card-price">Rp{{ number_format($schedule->price, 0, ',', '.') }}</h5>
                                 <h5 class="card-desc">{!! \Illuminate\Support\Str::words($schedule->description, 25) !!}</h5>
                                 <div class="row mt-5">
 

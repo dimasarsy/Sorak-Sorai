@@ -1,40 +1,24 @@
 <?php
 
-use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\TypeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PopupController;
 use App\Http\Controllers\LineupController;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\VendorController;
 use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\marketsController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\categoriesController;
-use App\Http\Controllers\MyTicketController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\AboutFestController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
-use App\Http\Controllers\TicketingController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DatavendorController;
-use App\Http\Controllers\JoinVendorController;
-use App\Http\Controllers\LineupFestController;
-use App\Http\Controllers\HomescheduleController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\DashboardVendorController;
 use App\Http\Controllers\DashboardVendorReqController;
 
 /*
@@ -53,20 +37,10 @@ Route::get('/', [HomeController::class, "index"]);
 Route::get('/about', [HomeController::class, "about"]);
 Route::get('/lineup', [HomeController::class, "lineup"]);
 
-// Route::get('/about', [AboutFestController::class, "index"]);
-// Route::get('/lineup', [LineupFestController::class, "index"]);
-
-// popup schedule
-// Route::view('partials/get-form','partials.popup')->name('popup');
-
 // ================ HALAMAN BELANJA =====================
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/posts/{post:slug}', [PostController::class, "show"])->middleware('auth');
 Route::get('/vendor/{author:username}', [PostController::class, "postsByUser"]);
-
-// categories
-// Route::get('/categories', [categoriesController::class, "index"]);
-
 
 // ================ AUTH LOGIN - REGISTER - LOGOUT =====================
 
@@ -77,7 +51,6 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 // ================ SCHEDULE - MIDTRANS TICKETING =====================
-// Route::get('/schedule', [HomescheduleController::class, "index"]);
 Route::get('/schedule', [ScheduleController::class, "index"]);
 
 Route::get('/scheduleDetail/{schedule}', [ScheduleController::class, "showScheduleDetail"])->middleware('auth');
@@ -158,39 +131,3 @@ Route::resource('/dashboard/activities', ActivityController::class)->middleware(
 // ================ DASHBOARD GALLERY =====================
 Route::get('/dashboard/galleries/slug', [GalleryController::class, 'slug'])->middleware('admin');
 Route::resource('/dashboard/galleries', GalleryController::class)->middleware('admin');
-
-// dashboard types
-// Route::get('/dashboard/types/slug', [TypeController::class, 'slug'])->middleware('admin');
-// Route::resource('/dashboard/types', TypeController::class)->except('show')->middleware('admin');
-
-// dashboard types
-// Route::get('/dashboard/tickets/slug', [TicketController::class, 'slug'])->middleware('admin');
-// Route::resource('/dashboard/tickets', TicketController::class)->except('show')->middleware('admin');
-
-
-
-
-//dashboard about
-// Route::get('/dashboard/abouts/slug', [AboutController::class, 'slug'])->middleware('admin');
-// Route::resource('/dashboard/abouts', AboutController::class)->middleware('admin');
-
-
-
-
-// Route::resource('/dashboard/vendor_req', DashboardVendorReqController::class)->middleware('admin');
-
-
-// Route::patch('/dashboard/vendors/{users}', 'DashboardVendorReqController@completedUpdate')->name('completedUpdate');
-
-// Route::get('/dashboard/vendors/{id}','App\Http\Controllers\DashboardVendorController@status_update')->middleware('admin');
-
-
-
-
-
-
-// join vendors
-// Route::get('sch/slug', [JoinVendorController::class, 'slug'])->middleware('auth');
-// Route::resource('/vendors', JoinVendorController::class)->except('show')->middleware('auth');
-
-// Route::get('/schedule/viewUpcomingSchedule', [ScheduleController::class, "showMuthawifUpcomingSchedule"])->middleware('auth');

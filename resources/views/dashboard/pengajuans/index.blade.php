@@ -18,7 +18,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Username</th>
+                                <th scope="col">Tgl. Pengajuan</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Logo</th>
                                 <th scope="col">Marketplace Link</th>
@@ -29,7 +29,7 @@
                         @foreach ($pengajuans as $k)
                         <tr>
                             <td scope="row">{{ $k->id }}</td>
-                            <td>{{ $k->uname }}</td>
+                            <td>{{ $k->created_at }}</td>
                             <td>{{ $k->name }}</td>
                             <td>
                                 <img class="img-responsive" style="height: 100px;" src="{{ asset('storage/' . $k->foto) }}" alt="{{ $k->name }}'s logo">

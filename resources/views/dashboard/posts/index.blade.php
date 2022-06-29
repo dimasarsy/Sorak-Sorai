@@ -38,7 +38,7 @@
             <div class="product-content">
               <h3 class="title"><a href="/posts/{{ $post->slug }}">{{ \Illuminate\Support\Str::substr($post->title, 0, 10)  }}...</a></h3>
 
-              <div class="price mt-2">Rp {{ number_format($post->description, 2, ',', '.') }}</div>
+              <div class="price mt-2">Rp. {{ number_format($post->description, 0, ',', '.') }},-</div>
             </div>
           </div>
         </div>

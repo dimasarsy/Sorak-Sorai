@@ -142,7 +142,7 @@ class DashboardPostController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
 
         if (
-            $request->name == $post->name && $request->shopeelink == $post->shopeelink && 
+            $request->title == $post->title && $request->shopeelink == $post->shopeelink && 
             $request->categories_id == $post->categories_id && $request->description == $post->description &&
             $request->body == $post->body && $request->file('image') == null && $request->file('image2') == null && 
             $request->file('image3') == null

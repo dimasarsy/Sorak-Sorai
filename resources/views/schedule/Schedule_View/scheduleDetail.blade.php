@@ -25,7 +25,7 @@
                 </button>
                 @endif
             </p>
-            <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{ $schedule->date }}</p>
+            <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{!! date('d F, Y', strtotime($schedule->date)) !!}</p>
 
             <div class="col-12">
                 <div class="row">
@@ -47,7 +47,7 @@
 
                             <div class="row price-buy">
                                 <div class="col-6 col-md-5 col-lg-4">
-                                    <h5 class="card-price">Rp {{ number_format($schedule->price, 2, ',', '.') }}</h5>
+                                    <h5 class="card-price">Rp. {{ number_format($schedule->price, 0, ',', '.') }},-</h5>
                                 </div>
 
                                 <div class="col-6 col-md-7 col-lg-8 d-flex justify-content-start">

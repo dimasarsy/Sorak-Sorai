@@ -6,7 +6,6 @@ use App\Models\categories;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 
 
 class AdminController extends Controller

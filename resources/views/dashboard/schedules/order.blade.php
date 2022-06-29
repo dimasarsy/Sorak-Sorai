@@ -10,17 +10,17 @@
             <div class="table-responsive">
                 @foreach ($schedules as $schedule)
                 <h4 style="color: #650095;font-weight:bold;"><span>{{ $schedule->name }}</span></h4>
-                <small class="text-grey"><i class="far fa-calendar" aria-hidden="true"></i> {{ $schedule->date }} &emsp;&emsp; <i class="far fa-clock"></i> {{ $schedule->starttime }}-{{ $schedule->endtime }} WIB</small><br><br>
+                <small class="text-grey"><i class="far fa-calendar" aria-hidden="true"></i> {!! date('d M, Y', strtotime($schedule->date)) !!} &emsp;&emsp; <i class="far fa-clock"></i> {{ $schedule->starttime }}-{{ $schedule->endtime }} WIB</small><br><br>
 
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Order Date</th>
+                            <th class="text-center" scope="col">ID</th>
+                            <th class="text-center" scope="col">User Name</th>
+                            <th class="text-center" scope="col">Order ID</th>
+                            <th class="text-center" scope="col">Order Date</th>
 
-                            <th scope="col">Status</th>
+                            <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -32,17 +32,24 @@
                             <td>{{ $k->order_id }}</td>
                             <td>{{ $k->created_at }}</td>
 
-                            @for ($i = 0; $i < $order_count; $i++) <?php if ($responses[$i]['order_id'] == $k->order_id) { ?> <td class="text-center">{{ $responses[$i]['transaction_status'] }}</td>
+                            @for ($i = 0; $i < $order_count; $i++) <?php if ($responses[$i]['order_id'] == $k->order_id) { ?>
+                                @if($responses[$i]['transaction_status']  == "settlement")
+                                <td><div class="badge border-2" style="background-color:green"><span class="text">Success</span></div></td>
+                                @elseif($responses[$i]['transaction_status'] == "pending")
+                                <td><div class="badge border-2" style="background-color:orange"><span class="text">Pending</span></div></td>
+                                @else
+                                <td><div class="badge border-2" style="background-color:red"><span class="text">Failed</span></div></td>
+                                @endif
                             <?php }  ?>
                             @endfor
 
                             @endif
-                            @empty($schedule->id === $k->schedule_id)
-                            <td class="text-center" colspan="5">Belum ada yang membeli tiket</td>
-                            @endempty
                         </tr>
-
+                        
                         @endforeach
+                        @empty($schedule->id === $k->schedule_id)
+                        <td class="text-center" colspan="5">Belum ada yang membeli tiket</td>
+                        @endempty
 
 
                     </tbody>

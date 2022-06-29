@@ -13,7 +13,7 @@
         <div class="product-content">
             <h3 class="title"><a href="/posts/{{ $post->slug }}">{{  \Illuminate\Support\Str::substr($post->title, 0, 12)  }} ..</a></h3>
             <!-- <a class="vendor" href="/vendor/{{ $post->author->username }}">{{ $post->author->name }}</a> -->
-            <div class="price mt-2">Rp {{ number_format($post->description, 2, ',', '.') }}</div>
+            <div class="price mt-2">Rp. {{ number_format($post->description, 0, ',', '.') }},-</div>
             @auth
             <a class="buy-now" href="{{ $post->shopeelink }}">Buy Now</a>
             @else

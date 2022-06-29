@@ -31,7 +31,7 @@
 
                         <div class="row date-time">
                             <div class="col col-sm-6 col-md-6">
-                                <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {{ $k->date }}</p>
+                                <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
                             </div>
                             <div class="col col-sm-6 col-md-6">
                                 <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $k->starttime }} - {{ $k->endtime }}</p>

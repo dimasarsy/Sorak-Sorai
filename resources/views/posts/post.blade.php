@@ -4,7 +4,7 @@
 <section id="festival" class="productpage">
   <div class="outer">
     <div class="center-wrapper">
-      <!-- <div class="container-fluid content"> -->
+
       <div class="row">
 
         <div class="col-12 col-sm-12 col-lg-6 shoe-slider">
@@ -52,7 +52,7 @@
               </h6>
               @endif
 
-              <h4 class="card-price">Rp {{ $post->description }}</h4>
+              <h4 class="card-price">Rp. {{ number_format($post->description, 0, ',', '.') }},-</h4>
               <h6 class="card-text mt-5 mb-2">{!! \Illuminate\Support\Str::substr($post->body, 0, 500) !!}...<h6>
                   <a href="{{ $post->shopeelink }}" class="btn btn-get-started">Beli Sekarang</a>
             </div>
@@ -60,7 +60,7 @@
         </div>
 
       </div>
-      <!-- </div> -->
+
     </div>
   </div>
 </section>

@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengajuan;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+
 
 class DashboardVendorReqController extends Controller
 {
     public function index()
     {
         return view('dashboard.pengajuans.index', [
-            'pengajuans' =>  Pengajuan::where('ktp', null)
+            'pengajuans' =>  Pengajuan::orderBy('created_at', 'desc')
+                            ->where('ktp', null)
                             ->where('sertifikat', null)
                             ->join('users', 'pengajuans.user_id', '=', 'users.id')
                             ->select('pengajuans.*', 'users.username as uname')
                             ->get(),
-        
         ]);
     }
     public function update(Request $request, $id)

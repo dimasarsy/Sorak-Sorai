@@ -37,7 +37,7 @@
                         <h5 class="card-title">{{ $k->name }}</h5>
                         <div class="row date-time">
                             <div class="col col-md-6 col-lg-6">
-                                <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {{ $k->date }}</p>
+                                <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
                             </div>
                             <div class="col col-md-6 col-lg-6">
                                 <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $k->starttime }} - {{ $k->endtime }}</p>

@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Schedule;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Config;
-use function PHPUnit\Framework\returnArgument;
 
 class OrderController extends Controller
 {
@@ -25,6 +19,7 @@ class OrderController extends Controller
         // ->get();
         
         $orders = DB::table('orders')
+        ->orderBy('date','asc')
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
         ->join('users', 'schedules.user_id', '=', 'users.id')
         ->select('schedules.*', 'users.role_id')
@@ -109,6 +104,7 @@ class OrderController extends Controller
         $order = DB::table('orders')->get();
         
         $orders = DB::table('orders')
+        ->orderBy('date','asc')
         ->join('schedules', 'orders.schedule_id', '=', 'schedules.id')
         ->join('users', 'schedules.user_id', '=', 'users.id')
         ->select('schedules.*', 'users.role_id')
@@ -237,6 +233,8 @@ class OrderController extends Controller
     public function order_admin()
     {
         $schedule = DB::table('schedules')
+        ->where('status','available')
+        ->orderBy('date','asc')
         ->join('users', 'schedules.user_id', '=', 'users.id')
         ->select('schedules.*', 'users.role_id')
         ->where('users.role_id','1')

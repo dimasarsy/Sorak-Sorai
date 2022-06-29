@@ -6,8 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\categories;
 use App\Models\Pengajuan;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller

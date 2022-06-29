@@ -24,11 +24,11 @@
 
                             <div class="col-12 col-sm-12 col-lg-6 shoe-slider">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <!-- <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"><img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}'s image" class="d-block w-100" alt="..."></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"><img src="{{ asset('storage/' . $post->image2) }}" alt="{{ $post->title }}'s image" class="d-block w-100" alt="..."></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"><img src="{{ asset('storage/' . $post->image3) }}" alt="{{ $post->title }}'s image" class="d-block w-100" alt="..."></li>
-                                </ol> -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"><img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}'s image"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"><img src="{{ asset('storage/' . $post->image2) }}" alt="{{ $post->title }}'s image2"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"><img src="{{ asset('storage/' . $post->image3) }}" alt="{{ $post->title }}'s image3"></li>
+                                </ol>
 
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -68,7 +68,7 @@
                                             </h6>
                                         @endif
 
-                                        <h4 class="card-price">Rp {{ $post->description }}</h4>
+                                        <h4 class="card-price">Rp. {{ number_format($post->description, 0, ',', '.') }},-</h4>
                                         <h6 class="card-text mt-5 mb-2"> {!!  \Illuminate\Support\Str::substr($post->body, 0, 495)  !!}...<h6>
                                         
                                     </div>

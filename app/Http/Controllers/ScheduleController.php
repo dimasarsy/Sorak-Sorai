@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
-// use Illuminate\Support\Facades\Auth;
 
-use function PHPUnit\Framework\isEmpty;
 
 class ScheduleController extends Controller
 {
@@ -23,6 +19,7 @@ class ScheduleController extends Controller
         $activeFilter = 'no';
 
         $schedules = DB::table('schedules as schedule')
+            ->orderBy('date','asc')
             ->join('users', 'schedule.user_id', '=', 'users.id')
             ->select('schedule.*', 'users.role_id')
             ->where('users.role_id','1')
@@ -334,37 +331,6 @@ class ScheduleController extends Controller
         return redirect()->to('/dashboard/scheduleHistory')->with('success', 'Schedule has been updated.');
     }
 
-    public function showMuthawifUpcomingSchedule()
-    {
-        $schedule =
-            Schedule::where('user_id', Auth::user()->id)
-            ->where('status', "available")
-            // ->where('date', '>=', date('Y-m-d'))
-            // ->where('starttime', '>', date("h:i a"));
-            // ->where('availableScheduleDate', '>', Carbon::now()->toDateTimeString())
-            ->where('date', '<=', Carbon::now()->addDays(1)->format('Y-m-d'));
-
-        if (request('search')) {
-            if (request('filter') == 1) {
-                $schedule->where('name', 'like', '%' . request('search') . '%');
-            } elseif ((request('filter') == 2)) {
-                $schedule->where('price', request('search'));
-            } elseif ((request('filter') == 3)) {
-                $schedule->where('author', 'like', '%' . request('search') . '%');
-            }
-        }
-
-        if (request('searchDate')) {
-            $schedule->where('date', request('searchDate'));
-        }
-
-        return view('schedule.Muthawif.viewUpcomingSchedule', [
-            "title" => "View Upcoming Schedule",
-            "active" => "viewUpcomingSchedule",
-            "schedules" => $schedule->simplePaginate(1),
-            "filters" => Filter::all(),
-        ]);
-    }
 
     public function showScheduleHistory()
     {
@@ -374,23 +340,6 @@ class ScheduleController extends Controller
         ->select('schedules.*', 'users.role_id')
         ->where('users.role_id','1')
         ->get();
-
-        // $schedule = Schedule::all();
-        // ->Where('date', '<', date('Y-m-d'));
-        // ->where('starttime', '>', date("h:i a"));
-        // ->where('availableScheduleDate', '>', Carbon::now()->toDateTimeString());
-
-        // if (request('search')) {
-        //     if (request('filter') == 1) {
-        //         $schedule->where('name', 'like', '%' . request('search') . '%');
-        //     } elseif ((request('filter') == 2)) {
-        //         $schedule->where('price', request('search'));
-        //     }
-        // }
-
-        // if (request('searchDate')) {
-        //     $schedule->where('date', request('searchDate'));
-        // }
 
         return view('dashboard.schedules.scheduleHistory', [
             "title" => "Schedule History",

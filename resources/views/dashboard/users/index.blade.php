@@ -54,11 +54,6 @@
                   </td>
 
                   <td class="text-center">
-                    <!-- @if($user->role_id === 2)
-                    <a href="/dashboard/users/{{ $user->id }}/edit" class="btn btn-warning btn-icon-split btn-sm"><span class="icon text-white-50"><i class="fas fa-user"></i></span><span class="text">Add to Vendor</span></a>
-                  @elseif($user->role_id === 4)
-                    <div class="badge bg-primary border-0">Vendor</div>
-                  @endif -->
 
                     <a href="/dashboard/users/{{ $user->id }}/edit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
                     <form action="/dashboard/users/{{ $user->id }}" method="post" class="d-inline">

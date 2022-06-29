@@ -8,7 +8,7 @@
 
   <title>Festival | Dashboard</title>
 
-  <link rel="icon" href="../img/soraksorai2.png">
+  <link rel="icon" href="../../img/soraksorai2.png">
 
   <!-- Bootstrap core CSS -->
   <!-- CSS only -->
@@ -80,6 +80,7 @@
       $('#dataTable').DataTable();
     });
   </script>
+  
 </body>
 
 </html>
