@@ -62,6 +62,48 @@
             <div class="text-header">
               <h2 data-aos="fade-right">Sorak Sorai</h2>
               <h3 data-aos="fade-right" data-aos-delay="100">GEMERLAP FESTIVAL MAYA</h3>
+
+              @foreach($schedules as $schedule)
+              <script>
+                var countDate = new Date('{{$schedule->availableScheduleDate}}');
+
+                function newYear() {
+                  var now = new Date().getTime();
+                  gap = countDate - now;
+
+                  var detik = 1000;
+                  var menit = detik * 60;
+                  var jam = menit * 60;
+                  var hari = jam * 24;
+
+                  var h = Math.floor(gap / (hari));
+                  var j = Math.floor((gap % (hari)) / (jam));
+                  var m = Math.floor((gap % (jam)) / (menit));
+                  var d = Math.floor((gap % (menit)) / (detik));
+
+                  document.getElementById('hari').innerText = h;
+                  document.getElementById('jam').innerText = j;
+                  document.getElementById('menit').innerText = m;
+                }
+
+                setInterval(function() {
+                  newYear();
+                }, 1000);
+              </script>
+              @endforeach
+
+              <div class="countdown">
+                <div id="hari"><span class="pulse">CO</span></div>
+                <div id="jam">MI</div>
+                <div id="menit">NG</div>
+              </div>
+
+              <div class="text">
+                <div id="hari">Hari</div>
+                <div id="jam">Jam</div>
+                <div id="menit">Menit</div>
+              </div>
+
               <p data-aos="fade-right" data-aos-delay="200">Yuk, cobain pengalaman festival di dunia virtual!</p>
               <div data-aos="fade-right" data-aos-delay="300">
                 <a href="/schedule" class="btn btn-get-started scrollto text-decoration-none">Beli Tiket Sekarang</a>
@@ -80,6 +122,8 @@
     </div>
   </div>
 </section>
+
+
 
 <!-- --------------------------------------------------------------
   # ABOUT
@@ -118,65 +162,116 @@
   </div>
 </section>
 
-<!-- --------------------------------------------------------------
-  # LINEUP
-  -------------------------------------------------------------- -->
 
-<section id="team" class="team">
+<!-- --------------------------------------------------------------
+  # PERFORMANCE
+-------------------------------------------------------------- -->
+
+@if($lineups->count() )
+<section id="performance" class="performance d-flex justify-content-center">
   <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
+    <div class="section-title mt-3 d-flex justify-content-center">
       <h2 data-aos="fade-right">PENAMPIL</h2>
-      @if($lineups->count() )
-      <div class="mt-5" data-aos-delay="600">
-        <a href="/lineup" class="btn-get-started scrollto text-decoration-none">Lihat Lagi</a>
-      </div>
     </div>
 
+    <div class="bingkai">
+      <div class="row">
 
-    <div class="homepage-featured-events">
-      <div class="container ">
+        @foreach($lineup as $line)
+        <div class="col-12 col-md-4 mt-5">
+          <img class="img-fluid rounded-start" src="{{ asset('storage/' . $line->image) }}" alt="{{ $line->name }}'s image">
+        </div>
+        <div class="col-12 col-md-8 mt-5 ">
 
-        @foreach($lineups as $lineup)
-        <div class="row">
-          <div class="col-12">
-            <div class="featured-events-wrap flex flex-wrap justify-content-between">
-              <div class="event-content-wrap positioning-event-{{ $loop->iteration }}">
+          <script>
+            var countDateLineup = new Date('{{$line->availableScheduleDate}}');
 
-                <figure>
-                  <a href="#"><img class="border-gradient" src="{{ asset('storage/' . $lineup->image) }}" alt="{{ $lineup->name }}'s image"></a>
-                </figure>
 
-                <div class="product-content">
-                  <h3 class="title">{{ $lineup->name }}</h3>
-                </div>
+            function lineUp() {
+              var now = new Date().getTime();
+              gap = countDateLineup - now;
 
-              </div>
-            </div>
+              var detikLineup = 1000;
+              var menitLineup = detikLineup * 60;
+              var jamLineup = menitLineup * 60;
+              var hariLineup = jamLineup * 24;
+
+              var hl = Math.floor(gap / (hariLineup));
+              var jl = Math.floor((gap % (hariLineup)) / (jamLineup));
+              var ml = Math.floor((gap % (jamLineup)) / (menitLineup));
+              var dl = Math.floor((gap % (menitLineup)) / (detikLineup));
+
+              document.getElementById('hari-lineup').innerHTML = hl;
+              document.getElementById('jam-lineup').innerHTML = jl;
+              document.getElementById('menit-lineup').innerHTML = ml;
+
+            }
+
+            setInterval(function() {
+              lineUp();
+            }, 1000);
+          </script>
+
+          <div class="countdown-lineup d-flex justify-content-center">
+            <div id="hari-lineup">CO</div>
+            <div id="jam-lineup">MI</div>
+            <div id="menit-lineup">NG</div>
+          </div>
+          <div class="text-lineup d-flex justify-content-center">
+            <div id="hari-lineup">Hari</div>
+            <div id="jam-lineup">Jam</div>
+            <div id="menit-lineup">Menit</div>
           </div>
         </div>
-
         @endforeach
 
       </div>
-      @else
-      <section id="festival" class="about">
-        <div class="container" data-aos="fade-up">
-          <div class="row justify-content-center text-center">
-            <div class="col-8 col-md-7 col-lg-6">
-
-              <div class="section-penampil" data-aos="fade-up" data-aos-delay="200">
-                <div class="fest-img d-flex justify-content-center pulse"><img src="img/no-performance.png"></div>
-                <h5>Segera Hadir!</h5>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-      @endif
     </div>
+
+    <div class="background">
+      <div class="lineup-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper align-items-center">
+          @foreach($lineups as $lineup)
+
+          <div class="swiper-slide">
+
+            <div class="member mt-5">
+              <div class="member-img">
+                <img class="img" src="{{ asset('storage/' . $lineup->image) }}" alt="{{ $lineup->name }}'s image">
+                <div class="social-team">
+                  <h2>{{ $lineup->name }}</h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
+
+@else
+<section id="festival" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="row justify-content-center text-center">
+      <div class="col-8 col-md-7 col-lg-6">
+
+        <div class="section-penampil">
+          <h2 data-aos="fade-up">PENAMPIL</h2>
+          <div class="fest-img d-flex justify-content-center pulse mt-5"><img src="img/no-performance.png"></div>
+          <h5>Tunggu kami di Sorak Sorai!</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+@endif
+
 <!-- --------------------------------------------------------------
   # SITE MAPS
   -------------------------------------------------------------- -->
@@ -188,7 +283,7 @@
   </div>
 
   <div class="row justify-content-center text-center">
-    <div class="col-md-9 mx-auto d-blockz">
+    <div class="col-11 col-md-9 mx-auto d-blockz">
 
       <div id="testimonials" class="testimonials">
 
@@ -383,20 +478,22 @@
 
                   <h3 class="mt-5">Samudra Antariksa</h3>
 
-                  <div class="row align-items-center">
+                  <div class="maps-desc">
+                    <div class="row align-items-center">
 
-                    <div class="col-6 col-sm-6 col-md-5" data-aos="fade-left">
-                      <div class="land">
-                        <img src="img/Samudra Antariksa.png" alt="Image" class="miniland img-fluid">
+                      <div class="col-6 col-sm-5" data-aos="fade-left">
+                        <div class="land">
+                          <img src="img/Samudra Antariksa.png" alt="Image" class="miniland img-fluid">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-6 col-sm-6 col-md-7">
-                      <div class="titlepage text_align_left"><br>
-                        <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Cuma di Samudera Antariksa kamu bisa after party di bawah laut sambil dengerin musik dari artis favorit kamu </p>
+                      <div class="col-6 col-sm-7">
+                        <div class="titlepage text_align_left"><br>
+                          <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Cuma di Samudera Antariksa kamu bisa after party di bawah laut sambil dengerin musik dari artis favorit kamu </p>
+                        </div>
                       </div>
-                    </div>
 
+                    </div>
                   </div>
 
                 </div>
@@ -408,17 +505,19 @@
               <div class="testimonial-item">
                 <div class="container">
                   <h3 class="mt-5">Bunga Matahari</h3>
-                  <div class="row align-items-center">
 
-                    <div class="col-6 col-sm-6 col-md-5" data-aos="fade-left">
-                      <div class="land">
-                        <img src="img/Bunga Matahari.png" alt="Image" class="miniland img-fluid">
+                  <div class="maps-desc">
+                    <div class="row align-items-center">
+                      <div class="col-6 col-sm-5" data-aos="fade-left">
+                        <div class="land">
+                          <img src="img/Bunga Matahari.png" alt="Image" class="miniland img-fluid">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-6 col-sm-6 col-md-7">
-                      <div class="titlepage text_align_left"><br>
-                        <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Yuk nonton artis atau band favorit kamu tampil di atas Bunga Matahari! </p>
+                      <div class="col-6 col-sm-7">
+                        <div class="titlepage text_align_left"><br>
+                          <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Yuk nonton artis atau band favorit kamu tampil di atas Bunga Matahari! </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -432,20 +531,23 @@
                 <div class="container">
                   <div class="text-panjang">
                     <h3 class="mt-5">Taman Merah Jambu</h3>
-                    <div class="row align-items-center">
 
-                      <div class="col-5 col-sm-6 col-md-5" data-aos="fade-left">
-                        <div class="land">
-                          <img src="img/Taman Merah Jambu.png" alt="Image" class="miniland img-fluid">
+                    <div class="maps-desc-tmj">
+                      <div class="row align-items-center">
+                        <div class="col-5 col-sm-5" data-aos="fade-left">
+                          <div class="land">
+                            <img src="img/Taman Merah Jambu.png" alt="Image" class="miniland img-fluid">
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="col-7 col-sm-6 col-md-7">
-                        <div class="titlepage text_align_left"><br>
-                          <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Bukan marmut merah jambu aja yang bisa bikin kamu senang, taman merah jambu ini juga bisa bikin senang apalagi bareng teman-teman! </p>
+                        <div class="col-7 col-sm-7">
+                          <div class="titlepage text_align_left"><br>
+                            <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Bukan marmut merah jambu aja yang bisa bikin kamu senang, taman merah jambu ini juga bisa bikin senang apalagi bareng teman-teman! </p>
+                          </div>
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -455,17 +557,19 @@
               <div class="testimonial-item">
                 <div class="container">
                   <h3 class="mt-5">Taman Bianglala</h3>
-                  <div class="row align-items-center">
 
-                    <div class="col-6 col-sm-6 col-md-5" data-aos="fade-left">
-                      <div class="land">
-                        <img src="img/Taman Bianglala.png" alt="Image" class="miniland img-fluid">
+                  <div class="maps-desc">
+                    <div class="row align-items-center">
+                      <div class="col-6 col-sm-5" data-aos="fade-left">
+                        <div class="land">
+                          <img src="img/Taman Bianglala.png" alt="Image" class="miniland img-fluid">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-6 col-sm-6 col-md-7">
-                      <div class="titlepage text_align_left"><br>
-                        <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Main games bareng yuk di Taman Bianglala dan nikmati keseruannya!</p>
+                      <div class="col-6 col-sm-7">
+                        <div class="titlepage text_align_left"><br>
+                          <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Main games bareng yuk di Taman Bianglala dan nikmati keseruannya!</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -478,17 +582,19 @@
               <div class="testimonial-item">
                 <div class="container">
                   <h3 class="mt-5">Kubah Kupu-Kupu</h3>
-                  <div class="row align-items-center">
 
-                    <div class="col-6 col-sm-6 col-md-5" data-aos="fade-left">
-                      <div class="land">
-                        <img src="img/Kubah Kupu-Kupu.png" alt="Image" class="miniland img-fluid">
+                  <div class="maps-desc">
+                    <div class="row align-items-center">
+                      <div class="col-6 col-sm-5" data-aos="fade-left">
+                        <div class="land">
+                          <img src="img/Kubah Kupu-Kupu.png" alt="Image" class="miniland img-fluid">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-6 col-6 col-sm-6 col-md-7">
-                      <div class="titlepage text_align_left"><br>
-                        <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Kapan lagi kan bisa lihat pameran bareng kupu-kupu, pastinya berkesan banget dong! </p>
+                      <div class="col-6 col-sm-7">
+                        <div class="titlepage text_align_left"><br>
+                          <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Kapan lagi kan bisa lihat pameran bareng kupu-kupu, pastinya berkesan banget dong! </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -501,17 +607,19 @@
               <div class="testimonial-item">
                 <div class="container">
                   <h3 class="mt-5">Pasar Malam</h3>
-                  <div class="row align-items-center">
 
-                    <div class="col-6 col-sm-6 col-md-5" data-aos="fade-left">
-                      <div class="land">
-                        <img src="img/Pasar Malam.png" alt="Image" class="miniland img-fluid">
+                  <div class="maps-desc">
+                    <div class="row align-items-center">
+                      <div class="col-6 col-sm-5" data-aos="fade-left">
+                        <div class="land">
+                          <img src="img/Pasar Malam.png" alt="Image" class="miniland img-fluid">
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-6 col-sm-6 col-md-7">
-                      <div class="titlepage text_align_left"><br>
-                        <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Nantikan asiknya belanja di Pasar Malam dengan berbagai pilihan sesukamu! </p>
+                      <div class="col-6 col-sm-7">
+                        <div class="titlepage text_align_left"><br>
+                          <p class="mb-4" data-aos="fade-left" data-aos-delay="400">Nantikan asiknya belanja di Pasar Malam dengan berbagai pilihan sesukamu! </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -569,68 +677,21 @@
     <div class="section-title">
       <h4 data-aos="fade-left">MEDIA PARTNER</h4>
     </div>
-    <div class="row d-flex justify-content-center">
+
+    <div class="row d-flex justify-content-center mt-3 mb-5">
       <div class="col-10">
         <div class="clients-slider-media swiper-container" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper d-flex align-items-center">
-            @foreach($media as $media)
-            <div class="swiper-slide"><img class="img-fluid" src="{{ asset('storage/' . $media->image) }}" alt="{{ $media->name }}'s image"></div>
-            @endforeach
+              @foreach($media as $media)
+              <div class="swiper-slide"><img class="img-fluid" src="{{ asset('storage/' . $media->image) }}" alt="{{ $media->name }}'s image"></div>
+              @endforeach
           </div>
-          <!-- <div class="swiper-pagination"></div> -->
         </div>
       </div>
     </div>
 
   </div>
-</section><!-- End Clients Section -->
-
-<!-- --------------------------------------------------------------
-  # JOIN VENDOR
-  -------------------------------------------------------------- -->
-@cannot('admin')
-@cannot('vendor')
-<section id="joinvendor" class="joinvendor mb-5">
-  <div class="container" data-aos="zoom-in">
-
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <h1> Ingin Menjadi<br><span> Vendor?</span></h1>
-      </div>
-      <div class="col-md-5">
-        <h2> Bawa brand anda ke Sorak Sorai!</h2>
-        <p> Anda dapat berjualan dan mendapat pengalaman baru di dunia virtual bersama brand-brand besar lainnya!</p>
-        <a href="/pengajuan/create" class="btn btn-get-started">Daftar Sekarang</a>
-      </div>
-    </div>
-
-  </div>
-</section><!-- End Clients Section -->
-@endcannot
-<!-- --------------------------------------------------------------
-  # SUDAH JADI VENDOR
-  -------------------------------------------------------------- -->
-@can('vendor')
-<section id="joinvendor" class="joinvendor mb-5">
-  <div class="container" data-aos="zoom-in">
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <h1> Anda Adalah<br><span> Vendor</span></h1>
-      </div>
-      <div class="col-md-5">
-        <h2> Bawa brand anda ke Sorak Sorai!</h2>
-        <p> Selamat, Anda dapat berjualan dan mendapat pengalaman baru di dunia virtual bersama brand-brand besar lainnya!</p>
-        <a href="/dashboard" class="btn btn-get-started">Dashboard Anda</a>
-      </div>
-    </div>
-
-  </div>
-</section><!-- End Clients Section -->
-@endcan
-
-@endcannot
+</section>
 
 <!-- --------------------------------------------------------------
   # FOOTER HOME
@@ -687,4 +748,5 @@
   </div>
 
 </footer><!-- End Footer -->
+
 @endsection

@@ -20,6 +20,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardVendorReqController;
+use App\Http\Controllers\TugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ use App\Http\Controllers\DashboardVendorReqController;
 // ================ HALAMAN HOME - CERITA - PENAMPIL =====================
 Route::get('/', [HomeController::class, "index"]);
 Route::get('/about', [HomeController::class, "about"]);
-Route::get('/lineup', [HomeController::class, "lineup"]);
+Route::get('/upcoming', [HomeController::class, "coming"]);
 
 // ================ HALAMAN BELANJA =====================
 Route::get('/posts', [PostController::class, "index"]);
@@ -131,3 +132,7 @@ Route::resource('/dashboard/activities', ActivityController::class)->middleware(
 // ================ DASHBOARD GALLERY =====================
 Route::get('/dashboard/galleries/slug', [GalleryController::class, 'slug'])->middleware('admin');
 Route::resource('/dashboard/galleries', GalleryController::class)->middleware('admin');
+
+Route::get('/tugas/tambah', [TugasController::class, 'tambah']);
+Route::post('/tugas/simpan',  [TugasController::class, 'simpan']);
+Route::get('/tugas/lihat/{tugas}',  [TugasController::class, 'lihat']);

@@ -23,6 +23,7 @@
                 <th class="text-center" scope="col">Logo</th>
                 <th class="text-center" scope="col">Username</th>
                 <th class="text-center" scope="col">Market Name</th>
+                <th class="text-center" scope="col">Cek Product</th>
                 <th class="text-center" scope="col">Link Marketplace</th>
               </tr>
             </thead>
@@ -36,6 +37,7 @@
                 </td>
                 <td class="text-center">{{ $k->uname }}</td>
                 <td class="text-center">{{ $k->name }}</td>
+                <td class="text-center"><a href="/vendor/{{ $k->uname }}" class="btn btn-warning btn-icon-split"><span class="icon text-white-50"><i class='fa fa-shopping-bag'></i></span></a></td>
                 <td class="text-center"><a href="{{ $k->marketlink }}" class="btn btn-success btn-icon-split"><span class="icon text-white-50"><i class='fa fa-link'></i></span><span class="text">{{ $k->name }}</span></a>
 
               </tr>

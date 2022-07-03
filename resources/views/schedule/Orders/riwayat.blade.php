@@ -27,7 +27,9 @@
 
                 <div class="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $k->name }}</h5>
+                        <h5 class="card-title">{{ $k->name }}
+                            <span><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</span>
+                        </h5>
 
                         <div class="row date-time">
                             <div class="col col-sm-6 col-md-6">

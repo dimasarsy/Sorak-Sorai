@@ -41,16 +41,49 @@
                                 <td class="text-center">{{ $schedule->starttime }} - {{ $schedule->endtime}}</td>
 
                                 @if($schedule->status == 'available')
-                                <td class="text-center"><div class="badge border-2" style="background-color:green"><span class="text">{{ $schedule->status}}</span></div></td>
+                                <td class="text-center">
+                                    <div class="badge border-2" style="background-color:green"><span class="text-md">{{ $schedule->status}}</span></div>
+                                </td>
                                 @elseif($schedule->status == 'deleted')
-                                <td class="text-center"><div class="badge border-2" style="background-color:red"><span class="text">{{ $schedule->status}}</span></div></td>
+                                <td class="text-center">
+                                    <div class="badge border-2" style="background-color:red"><span class="text-md">{{ $schedule->status}}</span></div>
+                                </td>
                                 @else
-                                <td class="text-center"><div class="badge border-2" style="background-color:orange"><span class="text">{{ $schedule->status}}</span></div></td>
+                                <td class="text-center">
+                                    <div class="badge border-2" style="background-color:orange"><span class="text-md">{{ $schedule->status}}</span></div>
+                                </td>
                                 @endif
+
+                                <!-- <form action="{{ url('dashboard/pengajuan-vendor/update', $schedule->id) }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <td colspan="2">
+                                        <div class="col-auto my-1">
+                                            @if($schedule->status == 'available')
+                                            <select name="status" style="background-color:green; color:white" class="custom-select mr-sm-2" autocomplete="status" id="inlineFormCustomSelect">
+                                                <option style="background-color:white; color:black"  value="{{ old('status', $schedule->status) }}">available</option>
+                                                <option style="background-color:white; color:black"  value="soon">soon</option>
+                                            </select>
+                                            @elseif($schedule->status == 'soon')
+                                            <select name="status" style="background-color:orange; color:white" class="custom-select mr-sm-2" autocomplete="status" id="inlineFormCustomSelect">
+                                                <option style="background-color:white; color:black"  value="{{ old('status', $schedule->status) }}">soon</option>
+                                                <option style="background-color:white; color:black"  value="soon">available</option>
+                                            </select>
+                                            @endif
+                                        </div><br>
+
+                                        <button type="submit" class="btn btn-primary px-2 py-2 mx-5">Ubah</button></td>
+                                    </td>
+
+                                </form> -->
 
                                 <td class="text-center">
 
                                     @if($schedule->status == "available")
+                                    <a href="/dashboard/updateSchedule/{{ $schedule->id }}" class="btn btn-info btn-circle btn-sm" data-tip="Edit"><i class="fas fa-edit"></i></a>
+                                    @endif
+
+                                    @if($schedule->status == "soon")
                                     <a href="/dashboard/updateSchedule/{{ $schedule->id }}" class="btn btn-info btn-circle btn-sm" data-tip="Edit"><i class="fas fa-edit"></i></a>
                                     @endif
 

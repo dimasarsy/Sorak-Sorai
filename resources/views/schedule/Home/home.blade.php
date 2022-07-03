@@ -135,9 +135,6 @@
                         <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 d-flex justify-content-center">
                             <img src="{{ asset('storage/' . $schedule->image) }}" class="img-fluid rounded-start" alt="...">
                         </div>
-                        @if($schedule->vip == 1)
-                        <div class="ribbon"><span>VIP</span></div>
-                        @endif
 
                         <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-9">
 
@@ -157,6 +154,10 @@
 
                                 <h5 class="card-price">Rp{{ number_format($schedule->price, 0, ',', '.') }}</h5>
                                 <h5 class="card-desc">{!! \Illuminate\Support\Str::words($schedule->description, 25) !!}</h5>
+                                
+                                @if($schedule->vip == 1)
+                                <h5 class="card-vip"><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</h5>
+                                @endif
                                 <div class="row mt-5">
 
                                 </div>
@@ -187,7 +188,6 @@
                 <div class="section-schedule mt-5">
                     <h2 class="mb-5" data-aos="fade-up">Beli Ticket</h2>
                     @if(request())
-                    
                     <div class="mt-5" data-aos-delay="600">
                         <a href="/schedule" class="btn-get-started scrollto text-decoration-none">Semua Jadwal</a>
                     </div>

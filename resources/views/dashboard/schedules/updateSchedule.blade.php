@@ -9,11 +9,23 @@
     <div class="col-lg-10">
         <div class="card-body">
             <!-- <img src="{{ Storage::url("/image"."/".$schedule->image) }}" alt="Schedule Image" class="card-img-top p-1"> -->
-            <form class="p-3" action="/dashboard/updateSchedule/{{ $schedule->id }}"
-                method="POST" enctype="multipart/form-data">
+            <form class="p-3" action="/dashboard/updateSchedule/{{ $schedule->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
 
+
+                <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Edit Status</label>
+                @if(old('status', $schedule->status) == 'available')
+                <select id="inlineFormCustomSelect" name="status" autocomplete="status" class="form-select form-select-md" style="background-color:green; color:white; font-weight:bold;">
+                    <option style="background-color:white; color:black" selected value="{{ old('status', $schedule->status) }}">available</option>
+                    <option style="background-color:white; color:black" value="soon">soon</option>
+                </select><br>
+                @elseif(old('status', $schedule->status) == 'soon')
+                <select id="inlineFormCustomSelect" name="status" autocomplete="status" class="form-select form-select-md" style="background-color:orange; color:white; font-weight:bold;">
+                    <option style="background-color:white; color:black" selected value="{{ old('status', $schedule->status) }}">soon</option>
+                    <option style="background-color:white; color:black" value="available">available</option>
+                </select><br>
+                @endif
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Schedule Name</label>
@@ -23,12 +35,12 @@
 
                 <label for="vip" class="block text-sm font-medium text-gray-700 mb-2">VIP</label>
                 <select id="inlineFormCustomSelect" name="vip" autocomplete="vip" class="form-select form-select-md ">
-                    @if(old('vip', $schedule->vip) == 1))    
-                        <option selected value="{{ old('vip', $schedule->vip) }}">YES</option>
-                        <option value="0">NO</option>
+                    @if(old('vip', $schedule->vip) == 1))
+                    <option selected value="{{ old('vip', $schedule->vip) }}">YES</option>
+                    <option value="0">NO</option>
                     @elseif(old('vip', $schedule->vip) == 0))
-                        <option selected value="{{ old('vip', $schedule->vip) }}">NO</option>
-                        <option value="1">YES</option>
+                    <option selected value="{{ old('vip', $schedule->vip) }}">NO</option>
+                    <option value="1">YES</option>
                     @endif
                 </select><br>
 
@@ -58,11 +70,12 @@
                     @endif
                     <input id="image" name="image" type="file" class="form-control @error('image') is-invalid @enderror" onchange="previewImage();">
                     @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div><hr><h5>Date & Time</h5><br>
+                </div>
+                <hr>
+                <h5>Date & Time</h5><br>
 
                 <div class="form-floating my-3">
-                    <input type="date" class="form-control @error('date') is-invalid @enderror" id="date"
-                        placeholder="Date" name="date" value="{{ old('date', $schedule->date) }}">
+                    <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" placeholder="Date" name="date" value="{{ old('date', $schedule->date) }}">
                     <label for="date">Schedule Date</label>
                     @error('date')
                     <div class="invalid-feedback mb-3">
@@ -72,8 +85,7 @@
                 </div>
 
                 <div class="form-floating my-3">
-                    <input type="time" class="form-control @error('starttime') is-invalid @enderror" id="starttime"
-                        placeholder="starttime" name="starttime" value="{{ old('starttime', $schedule->starttime) }}">
+                    <input type="time" class="form-control @error('starttime') is-invalid @enderror" id="starttime" placeholder="starttime" name="starttime" value="{{ old('starttime', $schedule->starttime) }}">
                     <label for="starttime">Start Time</label>
                     @error('starttime')
                     <div class="invalid-feedback mb-3">
@@ -83,8 +95,7 @@
                 </div>
 
                 <div class="form-floating my-3">
-                    <input type="time" class="form-control @error('endtime') is-invalid @enderror" id="endtime"
-                        placeholder="endtime" name="endtime" value="{{ old('endtime', $schedule->endtime) }}">
+                    <input type="time" class="form-control @error('endtime') is-invalid @enderror" id="endtime" placeholder="endtime" name="endtime" value="{{ old('endtime', $schedule->endtime) }}">
                     <label for="endtime">End Time</label>
                     @error('endtime')
                     <div class="invalid-feedback mb-3">
@@ -100,8 +111,7 @@
 </div>
 
 <script>
-
-    function previewImage(){
+    function previewImage() {
         const image = document.querySelector('#image');
         const imgPreview = document.querySelector('.img-preview');
 
@@ -110,10 +120,9 @@
         const oFReader = new FileReader();
         oFReader.readAsDataURL(image.files[0]);
 
-        oFReader.onload = function(oFREvent){
+        oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
         }
     }
-
 </script>
 @endsection

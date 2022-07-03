@@ -4,7 +4,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-      <div class="sidebar-brand-text mx-3">Sorak-sorai</div>
+      <div class="sidebar-brand-text mx-3">Sorak Sorai</div>
     </a>
 
     <!-- Divider -->
@@ -93,20 +93,23 @@
     @can('admin')
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link {{ Request::is('dashboard/addSchedule*') ? 'active' : '' }} && {{ Request::is('dashboard/scheduleHistory*')  ? 'active' : '' }} && {{ Request::is('dashboard/orders*')  ? 'active' : '' }} collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-ticket-alt"></i>
-        <span>Ticketing</span>
+      <a class="nav-link {{ Request::is('dashboard/addSchedule*') ? 'active' : '' }} && {{ Request::is('dashboard/scheduleHistory*')  ? 'active' : '' }} collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Schedule</span>
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Schedule:</h6>
           <a class="collapse-item {{ Request::is('dashboard/addSchedule*') ? 'active' : '' }} " aria-current="page" href="/dashboard/addSchedule">Add Schedule</a>
           <a class="collapse-item {{ Request::is('dashboard/scheduleHistory*') ? 'active' : '' }} " aria-current="page" href="/dashboard/scheduleHistory">Schedule History</a>
-          <div class="collapse-divider"></div>
-          <h6 class="collapse-header">Ticket:</h6>
-          <a class="collapse-item {{ Request::is('dashboard/orders*') ? 'active' : '' }} " aria-current="page" href="/dashboard/orders">User Order</a>
         </div>
       </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link {{ Request::is('dashboard/orders*') ? 'active' : '' }}" aria-current="page" href="/dashboard/orders">
+        <i class="fas fa-ticket-alt"></i>
+        <span>Users Ticket</span>
+      </a>
     </li>
 
     <!-- Divider -->

@@ -24,7 +24,7 @@
             <a href="/" class="{{ Request::is('/*') ? 'active' : '' }}"><i class="fa fa-home" aria-hidden="true"></i></a>
           </div>
           <a href="/about" class="text-decoration-none {{ Request::is('about*') ? 'active' : '' }}"> Cerita Kami </a>
-          <a href="/lineup" class="text-decoration-none {{ Request::is('lineup*') ? 'active' : '' }}"> Penampil </a>
+          <a href="/upcoming" class="text-decoration-none {{ Request::is('upcoming*') ? 'active' : '' }}"> Yang Akan Datang </a>
           <a href="/posts" class="text-decoration-none {{ Request::is('post*')  ? 'active' : '' }} && {{ Request::is('vendor*')  ? 'active' : '' }}"> Belanja </a>
         </ul>
       </div>
@@ -44,7 +44,11 @@
 
             @auth
             <li class="nav-item dropdown">
-
+              @if(Auth::user()->photo == "default.png")
+              <img class="img-profile rounded-circle" src="../../../img/default.png">
+              @else
+              <img class="img-profile rounded-circle" src="{{ asset('storage/' . Auth::user()->photo) }}">
+              @endif
               <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Halo, {{ \Illuminate\Support\Str::words(auth()->user()->name, 2)  }}
               </a>
@@ -60,7 +64,7 @@
                 @endcannot
 
                 @can('vendor')
-                <a class="collapse-item" href="/dashboard"><i class="fas fa-fw fa-tachometer-alt"></i>&emsp;Dashboard</a>
+                <a class="collapse-item" href="/dashboard-vendor"><i class="fas fa-fw fa-tachometer-alt"></i>&emsp;Dashboard</a>
                 <hr class="dropdown-divider">
                 @endcan
 

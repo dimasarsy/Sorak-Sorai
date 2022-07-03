@@ -28,7 +28,7 @@
 
             <tbody>
             @foreach($users as $user)
-              @if($user->role_id === 1)
+              @if($user->role_id == 1)
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $user->name }}</td>

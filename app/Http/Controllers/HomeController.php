@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
-use App\Models\Lineup;
 use App\Models\Sponsor;
 use App\Models\Activity;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Schedule;
 
 class HomeController extends Controller
 {
@@ -21,9 +21,17 @@ class HomeController extends Controller
     {
         return view('home', [
             "title" => "Home",
-            'schedules' =>  DB::table('schedules')->where('schedules.status','available')->where('date', '>=', date('Y-m-d'))->limit(1)->get(),
+            'schedules' =>  DB::table('schedules')->join('users', 'schedules.user_id', '=', 'users.id')
+                        ->where('schedules.status','available')
+                        ->select('schedules.*', 'users.role_id')
+                        ->where('users.role_id','1')
+                        ->where('date', '>=', date('Y-m-d'))
+                        ->orderBy("availableScheduleDate",'asc')
+                        ->limit(1)
+                        ->get(),
             'activities' => Activity::query()->latest()->get(),
-            'lineups' => DB::table('lineups')->latest()->limit(6)->get(),
+            'lineup' => DB::table('lineups')->where('date', '>=', date('Y-m-d'))->orderBy("availableScheduleDate",'asc')->limit(1)->get(),
+            'lineups' => DB::table('lineups')->latest()->get(),
             'sponsors' => Sponsor::query()->latest()->get(),
             'media' => Media::query()->latest()->get()
         ]);
@@ -40,11 +48,20 @@ class HomeController extends Controller
         ]);
     }
 
-    public function lineup()
+    public function coming()
     {
-        return view('lineup', [
-            'title' => "Lineup",
-            'lineups' => Lineup::query()->latest()->paginate(12)
+        
+        $schedules = DB::table('schedules as schedule')
+            ->orderBy('date','asc')
+            ->join('users', 'schedule.user_id', '=', 'users.id')
+            ->select('schedule.*', 'users.role_id')
+            ->where('users.role_id','1')
+            ->where('schedule.status', "soon")
+            ->where('schedule.date', '>=', date('Y-m-d'))->paginate(3);
+
+        return view('upcoming', [
+            'title' => "Upcoming Schedule",
+            "schedules" => $schedules,
         ]);
     }
 }

@@ -19,23 +19,16 @@
         <div class="row mt-5 ">
             <p class="card-title">
                 {{ $schedule->name }}
-                @if($schedule->vip == 1)
-                <button type="button" class="btn-transparent" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <span><sup><i class="fas fa-crown"></i></sup></span>
-                </button>
-                @endif
             </p>
             <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{!! date('d F, Y', strtotime($schedule->date)) !!}</p>
 
             <div class="col-12">
                 <div class="row">
 
-                    <div class="bingkai vip col-md-4 col-lg-6 ">
+                    <div class="bingkai col-md-4 col-lg-6 ">
                         <img src="{{ asset('storage/' . $schedule->image) }}" alt="Schedule Image" class="img-fluid rounded-start">
-                        @if($schedule->vip == 1)
-                        <div class="ribbon"><span>VIP</span></div>
-                        @endif
                     </div>
+
 
 
                     <div class="col-md-8 col-lg-9">
@@ -68,7 +61,13 @@
 
                 </div>
             </div>
-
+            @if($schedule->vip == 1)
+            <h5 class="card-vip"><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</h5>
+            <h5 class="card-vip-info">
+                ●&nbsp;&nbsp; Akses ke Meet & Greet<br>
+                ●&nbsp;&nbsp; Ke Samudera Antariksa
+            </h5>
+            @endif
 
         </div>
 
@@ -79,9 +78,9 @@
 <!-- Modal -->
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        
+
         <div class="verif">
-            
+
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
             <h5>Setelah Menikmati Konser? Sambut Kehangatan Bareng Idola Kalian di Samudra Antariksa</h5>

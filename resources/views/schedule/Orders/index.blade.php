@@ -28,13 +28,13 @@
                 <div class="col-12 col-sm-3 col-md-4 col-lg-3 col-xl-3">
                     <img src="{{ asset('storage/' . $k->image) }}" class="img-fluid rounded-start" alt="...">
                 </div>
-                @if($k->vip == 1)
-                <div class="ribbon"><span>VIP</span></div>
-                @endif
 
                 <div class="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $k->name }}</h5>
+                        <h5 class="card-title">{{ $k->name }}
+                            <span><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</span>
+                        </h5>
+                    
                         <div class="row date-time">
                             <div class="col col-md-6 col-lg-6">
                                 <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>

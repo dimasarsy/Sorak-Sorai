@@ -130,13 +130,72 @@
         loop: false,
         autoplay: {
           delay: 10000,
-          disableOnInteraction: false
+          disableOnInteraction: true
         },
         slidesPerView: 'auto',
         pagination: {
             el: '.swiper-pagination-maps',
             type: 'bullets',
             clickable: true
+        }
+    });
+
+    // new Swiper('.swiper-container', {
+    //     slidesPerView: 3,
+    //     slidesPerColumn: 2,
+    //     slidesPerGroup: 6,
+    //     spaceBetween: 0,
+    //     threshold: 4,
+    //     slidesPerColumnFill: 'row',
+    // });
+
+    new Swiper('.lineup-slider', {
+        speed: 400,
+        loop: false,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: true
+        },
+        slidesPerView: 'auto',
+        // scrollbar: {
+        //     el: ".swiper-scrollbar",
+        //     hide: false,
+        //     draggable : true,
+        //     snapOnRelease: true
+        // },
+        breakpoints: {
+
+            300: {
+                slidesPerView: 1.5,
+                slidesPerColumn: 2,
+                slidesPerColumnFill: 'row',
+                spaceBetween: 0
+            },
+
+            451: {
+                slidesPerView: 2,
+                slidesPerColumn: 2,
+                slidesPerColumnFill: 'row',
+                spaceBetween: 0
+            },
+            577: {
+                slidesPerView: 2.5,
+                slidesPerColumn: 2,
+                slidesPerColumnFill: 'row',
+                spaceBetween: 0
+            },
+            768: {
+                slidesPerView: 3.1,
+                slidesPerColumn: 2,
+                slidesPerColumnFill: 'row',
+                spaceBetween: 0
+            },
+            993: {
+                slidesPerView: 4.05,
+                slidesPerColumn: 2,
+                slidesPerColumnFill: 'row',
+                spaceBetween: 2
+            }
         }
     });
 

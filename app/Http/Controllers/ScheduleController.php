@@ -182,12 +182,6 @@ class ScheduleController extends Controller
 
         $validatedData['image'] = $request->file('image')->store('post-images');
 
-
-        // $currFile = $request->file('image');
-
-        // $fileName = time() . '_' . $currFile->getClientOriginalName();
-        // Storage::putFileAs('public/image', $currFile, $fileName);
-
         $schedule = new Schedule;
         $schedule->name = $validatedData['name'];
         $schedule->vip = $validatedData['vip'];
@@ -212,7 +206,7 @@ class ScheduleController extends Controller
 
         $schedule->availableScheduleDate = $date_start->addHours($hour_start)->addMinutes($minute_start);
         $schedule->dueDateSchedule = $date_end->addHours($hour_end)->addMinutes($minute_end);
-        $schedule->status = "available";
+        $schedule->status = "soon";
         $schedule->user_id = Auth::user()->id;
         $schedule->author = Auth::user()->name;
 
@@ -253,6 +247,7 @@ class ScheduleController extends Controller
             $validatedData = $request->validate([
                 "name" => "required|min:5",
                 "vip" => "required",
+                "status" => "required",
                 "price" => "required|integer|min:1",
                 "description" => "required|min:20",
                 "image" => "image|file",
@@ -282,6 +277,7 @@ class ScheduleController extends Controller
             $validatedData = $request->validate([
                 "name" => "required|unique:schedules|min:5",
                 "vip" => "required",
+                "status" => "required",
                 "price" => "required|integer|min:1",
                 "description" => "required|min:20",
                 "image" => "image|file",
@@ -319,8 +315,8 @@ class ScheduleController extends Controller
 
         if (
             $request->name == $schedule->name && $request->price == $schedule->price &&
-            $request->description == $schedule->description &&
-            $request->file('image') == null && $request->date == $schedule->date &&
+            $request->description == $schedule->description && $request->vip == $schedule->vip &&
+            $request->status == $schedule->status && $request->file('image') == null && $request->date == $schedule->date &&
             $request->starttime == $schedule->starttime && $request->endtime == $schedule->endtime
         ) {
             return redirect('/dashboard/scheduleHistory')->with('noUpdate', 'There is no update on schedule!');
