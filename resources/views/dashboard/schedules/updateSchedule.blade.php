@@ -76,7 +76,16 @@
 
                 <div class="form-floating my-3">
                     <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" placeholder="Date" name="date" value="{{ old('date', $schedule->date) }}">
-                    <label for="date">Schedule Date</label>
+                    <label for="date">Schedule Date (Start)</label>
+                    @error('date')
+                    <div class="invalid-feedback mb-3">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-floating my-3">
+                    <input type="date" class="form-control @error('enddate') is-invalid @enderror" id="enddate" placeholder="endDate" name="enddate" value="{{ old('enddate', $schedule->enddate) }}">
+                    <label for="enddate">Schedule Date (End)</label>
                     @error('date')
                     <div class="invalid-feedback mb-3">
                         {{ $message }}

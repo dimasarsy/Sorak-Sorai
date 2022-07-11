@@ -1267,7 +1267,7 @@ nav .logo.space {
     width: 106px;
     height: 0px;
     top: -65px;
-    left: calc(50% - 60px);
+    left: calc(50% - 55px);
 
     border: 2px solid #FFFFFF;
     box-shadow: 0px 0px 5px #D85C89;
@@ -3107,7 +3107,7 @@ nav .logo.space {
     width: 106px;
     height: 0px;
     top: 50px;
-    left: calc(50% - 50px);
+    left: calc(50% - 55px);
 
     border: 2px solid #FFFFFF;
     box-shadow: 0px 0px 5px #D85C89;
@@ -3275,6 +3275,114 @@ nav .logo.space {
 }
 
 /*--------------------------------------------------------------
+# POLICY
+--------------------------------------------------------------*/
+.policy .bingkai{
+    background: linear-gradient(93.05deg,  rgba(255, 255, 255, 0.381) 3.13%, rgba(255, 255, 255, 0) 119.78%);
+    padding:70px 60px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 5px #FFFFFF;
+    border: #ffffff8f 1px solid;
+    backdrop-filter: blur(5px);
+
+}
+.policy h1{
+    font-family: Clip;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+
+    position: relative;
+
+    align-items: center;
+
+    color: #FFFFFF;
+    text-shadow: 0px 0px 2px #FFFFFF;
+    margin-bottom: 30px;
+}
+.policy h2{
+    color: white;
+    text-align: justify;
+    margin-top: 30px;
+
+    position: relative;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+}
+.policy p{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+
+    align-items: left;
+    text-align: justify;
+
+    color: #FFFFFF;
+}
+.policy ul li{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+
+    align-items: left;
+    text-align: justify;
+
+    color: #FFFFFF;
+}
+@media screen and (max-width: 768px) {
+
+    .policy h1{
+        font-weight: 300;
+        font-size: 32px;
+    }
+    .policy h2{
+        font-size: 20px;
+    }
+    .policy p{
+        font-size: 14px;
+    }
+    .policy ul li{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .policy .bingkai{
+        padding:70px 30px;
+    }
+    .policy h1{
+        font-weight: 300;
+        font-size: 28px;
+    }
+    .policy h2{
+        font-size: 18px;
+        line-height: 24px;
+        text-align: left;
+    }
+    .policy p{
+        font-size: 11px;
+    }
+    .policy ul li{
+        font-size: 11px;
+    }
+}
+@media screen and (max-width: 417px) {
+    .policy h1{
+        font-weight: 300;
+        font-size: 24px;
+    }
+
+}
+/*--------------------------------------------------------------
 # GALLERY
 --------------------------------------------------------------*/
 .gallery .swiper-slide {
@@ -3316,7 +3424,49 @@ nav .logo.space {
         height: 98%;
     }
 }
+/* ---------------FANCY----------------- */
+a[data-fancybox] img {
+    cursor: zoom-in;
+}
+.fancybox__backdrop::after {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    filter: blur(2px);
+    left: 50%;
+    top: 50%;
+    transform: scale(11);
+    opacity: 0.3;
+  }
+  
+  .fancybox__container {
+    --carousel-button-bg: linear-gradient(93.05deg, #FFFFFF 3.12%, rgba(255, 255, 255, 0.63) 3.13%, rgba(255, 255, 255, 0) 119.78%);
+  }
 
+  /* Thumbnails */
+  .fancybox__thumbs .carousel__slide {
+    padding: 8px 8px 16px 8px;
+  }
+  
+  .is-nav-selected::after {
+    display: none;
+  }
+  
+  .fancybox__thumb {
+    border-radius: 6px;
+    opacity: 0.2;
+  }
+  
+  .fancybox__thumb:hover,
+  .is-nav-selected .fancybox__thumb {
+    border-radius: 6px;
+    opacity: 1;
+  }
+  
+  .is-nav-selected .fancybox__thumb::after {
+    display: none;
+  }
 /*--------------------------------------------------------------
 # PERFORMANCE
 --------------------------------------------------------------*/
@@ -4519,23 +4669,6 @@ ALL SCHEDULE
 
 }
 
-/* .section-schedule .fest-img img {
-    width: 250px;
-    margin-top: 8%;
-    margin-bottom: 5%;
-    filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
-    animation-duration: 0s;
-    animation-iteration-count: none;
-} */
-
-/* .section-schedule .fest-img-ticket img {
-    width: 300px;
-    margin-top: -25%;
-    margin-bottom: 5%;
-    filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
-    animation-duration: 0s;
-    animation-iteration-count: none;
-} */
 
 @media screen and (max-width: 576px) {
     .schedule {
@@ -4550,6 +4683,7 @@ ALL SCHEDULE
         font-size: 28px;
         line-height: 30px;
     }
+    
 }
 
 @media screen and (max-width: 450px) {
@@ -4719,22 +4853,33 @@ ALL SCHEDULE
         width: 695px;
         height: 206px;
     }
+    .schedule .card-title {
+        font-size: 21px;
+        margin-top: -1%;
+    }
 
     .schedule .bingkai img {
         width: 186px;
         height: 186px;
-        margin-top: -3%;
+        margin-top: -4%;
         margin-left: -1%;
     }
 
     .schedule .bingkai .card-body {
-        margin-left: -8%;
+        margin-left: -6%;
     }
 
     .schedule .card-desc {
         font-weight: 400;
         font-size: 12px;
+        margin-top: -8%;
     }
+
+    .schedule .card-vip {
+        font-size: 18px;
+        margin-top: -1%;
+    }
+    
 }
 
 @media screen and (max-width: 767px) {
@@ -4746,12 +4891,12 @@ ALL SCHEDULE
     .schedule .bingkai img {
         width: 160px;
         height: 160px;
-        margin-top: -4%;
+        margin-top: -5%;
         margin-left: -1%;
     }
 
     .schedule .bingkai .card-body {
-        margin-left: -8%;
+        margin-left: -6%;
     }
 
     .schedule .card-body {
@@ -4759,7 +4904,7 @@ ALL SCHEDULE
     }
 
     .schedule .card-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .schedule .card-date {
@@ -4775,16 +4920,17 @@ ALL SCHEDULE
         margin-top: -13%;
         line-height: 20px;
     }
+    .schedule .card-vip {
+        font-size: 14px;
+        margin-top: -1%;
+    }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
 
-    /* .schedule .row{
-    opacity: 0;
-  } */
     .schedule .bingkai {
         width: 215.07px;
-        height: 256.96px;
+        height: 266.96px;
     }
 
     .schedule .bingkai img {
@@ -4806,11 +4952,13 @@ ALL SCHEDULE
     }
 
     .schedule .card-date {
-        font-size: 9px;
+        font-size: 10px;
+        margin-top: -5%;
     }
 
     .schedule .card-time {
         font-size: 9px;
+        margin-top: -12%;
     }
 
     .schedule .card-desc {
@@ -4820,6 +4968,7 @@ ALL SCHEDULE
     .schedule .card-price {
         opacity: 1;
         margin-left: 5%;
+        margin-top: 0%;
         font-family: 'Lato';
         font-style: normal;
         font-weight: 700;
@@ -4829,6 +4978,12 @@ ALL SCHEDULE
         text-align: left;
 
         color: #FFFFFF;
+    }
+
+    .schedule .card-vip {
+        font-size: 14px;
+        margin-top: -60%;
+        margin-left: 70%;
     }
 }
 
@@ -4850,11 +5005,14 @@ ALL SCHEDULE
     }
 
     .schedule .card-date {
-        font-size: 8.54455px;
+        font-size:10px;
+        margin-top: -7%;
+
     }
 
     .schedule .card-time {
-        font-size: 8.54455px;
+        font-size: 9px;
+        margin-top: -14%;
     }
 
     .schedule .card-desc {
@@ -4864,6 +5022,12 @@ ALL SCHEDULE
     .schedule .card-price {
         opacity: 1;
         font-size: 16.6982px;
+        margin-top: -5%;
+    }
+    .schedule .card-vip {
+        font-size: 12px;
+        margin-top: -68%;
+        margin-left: 70%;
     }
 }
 
@@ -4885,11 +5049,13 @@ ALL SCHEDULE
     }
 
     .schedule .card-date {
-        font-size: 7.54455px;
+        font-size: 9px;
     }
 
     .schedule .card-time {
-        font-size: 7.54455px;
+        font-size: 8px;
+        margin-top: -16%;
+
     }
 
     .schedule .card-desc {
@@ -4900,21 +5066,48 @@ ALL SCHEDULE
         opacity: 1;
         font-size: 16.6982px;
     }
+    .schedule .card-vip {
+        font-size: 12px;
+        margin-top: -71%;
+        margin-left: 70%;
+    }
 }
 
 @media screen and (max-width: 395px) {
     .schedule .bingkai img {
         margin-left: 0%;
     }
+    .schedule .card-vip {
+        font-size: 12px;
+        margin-top: -73%;
+    }
 }
 
+@media screen and (max-width: 386px) {
+    .schedule .card-vip {
+        font-size: 10px;
+        margin-top: -88%;
+        margin-left: 75%;
+    }
+}
 @media screen and (max-width: 380px) {
     .schedule .bingkai img {
         margin-left: -2%;
     }
+    .schedule .card-vip {
+        font-size: 10px;
+        margin-top: -90%;
+    }
+}
+@media screen and (max-width: 373px) {
+
+    .schedule .card-vip {
+        font-size: 10px;
+        margin-top: -105%;
+    }
 }
 
-@media screen and (max-width: 365px) {
+@media screen and (max-width: 368px) {
     .schedule .bingkai {
         width: 189px;
         height: 230px;
@@ -4931,14 +5124,6 @@ ALL SCHEDULE
 
     }
 
-    .schedule .card-date {
-        font-size: 6.54455px;
-    }
-
-    .schedule .card-time {
-        font-size: 6.54455px;
-    }
-
     .schedule .card-desc {
         opacity: 0;
     }
@@ -4946,6 +5131,10 @@ ALL SCHEDULE
     .schedule .card-price {
         opacity: 1;
         font-size: 16.6982px;
+    }
+    .schedule .card-vip {
+        font-size: 10px;
+        margin-top: -110%;
     }
 }
 
@@ -5195,6 +5384,12 @@ ALL SCHEDULE
         font-weight: 500;
         font-size: 16px;
     }
+    .schedule-detail .card-vip{
+        margin-top: -37%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -32%;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -5212,6 +5407,7 @@ ALL SCHEDULE
 
     .schedule-detail .card-body {
         margin-left: -5%;
+        margin-top: 15%;
     }
 
     .schedule-detail .card-title {
@@ -5244,6 +5440,13 @@ ALL SCHEDULE
         font-size: 16px;
         line-height: 24px;
     }
+
+    .schedule-detail .card-vip{
+        margin-top: -100%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -95%;
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -5251,6 +5454,24 @@ ALL SCHEDULE
     .schedule-detail {
         margin-left: 5%;
         margin-right: auto;
+    }
+}
+@media screen and (max-width: 536px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -110%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -105%;
+    }
+}
+@media screen and (max-width: 494px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -120%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -115%;
     }
 }
 
@@ -5271,6 +5492,10 @@ ALL SCHEDULE
     .schedule-detail {
         margin-left: 5%;
         margin-right: 5%;
+    }
+
+    .schedule-detail .card-body {
+        margin-top: 25%;
     }
 
     .schedule-detail .card-title {
@@ -5298,6 +5523,75 @@ ALL SCHEDULE
     .schedule-detail .card-desc {
         font-size: 13px;
         line-height: 24px;
+    }
+    .schedule-detail .card-vip{
+        margin-top: -120%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -115%;
+    }
+}
+
+@media screen and (max-width: 472px) {
+    .schedule-detail .card-body {
+        margin-top: 0%;
+    }
+    .schedule-detail .card-vip{
+        margin-top: -100%;
+        margin-left: 50%;
+        font-size: 16px;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -95%;
+        margin-left: 50%;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 460px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -105%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -100%;
+    }
+}
+@media screen and (max-width: 436px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -115%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -110%;
+    }
+}
+@media screen and (max-width: 420px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -125%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -120%;
+    }
+}
+@media screen and (max-width: 388px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -145%;
+        font-size: 12px;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -140%;
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 375px) {
+
+    .schedule-detail .card-vip{
+        margin-top: -152%;
+    }
+    .schedule-detail .card-vip-info {
+        margin-top: -145%;
     }
 }
 
@@ -5390,10 +5684,6 @@ ALL SCHEDULE
     /* cursor: pointer; */
 }
 
-/* .schedule-join .bingkai:hover {
-  box-shadow: 0px 0px 15px #D85C89;
-} */
-
 .schedule-join .bingkai img {
     position: relative;
     overflow: hidden;
@@ -5407,9 +5697,9 @@ ALL SCHEDULE
     justify-content: center;
     align-items: stretch;
 
-    margin-left: auto;
+    margin-left: 10%;
     margin-right: auto;
-    top: 4%;
+    top: 6%;
 
     border-radius: 8px;
 }
@@ -5519,16 +5809,16 @@ ALL SCHEDULE
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
-    font-size: 21.1613px;
+    font-size: 14px;
     line-height: 27px;
     /* or 130% */
 
-    text-align: left;
+    text-align: right;
 
     color: #FFFFFF;
 
     text-shadow: 0px 0px 6.61292px #FFBE43;
-    margin-left: 32%;
+    margin-left: 10%;
 
 }
 
@@ -5575,7 +5865,8 @@ ALL SCHEDULE
     font-size: 11.1456px;
     line-height: 29px;
     /* or 206% */
-
+    margin-left: -12%;
+    margin-top: 32%;
     align-items: center;
     text-align: center;
     color: #FFFFFF;
@@ -5587,7 +5878,6 @@ ALL SCHEDULE
     box-shadow: 0px 0px 3.60795px #FFFFFF;
 
     transform: rotate(-90deg);
-
 }
 
 .schedule-join .card-btn span {
@@ -5605,7 +5895,8 @@ ALL SCHEDULE
     font-size: 11.1456px;
     line-height: 29px;
     /* or 206% */
-
+    margin-left: -18%;
+    margin-top: 32%;
     align-items: center;
     text-align: center;
     color: #FFFFFF;
@@ -5702,25 +5993,24 @@ ALL SCHEDULE
 @media screen and (max-width: 991px) {
     .schedule-join .bingkai {
         width: 695px;
-        height: 206px;
+        height: 172px;
     }
 
     .schedule-join .bingkai img {
-        width: 186px;
-        height: 186px;
-        margin-top: 0%;
-        margin-left: -1%;
+        width: 150px;
+        height: 150px;
+        margin-top: -1%;
+        margin-left: 4%;
     }
 
     .schedule-join .bingkai .card-body {
         margin-left: -8%;
     }
-
-    .schedule-join .card-btn {
-        width: 206px;
-        height: 107.2px;
-        margin-left: -20%;
+    .schedule-join .card-btn-pend {
+        margin-left: -25%;
+        font-size: 10px;
     }
+    
 }
 
 @media screen and (max-width: 767px) {
@@ -5729,15 +6019,15 @@ ALL SCHEDULE
     }
 
     .schedule-join .bingkai {
-        width: 515px;
+        width: 600px;
         height: 176px;
     }
 
     .schedule-join .bingkai img {
         width: 136px;
         height: 136px;
-        margin-top: -18%;
-        margin-left: -5%;
+        margin-top: 5%;
+        margin-left: 10%;
     }
 
     .schedule-join .bingkai .card-body {
@@ -5745,31 +6035,35 @@ ALL SCHEDULE
     }
 
     .schedule-join .card-title {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .schedule-join .card-date {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .schedule-join .card-time {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .schedule-join .card-desc {
-        font-size: 12px;
+        font-size: 9px;
         margin-top: -10px;
     }
 
     .schedule-join .card-btn {
-        margin-left: -40%;
-        margin-top: -20%;
-        width: 176px;
-        height: 107.2px;
+        margin-left: -60%;
+        margin-top: 50%;
+        font-size: 10px;
+    }
+    .schedule-join .card-btn-pend {
+        margin-left: -80%;
+        margin-top: 50%;
+        font-size: 10px;
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
 
     .schedule-join {
         margin-top: 8%;
@@ -5777,113 +6071,64 @@ ALL SCHEDULE
 
     .schedule-join .bingkai {
         width: 215.07px;
-        height: 256.96px;
+        height: 236.96px;
     }
 
     .schedule-join .bingkai img {
-
-        width: 100%;
-        height: 135.09px;
-
-        margin-top: 5%;
+        width: 95%;
+        height: 100px;
+        margin-top: 1%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .schedule-join .card-title {
-        font-size: 14px;
+        padding: 6%;
+        font-size: 10px;
+    }
+    .schedule-join .card-title span {
+        font-size: 10px;
     }
 
     .schedule-join .card-date {
         font-size: 8px;
+        margin-left: 15%;
+        margin-top: -20%;
     }
 
     .schedule-join .card-time {
         font-size: 8px;
+        margin-top: -20%;
     }
 
     .schedule-join .card-desc {
         opacity: 0;
     }
 
-    .schedule-join .card-price {
-        opacity: 1;
-
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16.6982px;
-        line-height: 18px;
-
-        text-align: left;
-
-        color: #FFFFFF;
-    }
-
     .schedule-join .card-btn {
-        margin-top: -175%;
+        margin-top: -63%;
         padding: 1px 0;
         transform: rotate(0deg);
         width: 215.07px;
         height: 37.2px;
-        margin-left: -15%;
+        margin-left: 0%;
+    }
+    .schedule-join .card-btn-pend{
+        margin-top: -70%;
+        padding: 1px 0;
+        transform: rotate(0deg);
+        width: 215.07px;
+        height: 37.2px;
+        margin-left: 0%;
     }
 
+    .schedule-join .card-btn-pend span,
     .schedule-join .card-btn span {
         transform: rotate(0deg);
         display: inline-block;
     }
 }
 
-@media screen and (max-width: 450px) {
-    .schedule-join .bingkai {
-        width: 195.07px;
-        height: 236.96px;
-    }
-
-    .schedule-join .bingkai img {
-        width: 100%;
-        height: 125.09px;
-    }
-
-    .schedule-join .card-title {
-        font-size: 10.8189px;
-
-    }
-
-    .schedule-join .card-date {
-        font-size: 6.54455px;
-    }
-
-    .schedule-join .card-time {
-        font-size: 6.54455px;
-    }
-
-    .schedule-join .card-desc {
-        opacity: 0;
-    }
-
-    .schedule-join .card-price {
-        opacity: 1;
-        font-size: 16.6982px;
-    }
-
-    .schedule-join .card-btn {
-        margin-top: -235%;
-        padding: 1px 0;
-        transform: rotate(0deg);
-        width: 215.07px;
-        height: 37.2px;
-        margin-left: -25%;
-    }
-
-    .schedule-join .card-btn span {
-        transform: rotate(0deg);
-        display: inline-block;
-    }
-}
-
-/* 
 /* =================================
 # RIWAYAT EVENT
 ================================= */
@@ -5919,6 +6164,7 @@ ALL SCHEDULE
 
     margin-left: auto;
     margin-right: auto;
+    /* cursor: pointer; */
 
 }
 
@@ -5935,9 +6181,9 @@ ALL SCHEDULE
     justify-content: center;
     align-items: stretch;
 
-    margin-left: auto;
+    margin-left: 10%;
     margin-right: auto;
-    margin-top: -4%;
+    top: 6%;
 
     border-radius: 8px;
 }
@@ -6034,16 +6280,16 @@ ALL SCHEDULE
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
-    font-size: 21.1613px;
+    font-size: 14px;
     line-height: 27px;
     /* or 130% */
 
-    text-align: left;
+    text-align: right;
 
     color: #FFFFFF;
 
     text-shadow: 0px 0px 6.61292px #FFBE43;
-    margin-left: 32%;
+    margin-left: 10%;
 }
 
 .schedule-riwayat .card-date {
@@ -6135,7 +6381,8 @@ ALL SCHEDULE
     font-size: 11.1456px;
     line-height: 29px;
     /* or 206% */
-
+    margin-left: -12%;
+    margin-top: 32%;
     align-items: center;
     text-align: center;
     color: #FFFFFF;
@@ -6145,10 +6392,9 @@ ALL SCHEDULE
     border: #ffffff8f 1px solid;
 
     box-shadow: 0px 0px 3.60795px #FFFFFF;
-    /* border-radius: 0px  12.0439px  12.0439px 0px; */
-    margin-left: -23%;
-    transform: rotate(-90deg);
 
+    transform: rotate(-90deg);
+    
 }
 
 .schedule-riwayat .card-btn-success {
@@ -6161,7 +6407,8 @@ ALL SCHEDULE
     font-size: 11.1456px;
     line-height: 29px;
     /* or 206% */
-
+    margin-left: -25%;
+    margin-top: 32%;
     align-items: center;
     text-align: center;
     color: #FFFFFF;
@@ -6171,44 +6418,17 @@ ALL SCHEDULE
     border: #ffffff8f 1px solid;
 
     box-shadow: 0px 0px 3.60795px #FFFFFF;
-    /* border-radius: 0px  12.0439px  12.0439px 0px; */
-    margin-left: -23%;
-    transform: rotate(-90deg);
 
+    transform: rotate(-90deg);
+    
 }
 
-.schedule-riwayat .card-btn-pending {
-    width: 171.96px;
-    height: 107.2px;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 11.1456px;
-    line-height: 29px;
-    /* or 206% */
-
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-
-    background: linear-gradient(92.72deg, #FF0000 -16.1%, rgb(255, 221, 26) -16.09%, rgba(124, 0, 0, 0) 119.7%);
-    box-sizing: border-box;
-    border: #ffffff8f 1px solid;
-
-    box-shadow: 0px 0px 3.60795px #FFFFFF;
-    padding: 6px 0;
-    /* border-radius: 0px  12.0439px  12.0439px 0px; */
-    margin-left: -23%;
-    transform: rotate(-90deg);
-}
-
-.schedule-riwayat .card-btn-pending span,
+/* .schedule-riwayat .card-btn-pending span,
 .schedule-riwayat .card-btn-expired span {
     transform: rotate(90deg);
     display: inline-block;
     margin-top: 10%;
-}
+} */
 
 .schedule-riwayat .card-btn-success span,
 .schedule-riwayat .card-btn-expired span {
@@ -6221,14 +6441,14 @@ ALL SCHEDULE
 @media screen and (max-width: 991px) {
     .schedule-riwayat .bingkai {
         width: 695px;
-        height: 206px;
+        height: 172px;
     }
 
     .schedule-riwayat .bingkai img {
-        width: 186px;
-        height: 186px;
-        margin-top: 0%;
-        margin-left: -1%;
+        width: 150px;
+        height: 150px;
+        margin-top: -1%;
+        margin-left: -2%;
     }
 
     .schedule-riwayat .bingkai .card-body {
@@ -6239,9 +6459,8 @@ ALL SCHEDULE
     .schedule-riwayat .card-btn-pending,
     .schedule-riwayat .card-btn-success,
     .schedule-riwayat .card-btn-expired {
-        margin-left: -51%;
-        width: 206px;
-        height: 107.2px;
+        margin-left: -25%;
+        font-size: 10px;
     }
 }
 
@@ -6251,15 +6470,15 @@ ALL SCHEDULE
     }
 
     .schedule-riwayat .bingkai {
-        width: 515px;
+        width: 600px;
         height: 176px;
     }
 
     .schedule-riwayat .bingkai img {
         width: 136px;
         height: 136px;
-        margin-top: -18%;
-        margin-left: -5%;
+        margin-top: 5%;
+        margin-left: 10%;
     }
 
     .schedule-riwayat .bingkai .card-body {
@@ -6267,19 +6486,19 @@ ALL SCHEDULE
     }
 
     .schedule-riwayat .card-title {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .schedule-riwayat .card-date {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .schedule-riwayat .card-time {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .schedule-riwayat .card-desc {
-        font-size: 12px;
+        font-size: 9px;
         margin-top: -10px;
     }
 
@@ -6287,14 +6506,13 @@ ALL SCHEDULE
     .schedule-riwayat .card-btn-pending,
     .schedule-riwayat .card-btn-success,
     .schedule-riwayat .card-btn-expired {
-        margin-left: -93%;
-        margin-top: -20%;
-        width: 176px;
-        height: 97.2px;
+        margin-left: -90%;
+        margin-top: 51%;
+        font-size: 10px;
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
 
     .schedule-riwayat {
         margin-top: 8%;
@@ -6302,59 +6520,50 @@ ALL SCHEDULE
 
     .schedule-riwayat .bingkai {
         width: 215.07px;
-        height: 256.96px;
+        height: 246.96px;
     }
 
     .schedule-riwayat .bingkai img {
-
-        width: 100%;
-        height: 135.09px;
-
-        margin-top: 5%;
+        width: 95%;
+        height: 100px;
+        margin-top: 1%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .schedule-riwayat .card-title {
-        font-size: 14px;
+        padding: 6%;
+        font-size: 10px;
+    }
+    .schedule-riwayat .card-title span {
+        font-size: 10px;
     }
 
     .schedule-riwayat .card-date {
         font-size: 8px;
+        margin-left: 15%;
+        margin-top: -20%;
     }
 
     .schedule-riwayat .card-time {
         font-size: 8px;
+        margin-top: -20%;
     }
 
     .schedule-riwayat .card-desc {
         opacity: 0;
     }
 
-    .schedule-riwayat .card-price {
-        opacity: 1;
-
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16.6982px;
-        line-height: 18px;
-
-        text-align: left;
-
-        color: #FFFFFF;
-    }
-
     .schedule-riwayat .card-btn,
     .schedule-riwayat .card-btn-pending,
     .schedule-riwayat .card-btn-success,
     .schedule-riwayat .card-btn-expired {
-        margin-top: -93%;
+        margin-top: -45%;
         padding: 1px 0;
         transform: rotate(0deg);
         width: 215.07px;
         height: 37.2px;
-        margin-left: -15%;
+        margin-left: -7%;
     }
 
     .schedule-riwayat .card-btn span,
@@ -6367,7 +6576,7 @@ ALL SCHEDULE
     }
 }
 
-/* 
+
 
 /* =================================
 # SCHEDULE COMING
@@ -9072,7 +9281,7 @@ section {
     width: 106px;
     height: 0px;
     top: -50px;
-    left: calc(50% - 60px);
+    left: calc(50% - 55px);
 
     border: 2px solid #FFFFFF;
     box-shadow: 0px 0px 5px #D85C89;
@@ -9126,7 +9335,7 @@ section {
     width: 106px;
     height: 0px;
     top: -50px;
-    left: calc(50% - 60px);
+    left: calc(50% - 55px);
 
     border: 2px solid #FFFFFF;
     box-shadow: 0px 0px 5px #D85C89;
@@ -10703,9 +10912,23 @@ form button:hover {
     }
 }
 
-@media screen and (max-width:378px) {
+@media screen and (max-width:450px) {
+
+    .button-schedule-week,
+    .button-schedule-month,
+    .button-schedule-year {
+        top: 38%;
+    }
+}
+@media screen and (max-width:320px) {
 
     .button-schedule-month {
         left: 38%;
+    }
+
+    .button-schedule-week,
+    .button-schedule-month,
+    .button-schedule-year {
+        top: 55%;
     }
 }

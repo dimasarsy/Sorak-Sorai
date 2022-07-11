@@ -24,7 +24,7 @@ class ScheduleController extends Controller
             ->select('schedule.*', 'users.role_id')
             ->where('users.role_id','1')
             ->where('schedule.status', "available")
-            ->where('schedule.date', '>=', date('Y-m-d'))->paginate(3);
+            ->where('schedule.enddate', '>=', date('Y-m-d'))->paginate(4);
 
 
         if (request('searchName')) {
@@ -34,7 +34,7 @@ class ScheduleController extends Controller
                 ->join('users', 'schedule.user_id', '=', 'users.id')
                 ->select('schedule.*', 'users.role_id')
                 ->where('users.role_id','1')
-                ->where('schedule.name',  'like', '%' . request('searchName') . '%')->paginate(3);
+                ->where('schedule.name',  'like', '%' . request('searchName') . '%')->paginate(4);
         }
 
         if (request('searchDate')) {
@@ -44,7 +44,7 @@ class ScheduleController extends Controller
                 ->select('schedule.*', 'users.role_id')
                 ->where('users.role_id','1')
                 ->where('schedule.status', "available")
-                ->where('schedule.date', request('searchDate'))->paginate(3);
+                ->where('schedule.date', request('searchDate'))->paginate(4);
         }
 
         if (request('submit') == 'thisWeek') {
@@ -54,7 +54,7 @@ class ScheduleController extends Controller
                 ->select('schedule.*', 'users.role_id')
                 ->where('users.role_id','1')
                 ->where('schedule.status', "available")
-                ->whereBetween('schedule.date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->paginate(3);
+                ->whereBetween('schedule.date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->paginate(4);
 
             $activeFilter = 'thisWeek';
         }
@@ -67,7 +67,7 @@ class ScheduleController extends Controller
                 ->where('users.role_id','1')
                 ->where('schedule.status', "available")
                 ->whereMonth('schedule.date', date('m'))
-                ->whereYear('schedule.date', date('Y'))->paginate(3);
+                ->whereYear('schedule.date', date('Y'))->paginate(4);
 
             $activeFilter = 'thisMonth';
         }
@@ -79,7 +79,7 @@ class ScheduleController extends Controller
                 ->select('schedule.*', 'users.role_id')
                 ->where('users.role_id','1')
                 ->where('schedule.status', "available")
-                ->whereYear('schedule.date', date('Y'))->paginate(3);
+                ->whereYear('schedule.date', date('Y'))->paginate(4);
 
             $activeFilter = 'thisYear';
         }
@@ -176,6 +176,7 @@ class ScheduleController extends Controller
             "description" => "required|max:510",
             "image" => "required",
             "date" => "required",
+            "enddate" => "",
             "starttime" => "required",
             "endtime" => "required",
         ]);
@@ -189,7 +190,12 @@ class ScheduleController extends Controller
         $schedule->description = $validatedData['description'];
         $schedule->image = $validatedData['image'];
         $schedule->date = $validatedData['date'];
+        $schedule->enddate = $validatedData['enddate'];
         $schedule->starttime = $validatedData['starttime'];
+
+        if($schedule->enddate == null){
+            $schedule->enddate = $schedule->date;
+        }
 
         $time_start = explode(':', $schedule->starttime);
         $hour_start = $time_start[0];
@@ -202,7 +208,8 @@ class ScheduleController extends Controller
         $minute_end = $time_end[1];
 
         $date_start = new Carbon($schedule->date);
-        $date_end = new Carbon($schedule->date);
+        $date_end = new Carbon($schedule->enddate);
+
 
         $schedule->availableScheduleDate = $date_start->addHours($hour_start)->addMinutes($minute_start);
         $schedule->dueDateSchedule = $date_end->addHours($hour_end)->addMinutes($minute_end);
@@ -252,6 +259,7 @@ class ScheduleController extends Controller
                 "description" => "required|min:20",
                 "image" => "image|file",
                 "date" => "required",
+                "enddate" => "required",
                 "starttime" => "required",
                 "endtime" => "required",
             ]);
@@ -266,7 +274,7 @@ class ScheduleController extends Controller
             $minute_end  = $time_end[1];
 
             $date_start = new Carbon($validatedData['date']);
-            $date_end = new Carbon($validatedData['date']);
+            $date_end = new Carbon($validatedData['enddate']);
             $validatedData['availableScheduleDate'] =  $date_start->addHours($hour_start)->addMinutes($minute_start);
             $validatedData['dueDateSchedule'] =  $date_end->addHours($hour_end)->addMinutes($minute_end);
 
@@ -282,6 +290,7 @@ class ScheduleController extends Controller
                 "description" => "required|min:20",
                 "image" => "image|file",
                 "date" => "required",
+                "enddate" => "",
                 "starttime" => "required",
                 "endtime" => "required",
             ]);
@@ -295,7 +304,7 @@ class ScheduleController extends Controller
             $minute_end  = $time_end[1];
 
             $date_start = new Carbon($validatedData['date']);
-            $date_end = new Carbon($validatedData['date']);
+            $date_end = new Carbon($validatedData['enddate']);
             $validatedData['availableScheduleDate'] =  $date_start->addHours($hour_start)->addMinutes($minute_start);
             $validatedData['dueDateSchedule'] =  $date_end->addHours($hour_end)->addMinutes($minute_end);
 
@@ -316,8 +325,8 @@ class ScheduleController extends Controller
         if (
             $request->name == $schedule->name && $request->price == $schedule->price &&
             $request->description == $schedule->description && $request->vip == $schedule->vip &&
-            $request->status == $schedule->status && $request->file('image') == null && $request->date == $schedule->date &&
-            $request->starttime == $schedule->starttime && $request->endtime == $schedule->endtime
+            $request->status == $schedule->status && $request->file('image') == null && $request->date == $schedule->date && 
+            $request->enddate == $schedule->enddate && $request->starttime == $schedule->starttime && $request->endtime == $schedule->endtime
         ) {
             return redirect('/dashboard/scheduleHistory')->with('noUpdate', 'There is no update on schedule!');
         }

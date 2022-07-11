@@ -83,19 +83,22 @@
       <h3 data-aos="fade-left"></h3>
     </div>
 
-    <div class="clients-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+    <div class="gallery-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
       <div class="swiper-wrapper align-items-center">
         @foreach($galleries as $gallery)
+
         <div class="swiper-slide">
-          <a href="{{ asset('storage/' . $gallery->image) }}" class="gallery-lightbox">
+          <a data-fancybox="gallery" href="{{ asset('storage/' . $gallery->image) }}" class="gallery-lightbox">
             <img class="img-fluid" src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->name }}'s image">
           </a>
         </div>
+
         @endforeach
       </div>
-      <!-- <div class="swiper-pagination"></div> -->
+
     </div>
 
   </div>
 </section>
+
 @endsection

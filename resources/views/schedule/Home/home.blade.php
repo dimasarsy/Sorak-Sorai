@@ -144,10 +144,14 @@
                                 </div>
 
                                 <div class="row date-time">
-                                    <div class="col-6 col-lg-3 col-md-5">
+                                    <div class="col-12 col-sm-7 col-lg-5">
+                                        @if($schedule->enddate == $schedule->date)
                                         <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($schedule->date)) !!}</p>
+                                        @else
+                                        <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M', strtotime($schedule->date)) !!} - {!! date('d M, Y', strtotime($schedule->enddate)) !!}</p>
+                                        @endif
                                     </div>
-                                    <div class="col-6 col-lg-6 col-md-6">
+                                    <div class="col-12 col-sm-5 col-lg-7">
                                         <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $schedule->starttime }} - {{ $schedule->endtime }}</p>
                                     </div>
                                 </div>

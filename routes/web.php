@@ -38,6 +38,8 @@ Route::get('/', [HomeController::class, "index"]);
 Route::get('/about', [HomeController::class, "about"]);
 Route::get('/upcoming', [HomeController::class, "coming"]);
 
+Route::get('/privacy', [HomeController::class, "privacy"]);
+
 // ================ HALAMAN BELANJA =====================
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/posts/{post:slug}', [PostController::class, "show"])->middleware('auth');

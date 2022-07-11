@@ -8,44 +8,44 @@
         <div class="section-schedule mb-5 d-flex justify-content-center">
             <h2 data-aos="fade-right">Riwayat Ticket</h2>
         </div>
-
         <a href="/orders" class="btn btn-ticket-history d-flex justify-content-center"><span class="iconify" data-icon="fa6-solid:clock-rotate-left"></span>&emsp;Kembali ke Tiket Saya</a>
 
         @if($orders_user->count())
+
         <div class="row row-cols-1">
             @foreach ($orders as $k)
             @if($k->uname == auth()->user()->username)
 
-            <div class="row bingkai">
-                <div class="col-12 col-sm-3 col-md-4 col-lg-3 col-xl-3">
-                    <img src="{{ asset('storage/' . $k->image) }}" class="img-fluid rounded-start" alt="...">
-                </div>
-
-                @if($k->vip == 1)
-                <div class="ribbon"><span>VIP</span></div>
-                @endif
-
-                <div class="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $k->name }}
-                            <span><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</span>
-                        </h5>
-
-                        <div class="row date-time">
-                            <div class="col col-sm-6 col-md-6">
-                                <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
-                            </div>
-                            <div class="col col-sm-6 col-md-6">
-                                <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $k->starttime }} - {{ $k->endtime }}</p>
-                            </div>
-                        </div>
-
-                        <h5 class="card-desc">{!! \Illuminate\Support\Str::words($k->description, 28) !!}</h5>
+            <div class="bingkai">
+                <div class="row">
+                    <div class="col-12 col-sm-4 col-md-3">
+                        <img src="{{ asset('storage/' . $k->image) }}" class="img-fluid rounded-start" alt="...">
                     </div>
-                </div>
-
-                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <div class="card-btn-success"><span>Selesai<br><i class="fas fa-check-circle"></i></span></div>
+    
+                    <div class="col-12 col-sm-6 col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $k->name }}
+                                @if($k->vip == 1)
+                                <span><i class="fas fa-crown"></i> VIP</span>
+                                @endif
+                            </h5>
+    
+                            <div class="row date-time">
+                                <div class="col col-sm-6 col-md-6">
+                                    <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
+                                </div>
+                                <div class="col col-sm-6 col-md-6">
+                                    <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $k->starttime }} - {{ $k->endtime }}</p>
+                                </div>
+                            </div>
+                            <h5 class="card-desc">{!! \Illuminate\Support\Str::words($k->description, 28) !!}</h5>
+                        
+                        </div>
+                    </div>
+    
+                    <div class="col-12 col-sm-2 col-md-2">
+                        <div class="card-btn-success"><span>Selesai<br><i class="fas fa-check-circle"></i></span></div>
+                    </div>
                 </div>
             </div>
             

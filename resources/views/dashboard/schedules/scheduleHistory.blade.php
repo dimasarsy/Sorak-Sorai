@@ -37,7 +37,11 @@
                                 </td>
                                 <td class="text-center">{{ $schedule->name }}</td>
                                 <td class="text-center">Rp.{{ number_format($schedule->price, 0, ',', '.') }},-</td>
-                                <td class="text-center">{!! date('d M, Y', strtotime($schedule->date)) !!}</td>
+                                @if($schedule->enddate == $schedule->date)
+                                    <td class="text-center">{!! date('d M, Y', strtotime($schedule->date)) !!}</td>
+                                @else
+                                    <td class="text-center">{!! date('d M', strtotime($schedule->date)) !!} - {!! date('d M, Y', strtotime($schedule->enddate)) !!}</td>
+                                @endif
                                 <td class="text-center">{{ $schedule->starttime }} - {{ $schedule->endtime}}</td>
 
                                 @if($schedule->status == 'available')
@@ -48,9 +52,13 @@
                                 <td class="text-center">
                                     <div class="badge border-2" style="background-color:red"><span class="text-md">{{ $schedule->status}}</span></div>
                                 </td>
-                                @else
+                                @elseif($schedule->status == 'soon')
                                 <td class="text-center">
                                     <div class="badge border-2" style="background-color:orange"><span class="text-md">{{ $schedule->status}}</span></div>
+                                </td>
+                                @else
+                                <td class="text-center">
+                                    <div class="badge border-2" style="background-color:blue"><span class="text-md">{{ $schedule->status}}</span></div>
                                 </td>
                                 @endif
 

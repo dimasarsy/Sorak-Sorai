@@ -128,7 +128,7 @@
 <!-- --------------------------------------------------------------
   # ABOUT
   -------------------------------------------------------------- -->
-
+  
 <section id="festival" class="about">
   <div class="container">
     <div class="row justify-content-center text-center">
@@ -704,9 +704,9 @@
         <div class="footer-info">
           <div class="social-links mt-4 mb-3">
             <div class="d-flex justify-content-center justify-content-5">
-              <a href="#" class="twitter"><i class='bx bxs-phone'></i></a>
-              <a href="#" class="facebook"><i class='bx bx-envelope'></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <!-- <a href="#" class="twitter"><i class='bx bxs-phone'></i></a> -->
+              <a href="mailto:sorak.sorai@mayaraya.id" class="email"><i class='bx bx-envelope'></i></a>
+              <a href="https://www.instagram.com/soraksorai.mayaraya/" class="instagram"><i class="bx bxl-instagram"></i></a>
             </div>
           </div>
         </div>
@@ -717,11 +717,11 @@
             <div class="contact p-2">
               <div class="row d-flex justify-content-center">
                 <div class="col-5 d-flex justify-content-end">
-                  <a href="#">Kebijakan Privasi</a>
+                  <a href="/privacy">Kebijakan Privasi</a>
                 </div>
                 <div class="col-1 d-flex text-white justify-content-center">|</div>
                 <div class="col-5 d-flex justify-content-start">
-                  <a href="#">Contact Us</a>
+                  <a href="mailto:sorak.sorai@mayaraya.id">Hubungi Kami</a>
                 </div>
               </div>
               <!-- &emsp;&emsp; | &emsp;&emsp; -->

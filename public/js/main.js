@@ -140,14 +140,6 @@
         }
     });
 
-    // new Swiper('.swiper-container', {
-    //     slidesPerView: 3,
-    //     slidesPerColumn: 2,
-    //     slidesPerGroup: 6,
-    //     spaceBetween: 0,
-    //     threshold: 4,
-    //     slidesPerColumnFill: 'row',
-    // });
 
     new Swiper('.lineup-slider', {
         speed: 400,
@@ -157,12 +149,6 @@
             disableOnInteraction: true
         },
         slidesPerView: 'auto',
-        // scrollbar: {
-        //     el: ".swiper-scrollbar",
-        //     hide: false,
-        //     draggable : true,
-        //     snapOnRelease: true
-        // },
         breakpoints: {
 
             300: {
@@ -231,7 +217,7 @@
     /**
      * Clients Slider
      */
-    new Swiper('.clients-slider', {
+    new Swiper('.gallery-slider', {
         speed: 400,
         loop: true,
         autoplay: {
@@ -263,6 +249,22 @@
             },
             992: {
                 slidesPerView: 3.3,
+                spaceBetween: 40
+            },
+            1600: {
+                slidesPerView: 3.5,
+                spaceBetween: 40
+            },
+            1900: {
+                slidesPerView: 3.8,
+                spaceBetween: 40
+            },
+            2100: {
+                slidesPerView: 4.3,
+                spaceBetween: 40
+            },
+            2300: {
+                slidesPerView: 4.8,
                 spaceBetween: 40
             }
         }

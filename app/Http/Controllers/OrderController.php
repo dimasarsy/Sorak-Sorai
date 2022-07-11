@@ -26,7 +26,7 @@ class OrderController extends Controller
         ->where('users.role_id','1')
         ->where('schedules.status','available')
         ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description','schedules.vip')
-        ->paginate(5);
+        ->paginate(4);
 
         $orders_user = DB::table('orders')
         ->where('uname', auth()->user()->username)

@@ -20,7 +20,11 @@
             <p class="card-title">
                 {{ $schedule->name }}
             </p>
+            @if($schedule->enddate == $schedule->date)
             <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{!! date('d F, Y', strtotime($schedule->date)) !!}</p>
+            @else
+            <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{!! date('d F', strtotime($schedule->date)) !!} - {!! date('d F, Y', strtotime($schedule->enddate)) !!}</p>
+            @endif
 
             <div class="col-12">
                 <div class="row">

@@ -26,6 +26,7 @@ class DashboardController extends Controller
                             ->where('sertifikat', null)
                             ->get(),
             'schedules' => Schedule::where('status', "available")
+                        ->where('enddate', '>=', date('Y-m-d'))
                         ->join('users', 'schedules.user_id', '=', 'users.id')
                         ->select('schedules.*', 'users.role_id')
                         ->where('users.role_id','1')

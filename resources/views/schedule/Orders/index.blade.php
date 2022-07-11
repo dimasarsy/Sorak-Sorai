@@ -19,45 +19,55 @@
         <a href="/orders/riwayat" class="btn btn-ticket-join d-flex justify-content-center"><span class="iconify" data-icon="fa6-solid:clock-rotate-left"></span>&emsp;Lihat Riwayat Ticket</a>
 
         @if($orders_user->count())
+
         <div class="row row-cols-1">
             @foreach ($orders as $k)
             @if($k->uname == auth()->user()->username)
 
-            @for ($i = 0; $i < $order_count; $i++) <?php if ($responses[$i]['order_id'] == $k->order_id) { ?> <?php if ($responses[$i]['transaction_status'] == 'settlement' || $responses[$i]['transaction_status'] == 'pending') { ?> <div class="row bingkai">
+            @for ($i = 0; $i < $order_count; $i++) <?php if ($responses[$i]['order_id'] == $k->order_id) { ?> <?php if ($responses[$i]['transaction_status'] == 'settlement' || $responses[$i]['transaction_status'] == 'pending') { ?> <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
 
-                <div class="col-12 col-sm-3 col-md-4 col-lg-3 col-xl-3">
-                    <img src="{{ asset('storage/' . $k->image) }}" class="img-fluid rounded-start" alt="...">
-                </div>
+                <div class="bingkai">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 col-md-3">
+                            <img src="{{ asset('storage/' . $k->image) }}" class="img-fluid rounded-start" alt="...">
+                        </div>
 
-                <div class="col-12 col-sm-7 col-md-6 col-lg-7 col-xl-7">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $k->name }}
-                            <span><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</span>
-                        </h5>
-                    
-                        <div class="row date-time">
-                            <div class="col col-md-6 col-lg-6">
-                                <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
-                            </div>
-                            <div class="col col-md-6 col-lg-6">
-                                <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $k->starttime }} - {{ $k->endtime }}</p>
+                        <div class="col-12 col-sm-6 col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $k->name }}
+                                    @if($k->vip == 1)
+                                    <span><i class="fas fa-crown"></i> VIP</span>
+                                    @endif
+                                </h5>
+
+                                <div class="row date-time">
+                                    <div class="col col-sm-6 col-md-6">
+                                        <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
+                                    </div>
+                                    <div class="col col-sm-6 col-md-6">
+                                        <p class="card-time"><i class="far fa-clock"></i>&nbsp; {{ $k->starttime }} - {{ $k->endtime }}</p>
+                                    </div>
+                                </div>
+                                <h5 class="card-desc">{!! \Illuminate\Support\Str::words($k->description, 27) !!}</h5>
+
                             </div>
                         </div>
-                        <h5 class="card-desc">{!! \Illuminate\Support\Str::words($k->description, 28) !!}</h5>
-                    </div>
-                </div>
 
-                <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                    <?php if ($responses[$i]['transaction_status'] == 'settlement') { ?>
-                        <a href="https://www.games.co.id/" class="btn card-btn"><span>Masuk<br><i class="fas fa-sign-in-alt"></i></span></a>
-                    <?php } elseif ($responses[$i]['transaction_status'] == 'pending') { ?>
-                        <a href="{{ $k->pdf_url }}" class="btn card-btn-pend"><span>Selesaikan Pembayaran<br><i class="fas fa-fw fa-dollar-sign"></i></span></a>
-                    <?php } ?>
+                        <div class="col-12 col-sm-2 col-md-2">
+                            <?php if ($responses[$i]['transaction_status'] == 'settlement') { ?>
+                                <a href="https://www.games.co.id/" class="btn card-btn"><span>Masuk<br><i class="fas fa-sign-in-alt"></i></span></a>
+                            <?php } elseif ($responses[$i]['transaction_status'] == 'pending') { ?>
+                                <a href="{{ $k->pdf_url }}" class="btn card-btn-pend"><span>Selesaikan Pembayaran<br><i class="fas fa-fw fa-dollar-sign"></i></span></a>
+                            <?php } ?>
+                        </div>
+
+                    </div>
+
                 </div>
         </div>
 
 <?php }
-                                                                                                        } ?>
+                                                                                                            } ?>
 @endfor
 
 @endif

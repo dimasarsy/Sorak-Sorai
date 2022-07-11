@@ -20,6 +20,7 @@ class CreateSchedulesTable extends Migration
             $table->text("description");
             $table->string("image");
             $table->date('date');
+            $table->date('enddate')->nullable();
             $table->string('starttime');
             $table->string('endtime');
             $table->string('availableScheduleDate');
