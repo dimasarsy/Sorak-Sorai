@@ -58,9 +58,6 @@
                 @cannot('admin')
                 <a class="collapse-item" href="/orders"><i class="fas fa-ticket-alt"></i>&emsp;Tiket Saya</a>
                 <hr class="dropdown-divider">
-
-                <!-- <a class="collapse-item" href="/orders/riwayat"><span class="iconify" data-icon="fa6-solid:clock-rotate-left"></span>&emsp;Riwayat Tiket</a> -->
-                <hr class="dropdown-divider">
                 @endcannot
 
                 @can('vendor')

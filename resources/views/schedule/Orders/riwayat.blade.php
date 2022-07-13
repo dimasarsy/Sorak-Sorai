@@ -10,10 +10,12 @@
         </div>
         <a href="/orders" class="btn btn-ticket-history d-flex justify-content-center"><span class="iconify" data-icon="fa6-solid:clock-rotate-left"></span>&emsp;Kembali ke Tiket Saya</a>
 
-        @if($orders_user->count())
+        @if($orders->count())
 
         <div class="row row-cols-1">
             @foreach ($orders as $k)
+            @for ($i = 0; $i < $order_count; $i++) <?php if ($responses[$i]['order_id'] == $k->order_id) { ?> <?php if ($responses[$i]['transaction_status'] == 'settlement' ) { ?>
+                
             @if($k->uname == auth()->user()->username)
 
             <div class="bingkai">
@@ -50,30 +52,35 @@
             </div>
             
             @endif
+
+            <?php } } ?>
+            @endfor
+            
             @endforeach
         </div>
 
     </div>
-</section>
+<!-- </section> -->
 <div class="d-flex justify-content-center">
     {{ $orders->links() }}
 </div>
 
 @else
-<section id="schedule" class="schedule mt-5">
+<!-- <section id="schedule" class="schedule mt-5"> -->
     <div class="container" data-aos="fade-up">
         <div class="row justify-content-center text-center">
             <div class="col-8 col-md-7 col-lg-6">
 
-                <div class="section-schedule mt-5">
+                <div class="section-schedule">
                     <div class="fest-img-ticket d-flex justify-content-center pulse"><img src="../img/no-ticket.png"></div>
-                    <h5>Tidak Ada Riwayat Tiket!</h5>
+                    <h5>Maaf, Tidak Ada Riwayat Tiket Disini!</h5>
+                    <p>Segera <a href="/schedule"> beli tiket</a> anda, dan nikmatilah keseruan bersama Sorak Sorai</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
 @endif
+</section>
 
 {{-- @include('layout.script-midtrans') --}}
 @endsection

@@ -263,7 +263,8 @@
         <div class="section-penampil">
           <h2 data-aos="fade-up">PENAMPIL</h2>
           <div class="fest-img d-flex justify-content-center pulse mt-5"><img src="img/no-performance.png"></div>
-          <h5>Tunggu kami di Sorak Sorai!</h5>
+          <h5>Daftar Penampil Belum Tersedia</h5>
+          <p>Tunggu kami di Sorak Sorai, dan nikamti keseruannya segeraa..</p>
         </div>
 
       </div>

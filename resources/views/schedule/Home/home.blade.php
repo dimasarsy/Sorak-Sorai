@@ -157,7 +157,7 @@
                                 </div>
 
                                 <h5 class="card-price">Rp{{ number_format($schedule->price, 0, ',', '.') }}</h5>
-                                <h5 class="card-desc">{!! \Illuminate\Support\Str::words($schedule->description, 25) !!}</h5>
+                                <h5 class="card-desc">{!! \Illuminate\Support\Str::words($schedule->description, 23) !!}</h5>
                                 
                                 @if($schedule->vip == 1)
                                 <h5 class="card-vip"><i class="fas fa-crown"></i>&nbsp;&nbsp; VIP</h5>
@@ -198,6 +198,7 @@
                     @endif
                     <div class="fest-img d-flex justify-content-center pulse"><img src="img/no-schedule.png"></div>
                     <h5>Tiket Belum Tersedia!</h5>
+                    <p>Tunggu Kami di Sorak Sorai dan nikmatilah keseruannya, segeraaa..</p>
                 </div>
 
             </div>

@@ -28,7 +28,8 @@
 
                 <div class="section-penampil mt-5">
                     <div class="fest-img-shop d-flex justify-content-center pulse"><img src="/img/no-product.png"></div>
-                    <h5>Tidak ada Produk Disini</h5>
+                    <h5>Maaf, Tidak ada Produk Disini!</h5>
+                    <p>Nantikan produk-produk menarik dari Sorak Sorai, dijamin mantapp</p>
                 </div>
 
             </div>

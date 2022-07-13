@@ -6,7 +6,7 @@
 # PERFORMANCE
 -------------------------------------------------------------- -->
 @if($schedules->count())
-<section id="order" class="schedule-coming mt-5">
+<section id="schedule" class="schedule-coming mt-5">
   <div class="container" data-aos="fade-up">
 
     <div class="section-penampil mt-3 d-flex justify-content-center">
@@ -43,7 +43,7 @@
 
 
 @else
-<section id="order" class="schedule-coming mt-5">
+<section id="schedule" class="schedule-coming mt-5">
   <div class="container" data-aos="fade-up">
 
     <div class="section-penampil mt-3 d-flex justify-content-center">
@@ -52,7 +52,8 @@
 
     <div class="section-schedule">
       <div class="fest-img d-flex justify-content-center pulse"><img src="img/no-schedule.png"></div>
-      <h5 class="mb-5">Tunggu kami di Sorak Sorai!</h5>
+      <h5>Jadwal yang Akan Datang Belum Tersedia</h5>
+      <p>Silahkan cek jadwal di <a href="/schedule"> Schedule</a> , beli tiket dan nikmatilah keseruannya</p>
     </div>
 
   </div>

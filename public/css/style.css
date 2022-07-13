@@ -669,6 +669,9 @@ nav .logo.space {
 }
 
 .sidebar .nav-item .dropdown-menu .collapse-item-vendor {
+    padding: 0.5rem 0rem;
+    margin: 0 0.7rem;
+    display: block;
 
     color: #fff;
     text-decoration: none;
@@ -3513,9 +3516,23 @@ a[data-fancybox] img {
 
     color: #FFFFFF;
 }
+.section-penampil p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 24px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #a6a6a6;
+    margin-top: 3%;
+    margin-bottom: 10%;
+}
 
 .section-penampil .fest-img img {
-    width: 300px;
+    width: 250px;
     margin-top: 8%;
     margin-bottom: 5%;
     filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
@@ -3525,7 +3542,7 @@ a[data-fancybox] img {
 }
 
 .section-penampil .fest-img-shop img {
-    width: 300px;
+    width: 250px;
     margin-top: -25%;
     margin-bottom: 5%;
     filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
@@ -3533,6 +3550,44 @@ a[data-fancybox] img {
     animation-iteration-count: none;
 
 }
+
+
+.section-product h5 {
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 24px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+.section-product p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 24px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #a6a6a6;
+    margin-top: 3%;
+}
+
+.section-product .fest-img img {
+    width: 150px;
+    margin-top: 8%;
+    filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
+    animation-duration: 0s;
+    animation-iteration-count: none;
+
+}
+
 
 @media screen and (min-width:1400px) and (max-width: 2600px) {
     .section-penampil h2 {
@@ -4589,6 +4644,8 @@ ALL SCHEDULE
 }
 
 .schedule .card-desc {
+    width: 580px;
+
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
@@ -4655,7 +4712,16 @@ ALL SCHEDULE
 
 }
 
-.schedule .section-schedule h5 {
+#schedule .section-schedule .fest-img-ticket img {
+    width: 250px;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
+    animation-duration: 0s;
+    animation-iteration-count: none;
+}
+
+#schedule .section-schedule h5 {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
@@ -4668,7 +4734,27 @@ ALL SCHEDULE
     color: #FFFFFF;
 
 }
+#schedule .section-schedule p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 24px;
 
+    align-items: center;
+    text-align: center;
+
+    color: #a6a6a6;
+    margin-top: 3%;
+    margin-bottom: 10%;
+}
+#schedule .section-schedule a {
+    text-decoration: underline;
+    color: #a6a6a6;
+}
+#schedule .section-schedule a:hover {
+    color: #00a6ff;
+}
 
 @media screen and (max-width: 576px) {
     .schedule {
@@ -4870,6 +4956,7 @@ ALL SCHEDULE
     }
 
     .schedule .card-desc {
+        width: 420px;
         font-weight: 400;
         font-size: 12px;
         margin-top: -8%;
@@ -4916,6 +5003,7 @@ ALL SCHEDULE
     }
 
     .schedule .card-desc {
+        width: 310px;
         font-size: 10px;
         margin-top: -13%;
         line-height: 20px;
@@ -5086,7 +5174,7 @@ ALL SCHEDULE
 @media screen and (max-width: 386px) {
     .schedule .card-vip {
         font-size: 10px;
-        margin-top: -88%;
+        margin-top: -78%;
         margin-left: 75%;
     }
 }
@@ -5096,14 +5184,16 @@ ALL SCHEDULE
     }
     .schedule .card-vip {
         font-size: 10px;
-        margin-top: -90%;
+        margin-top: -80%;
     }
 }
 @media screen and (max-width: 373px) {
-
+    .schedule .card-title {
+        font-size: 11px;
+    }
     .schedule .card-vip {
         font-size: 10px;
-        margin-top: -105%;
+        margin-top: -85%;
     }
 }
 
@@ -5120,8 +5210,7 @@ ALL SCHEDULE
     }
 
     .schedule .card-title {
-        font-size: 12.8189px;
-
+        font-size: 11px;
     }
 
     .schedule .card-desc {
@@ -5133,8 +5222,8 @@ ALL SCHEDULE
         font-size: 16.6982px;
     }
     .schedule .card-vip {
-        font-size: 10px;
-        margin-top: -110%;
+        font-size: 9px;
+        margin-top: -85%;
     }
 }
 
@@ -6657,6 +6746,7 @@ ALL SCHEDULE
     align-items: center;
 
     color: #FFFFFF;
+    
 }
 
 .schedule-coming .card-desc {
@@ -6670,6 +6760,10 @@ ALL SCHEDULE
     text-align: justify;
 
     color: #FFFFFF;
+    -moz-column-count:2; 
+    -webkit-column-count:2; 
+    column-count:2;
+    width: 98%;
 }
 
 @media screen and (max-width: 992px) {
@@ -6793,10 +6887,25 @@ ALL SCHEDULE
     color: #FFFFFF;
 
 }
+.schedule-coming .section-schedule p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 24px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #a6a6a6;
+    margin-top: 3%;
+    margin-bottom: 10%;
+
+}
 
 .section-schedule .fest-img img {
-    width: 250px;
-    margin-top: 10%;
+    width: 200px;
+    margin-top: 5%;
     margin-bottom: 5%;
     filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
     animation-duration: 0s;
@@ -6804,7 +6913,7 @@ ALL SCHEDULE
 }
 
 .section-schedule .fest-img-ticket img {
-    width: 300px;
+    width: 250px;
     margin-top: -25%;
     margin-bottom: 5%;
     filter: drop-shadow(7px 7px 7px rgba(255, 255, 255, 0.144));
