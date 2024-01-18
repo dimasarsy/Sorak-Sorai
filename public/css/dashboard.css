@@ -10,7 +10,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #4e73df;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -11984,4 +11984,38 @@ body.sidebar-toggled footer.sticky-footer {
   text-align: justify;
   
   color: #000;
+}
+
+.update-msg {
+  border-radius: 5px;
+  padding: 20px 12px;
+  margin: 50px 24px 24px;
+  position: relative;
+  background-color: #C710A8;
+}
+
+.update-msg .img-box {
+  width: 46px;
+  height: 46px;
+  display: block;
+  line-height: 46px;
+  background: #0c213a;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: -22px;
+  right: 0;
+  left: 0;
+}
+
+.update-msg h5 {
+  color: #b6c2e4;
+  font-size: 20px;
+}
+
+.update-msg p {
+  color: #8997bd;
+  font-weight: 300;
+  font-size: 12px;
 }

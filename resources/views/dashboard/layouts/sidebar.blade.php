@@ -165,6 +165,12 @@
       <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
+    <div class="update-msg text-center">
+      <h5 class="mt-3 text-white">Dimzz Tech</h5>
+      <p class="text-white">©2023 All Right Reserved</p>
+      <p class="text-white">Made by Dimas Arsy</p>
+    </div>
+
   </ul>
   <!-- End of Sidebar -->
 </div>
